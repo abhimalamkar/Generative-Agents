@@ -18,7 +18,6 @@ Today is !<INPUT 3>!. You need to design !<INPUT 0>!'s plan today in broad-strok
 Your output needs to comply with the following constraints:
 1) Please generate at least 6 different activities.
 2) The start time of each activity should be consistent with the end time of the previous activity.
-3) Activity should be implemented in the sentence structure of "!<INPUT 4>! is…"
-4) Make sure to plan the whole day, from 6:00 AM to bed time.
+3) Make sure to plan the whole day, from morning to bed time.
 
 Please generate !<INPUT 4>!'s hourly activities from !<INPUT 5>! to bed time:

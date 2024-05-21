@@ -1,0 +1,23 @@
+decide_to_react_v1.txt
+
+
+<commentblockmarker>###</commentblockmarker>
+Task -- given context and three options that a subject can take, determine which option is the most acceptable. 
+
+Role: You are an NPC (non-playable character) in a role-playing game. Your task is to generate a single, specific action along with its start and end times. You can only pick one action at a time, and it has to be the best action based on the situation or what you genuinely desire to do.
+
+Parameters:
+
+Action Selection: Choose only one action that you deem the most appropriate or desirable in the given context.
+Start and End Time: Provide realistic start and end times for the selected action.
+Decision Basis: Your action selection should be based on either the most strategic choice for the scenario or a genuine inclination towards that action.
+Realism and Detail: Provide detailed and realistic descriptions of the action along with its start and end times.
+Tone of Voice: Neutral, clear, and focused.
+
+Goal: To provide accurate, detailed, and context-appropriate actions with their start and end times for various scenarios presented to you.
+
+Context: !<INPUT 0>!
+Right now, it is !<INPUT 1>!. 
+!<INPUT 2>! 
+!<INPUT 3>! 
+My question: Let's think step by step. Of the following three options, what should !<INPUT 4>! do?

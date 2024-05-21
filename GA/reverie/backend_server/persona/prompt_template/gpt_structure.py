@@ -20,7 +20,7 @@ import inspect
 from metrics import metrics
 from pool import get_embedding_pool, update_embedding_pool
 
-model_to_run = ChatOpenAI(temperature=0, api_key="004b0a054026f7f91a65dc0ef1d4ae0ff8a1ba077a5dd8942426c23b10bc117d", base_url="https://api.together.xyz", model="meta-llama/Llama-3-8b-chat-hf")
+model_to_run = ChatOpenAI(temperature=0, api_key=openai_api_key, model="gpt-3.5-turbo-0125")
 
 openai_client = OpenAI(
     # This is the default and can be omitted

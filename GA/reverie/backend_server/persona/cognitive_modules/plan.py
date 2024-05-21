@@ -327,6 +327,10 @@ def generate_decide_to_react(init_persona, target_persona, retrieved):
     if debug: print("GNS FUNCTION: <generate_decide_to_react>")
     return run_gpt_prompt_decide_to_react(init_persona, target_persona, retrieved)[0]
 
+# TODO refine generate_decide_to_react
+def generate_decide_to_react_all(init_persona, retrieved):
+    if debug: print("GNS FUNCTION: <generate_decide_to_react>")
+    return run_gpt_prompt_decide_to_react_all(init_persona, retrieved)[0]
 
 def get_split_minute_schedule(minute_schedule):
     if "(" in minute_schedule:
@@ -733,6 +737,95 @@ def _determine_action(persona, maze):
                                    act_obj_pron,
                                    act_obj_event)
 
+def _determine_action_(persona, maze, new_plan):
+    """
+    Creates the next action sequence for the persona.
+    The main goal of this function is to run "add_new_action" on the persona's
+    scratch space, which sets up all the action-related variables for the next
+    action.
+    INPUT
+      persona: Current <Persona> instance whose action we are determining.
+      maze: Current <Maze> instance.
+      new_plan: Tuple containing the new activity, start time, and end time.
+    """
+    
+    # Unpack the new plan
+    new_activity = new_plan["activity"]
+    start_time = datetime.datetime.strptime(new_plan["start"], '%I:%M %p')
+    end_time = datetime.datetime.strptime(new_plan["end"], '%I:%M %p')
+    duration = (end_time - start_time).total_seconds() // 60
+    
+    # Insert the new plan at the current index
+    curr_index = persona.scratch.get_f_daily_schedule_index()
+    persona.scratch.f_daily_schedule.insert(curr_index, [new_activity, duration])
+    persona.scratch.f_daily_new_plan.insert(curr_index, True)
+    persona.scratch.f_daily_parent_plan.insert(curr_index, 'root')
+
+    # Update the schedule by calculating remaining time
+    x_emergency = sum(i[1] for i in persona.scratch.f_daily_schedule)
+    if 1440 - x_emergency > 0:
+        persona.scratch.f_daily_schedule.append(["sleeping", 1440 - x_emergency])
+        persona.scratch.f_daily_new_plan.append(False)
+        persona.scratch.f_daily_parent_plan.append('root')
+
+    act_desp, act_dura = persona.scratch.f_daily_schedule[curr_index]
+    new_plan_emoji = persona.scratch.f_daily_new_plan[curr_index]
+    parent_plan = persona.scratch.f_daily_parent_plan[curr_index]
+    pre_emoji = "🧠🚫->"
+    
+    if new_plan_emoji:
+        pre_emoji = "🧠💡->"
+    else:
+        if parent_plan == 'root' and act_dura < 60 and act_desp != 'sleeping':
+            task_info = get_policy_pool(persona.name, act_desp, act_dura)
+            if task_info is None:
+                task_embedding = get_embedding(act_desp)
+                _, task_name = get_relate_policy(persona.name, act_desp, act_dura, task_embedding)
+                if task_name is None:
+                    pre_emoji = "🧠💡->"
+                    persona.scratch.f_daily_new_plan[curr_index] = True
+                    new_plan_emoji = True
+                    update_policy_pool(persona.name, act_desp, act_dura, [], task_embedding)
+                else:
+                    act_desp = task_name
+
+    update_record_tree(persona.name, act_desp, parent_plan, new_plan_emoji, act_dura, persona.scratch.curr_time, {})
+
+    exist_sub_task = get_sub_task_pool(persona.name, act_desp)
+    if exist_sub_task is not None and utils.use_policy:
+        new_address = exist_sub_task["new_address"]
+        act_pron = exist_sub_task["act_pron"]
+        act_event = exist_sub_task["act_event"]
+        act_game_object = exist_sub_task["act_game_object"]
+        act_obj_desp = exist_sub_task["act_obj_desp"]
+        act_obj_pron = exist_sub_task["act_obj_pron"]
+        act_obj_event = exist_sub_task["act_obj_event"]
+    else:
+        act_world = maze.access_tile(persona.scratch.curr_tile)["world"]
+        act_sector = generate_action_sector(act_desp, persona, maze)
+        act_arena = generate_action_arena(act_desp, persona, maze, act_world, act_sector)
+        act_address = f"{act_world}:{act_sector}:{act_arena}"
+        act_game_object = generate_action_game_object(act_desp, act_address, persona, maze)
+        new_address = f"{act_world}:{act_sector}:{act_arena}:{act_game_object}"
+        act_pron = generate_action_pronunciatio(act_desp, persona)
+        act_event = generate_action_event_triple(act_desp, persona)
+        act_obj_desp = generate_act_obj_desc(act_game_object, act_desp, persona)
+        act_obj_pron = generate_action_pronunciatio(act_obj_desp, persona)
+        act_obj_event = generate_act_obj_event_triple(act_game_object, act_obj_desp, persona)
+
+        sub_task_info = {
+            "new_address": new_address,
+            "act_pron": act_pron,
+            "act_event": act_event,
+            "act_game_object": act_game_object,
+            "act_obj_desp": act_obj_desp,
+            "act_obj_pron": act_obj_pron,
+            "act_obj_event": act_obj_event,
+        }
+        if utils.use_policy:
+            update_sub_task_pool(persona.name, act_desp, sub_task_info)
+
+    persona.scratch.add_new_action(new_address, int(act_dura), act_desp, pre_emoji + act_pron, act_event, None, None, None, None, act_obj_desp, act_obj_pron, act_obj_event)
 
 def _choose_retrieved(persona, retrieved):
     """
@@ -881,6 +974,12 @@ def _should_react(persona, retrieved, personas):
             return f"chat with {curr_event.subject}"
         react_mode = lets_react(persona, personas[curr_event.subject],
                                 retrieved)
+        return react_mode
+    else: 
+        # this is a general event.
+        # decide to react or not
+        react_mode = generate_decide_to_react_all(persona, retrieved)
+
         return react_mode
     return False
 
@@ -1085,7 +1184,8 @@ def plan(persona, maze, personas, new_day, retrieved):
     #         c) False
     if focused_event:
         reaction_mode = _should_react(persona, focused_event, personas)
-        if reaction_mode:
+        if reaction_mode and isinstance(reaction_mode, str):
+            # check if reaction mode is a string
             # If we do want to chat, then we generate conversation
             if reaction_mode[:9] == "chat with":
                 _chat_react(maze, persona, focused_event, reaction_mode, personas)
@@ -1093,7 +1193,10 @@ def plan(persona, maze, personas, new_day, retrieved):
                 _wait_react(persona, reaction_mode)
             # elif reaction_mode == "do other things":
             #   _chat_react(persona, focused_event, reaction_mode, personas)
-
+        elif reaction_mode and isinstance(reaction_mode, dict):
+            print("DEBUG: reaction_mode is a dictionary")
+            _determine_action_(persona, maze, reaction_mode)
+            print(reaction_mode)
     # Step 3: Chat-related state clean up.
     # If the persona is not chatting with anyone, we clean up any of the
     # chat-related states here.

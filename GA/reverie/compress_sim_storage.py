@@ -7,6 +7,7 @@ Description: Compresses a simulation for replay demos.
 import shutil
 import json
 from global_methods import *
+from tqdm import tqdm
 
 def compress(sim_code):
   sim_storage = f"../environment/frontend_server/storage/{sim_code}"
@@ -26,7 +27,7 @@ def compress(sim_code):
   
   persona_last_move = dict()
   master_move = dict()  
-  for i in range(max_move_count+1): 
+  for i in tqdm(range(max_move_count+1)): 
     master_move[i] = dict()
     with open(f"{move_folder}/{str(i)}.json") as json_file:  
       i_move_dict = json.load(json_file)["persona"]
@@ -60,7 +61,8 @@ def compress(sim_code):
 
 
 if __name__ == '__main__':
-  compress("aga_3_person_new")
+  print("new")
+  compress("base_the_ville_n7_together")
 
 
 

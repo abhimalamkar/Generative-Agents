@@ -78,7 +78,7 @@ class Persona:
     self.scratch.save(f_scratch)
 
 
-  def perceive(self, maze):
+  async def perceive(self, maze):
     """
     This function takes the current maze, and returns events that are 
     happening around the persona. Importantly, perceive is guided by 
@@ -104,7 +104,7 @@ class Persona:
         See associative_memory.py -- but to get you a sense of what it 
         receives as its input: "s, p, o, desc, persona.scratch.curr_time"
     """
-    return perceive(self, maze)
+    return await perceive(self, maze)
 
 
   def retrieve(self, perceived):
@@ -182,7 +182,7 @@ class Persona:
     reflect(self)
 
 
-  def move(self, maze, personas, curr_tile, curr_time):
+  async def move(self, maze, personas, curr_tile, curr_time, perceived):
     """
     This is the main cognitive function where our main sequence is called. 
 
@@ -217,8 +217,9 @@ class Persona:
     self.scratch.curr_time = curr_time
 
     # Main cognitive sequence begins here. 
-    perceived = self.perceive(maze)
+    # perceived = await self.perceive(maze)
     retrieved = self.retrieve(perceived)
+    print(retrieved, "retrieved")
     plan = self.plan(maze, personas, new_day, retrieved)
     self.reflect()
 
@@ -228,7 +229,8 @@ class Persona:
     # <description> is a string description of the movement. e.g., 
     #   writing her next novel (editing her novel) 
     #   @ double studio:double studio:common room:sofa
-    return self.execute(maze, personas, plan)
+    next_tile, pronunciatio, description = self.execute(maze, personas, plan)
+    return next_tile, pronunciatio, description, plan
 
 
   def open_convo_session(self, convo_mode): 

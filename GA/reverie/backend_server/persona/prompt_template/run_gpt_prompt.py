@@ -1454,6 +1454,76 @@ def run_gpt_prompt_decide_to_react(persona, target_persona, retrieved, test_inpu
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
+def run_gpt_prompt_decide_to_react_all(persona, retrieved, test_input=None,
+                                   verbose=False):
+    def create_prompt_input(init_persona, retrieved,
+                            test_input=None):
+
+        context = ""
+        for c_node in retrieved["events"]:
+            context += f"{c_node.description}. "
+        context += "\n"
+        for c_node in retrieved["thoughts"]:
+            context += f"{c_node.description}. "
+
+        curr_time = init_persona.scratch.curr_time.strftime("%B %d, %Y, %H:%M:%S %p")
+        init_act_desc = init_persona.scratch.act_description
+        if "(" in init_act_desc:
+            init_act_desc = init_act_desc.split("(")[-1][:-1]
+        if len(init_persona.scratch.planned_path) == 0:
+            loc = ""
+            if ":" in init_persona.scratch.act_address:
+                loc = init_persona.scratch.act_address.split(":")[-1] + " in " + \
+                      init_persona.scratch.act_address.split(":")[-2]
+            init_p_desc = f"{init_persona.name} is already {init_act_desc} at {loc}"
+        else:
+            loc = ""
+            if ":" in init_persona.scratch.act_address:
+                loc = init_persona.scratch.act_address.split(":")[-1] + " in " + \
+                      init_persona.scratch.act_address.split(":")[-2]
+            init_p_desc = f"{init_persona.name} is on the way to {init_act_desc} at {loc}"
+
+
+        prompt_input = []
+        prompt_input += [context]
+        prompt_input += [curr_time]
+        prompt_input += [init_p_desc]
+        prompt_input += [init_persona.name]
+        prompt_input += [init_act_desc]
+
+        return prompt_input
+
+
+    def get_fail_safe():
+        fs = "3"
+        return fs
+
+    gpt_param = {"engine": model, "api_type": "azure", "max_tokens": 20,
+                 "temperature": 0, "top_p": 1, "stream": False,
+                 "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
+    prompt_template = "persona/prompt_template/v4/decide_to_react_v1.txt"
+    prompt_input = create_prompt_input(persona, retrieved,
+                                       test_input)
+    prompt = generate_prompt(prompt_input, prompt_template)
+
+    parser = JsonOutputParser(pydantic_object=Plan)
+
+    langchain_prompt = PromptTemplate(
+        template="{format_instructions}\n\n{query}\n",
+        input_variables=["query"],
+        partial_variables={"format_instructions": parser.get_format_instructions()},
+    )
+
+    chain = langchain_prompt | model_to_run | parser
+    print(parser.get_format_instructions())
+    output = chain.invoke({"query": prompt})
+
+    if debug or verbose:
+        print_run_prompts(prompt_template, persona, gpt_param,
+                          prompt_input, prompt, output)
+
+    return output, [output, prompt, gpt_param, prompt_input, get_fail_safe()]
+
 
 def run_gpt_prompt_create_conversation(persona, target_persona, curr_loc,
                                        test_input=None, verbose=False):

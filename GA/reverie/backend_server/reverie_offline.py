@@ -27,6 +27,7 @@ import math
 import os
 import shutil
 import traceback
+import asyncio
 
 from selenium import webdriver
 
@@ -287,7 +288,7 @@ class ReverieServer:
 
             # time.sleep(self.server_sleep * 10)
 
-    def start_server(self, int_counter):
+    async def start_server(self, int_counter):
         """
     The main backend server of Reverie. 
     This function retrieves the environment file from the frontend to 
@@ -328,7 +329,7 @@ class ReverieServer:
             # the content of this for loop. Otherwise, we just wait.
             curr_env_file = f"{sim_folder}/environment/{self.step}.json"
 
-            frontend_data = sim_frontend(backend_data, self.step, self.sim_code)
+            frontend_data = sim_frontend(frontend_pos,backend_data, self.step, self.sim_code)
 
             if frontend_data is not None:
                 if frontend_data is not None:
@@ -383,9 +384,11 @@ class ReverieServer:
                         # <description> is a string description of the movement. e.g.,
                         #   writing her next novel (editing her novel)
                         #   @ double studio:double studio:common room:sofa
-                        next_tile, pronunciatio, description = persona.move(
+                        persona.scratch.curr_tile = self.personas_tile[persona_name]
+                        perceived = await persona.perceive(self.maze)
+                        next_tile, pronunciatio, description, plan = await persona.move(
                             self.maze, self.personas, self.personas_tile[persona_name],
-                            self.curr_time)
+                            self.curr_time, perceived)
                         movements["persona"][persona_name] = {}
                         movements["persona"][persona_name]["movement"] = next_tile
                         backend_data["persona"][persona_name] = next_tile
@@ -613,7 +616,7 @@ class ReverieServer:
 frontend_pos = dict()
 
 
-def sim_frontend(backend_data, step, sim_code):
+def sim_frontend(frontend_pos,backend_data, step, sim_code):
     ## backend send data
     curr_time = backend_data['time']
     print(f"frontend time:{curr_time}")
@@ -677,7 +680,7 @@ def rs_answer_question(file_name, rs, _question):
 def opt():
     parser = argparse.ArgumentParser(description='This is the offline version of reverie which can run without the '
                                                  'frontend')
-    parser.add_argument('-o', '--origin', type=str, default='base_the_ville_isabella_maria_klaus',
+    parser.add_argument('-o', '--origin', type=str, default='July1_the_ville_isabella_maria_klaus-step-3-1',
                         help='the forked simulation')
     parser.add_argument('-t', '--target', type=str, help='the new simulation', default='offline')
     parser.add_argument('-s', '--step', type=int, help='the total run step', default=1000)
@@ -700,5 +703,5 @@ if __name__ == '__main__':
     elif args.question is not None:
         rs_answer_question(args.target, rs, args.question)
     else:
-        rs.start_server(args.step)
+        asyncio.run(rs.start_server(args.step))
         rs.save()

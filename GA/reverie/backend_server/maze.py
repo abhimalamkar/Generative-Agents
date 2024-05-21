@@ -204,7 +204,6 @@ class Maze:
           else: 
             self.address_tiles[add] = set([(j, i)])
 
-
   def turn_coordinate_to_tile(self, px_coordinate): 
     """
     Turns a pixel coordinate to a tile coordinate. 
@@ -283,7 +282,7 @@ class Maze:
     return path
 
 
-  def get_nearby_tiles(self, tile, vision_r): 
+  async def get_nearby_tiles(self, tile, vision_r): 
     """
     Given the current tile and vision_r, return a list of tiles that are 
     within the radius. Note that this implementation looks at a square 
@@ -380,26 +379,6 @@ class Maze:
     for event in curr_tile_ev_cp: 
       if event[0] == subject:  
         self.tiles[tile[1]][tile[0]]["events"].remove(event)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
