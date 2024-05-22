@@ -22,3 +22,11 @@ class Plan(BaseModel):
 
 class Plans(BaseModel):
     plans: List[Plan]   
+
+
+class SubPlan(BaseModel):
+    activity: str = Field(description='The activity that the character wants to do at the specified time. It should be a string.') 
+    duration: int = Field(description="time in minutes that the character wants to spend on the activity")
+
+class SubPlans(BaseModel):
+    subplans: List[SubPlan]

@@ -23,23 +23,5 @@ Your output needs to comply with the following constraints:
 1) Your designed hourly activities should match !<INPUT 0>!'s personal information and today's schedule.
 2) You need to generate activities from !<INPUT 1>! to !<INPUT 2>!.
 3) Please generate at least 6 different activities.
-4) You should output in the JSON format without any other description, and the activity should be implemented in the sentence structure of "!<INPUT 0>! is..."
-
-
-Here is an example of John Smith:
-[
-    {
-        "activity": "John is waking up and completing his morning routine",
-        "start": "06:00 AM",
-        "end": "07:00 AM"
-    },
-    {
-        "activity": "John is getting ready for work and making breakfast for himself",
-        "start": "07:00 AM",
-        "end": "08:00 AM"
-    },
-    ...
-]
-
 
 Please generate !<INPUT 0>!'s hourly activities from !<INPUT 1>! to !<INPUT 2>!:

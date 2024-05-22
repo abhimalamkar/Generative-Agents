@@ -546,6 +546,27 @@ def _long_term_planning(persona, new_day):
     # time.sleep(10)
     # print("Done sleeping!")
 
+def determine_decomp(act_desp, act_dura):
+    """
+Given an action description and its duration, we determine whether we need
+to decompose it. If the action is about the agent sleeping, we generally
+do not want to decompose it, so that's what we catch here. 
+
+INPUT: 
+    act_desp: the description of the action (e.g., "sleeping")
+    act_dura: the duration of the action in minutes. 
+OUTPUT: 
+    a boolean. True if we need to decompose, False otherwise. 
+"""
+    if "sleep" not in act_desp and "bed" not in act_desp:
+        return True
+    elif "sleeping" in act_desp or "asleep" in act_desp or "in bed" in act_desp:
+        return False
+    elif "sleep" in act_desp or "bed" in act_desp:
+        if act_dura > 60:
+            return False
+    return True
+
 
 def _determine_action(persona, maze):
     """
@@ -559,28 +580,6 @@ def _determine_action(persona, maze):
     persona: Current <Persona> instance whose action we are determining. 
     maze: Current <Maze> instance. 
   """
-
-    def determine_decomp(act_desp, act_dura):
-        """
-    Given an action description and its duration, we determine whether we need
-    to decompose it. If the action is about the agent sleeping, we generally
-    do not want to decompose it, so that's what we catch here. 
-
-    INPUT: 
-      act_desp: the description of the action (e.g., "sleeping")
-      act_dura: the duration of the action in minutes. 
-    OUTPUT: 
-      a boolean. True if we need to decompose, False otherwise. 
-    """
-        if "sleep" not in act_desp and "bed" not in act_desp:
-            return True
-        elif "sleeping" in act_desp or "asleep" in act_desp or "in bed" in act_desp:
-            return False
-        elif "sleep" in act_desp or "bed" in act_desp:
-            if act_dura > 60:
-                return False
-        return True
-
     # The goal of this function is to get us the action associated with
     # <curr_index>. As a part of this, we may need to decompose some large
     # chunk actions.
@@ -649,17 +648,17 @@ def _determine_action(persona, maze):
     print(persona.scratch.name)
     print("------")
 
-    # 1440
-    x_emergency = 0
-    for i in persona.scratch.f_daily_schedule:
-        x_emergency += i[1]
-    # print ("x_emergency", x_emergency)
+    perform_action(persona, maze)
 
+
+def perform_action(persona, maze):
+    # 1440
+    curr_index = persona.scratch.get_f_daily_schedule_index()
+    x_emergency = sum(i[1] for i in persona.scratch.f_daily_schedule)
     if 1440 - x_emergency > 0:
-        print("x_emergency__AAA", x_emergency)
-    persona.scratch.f_daily_schedule += [["sleeping", 1440 - x_emergency]]
-    persona.scratch.f_daily_new_plan += [False]
-    persona.scratch.f_daily_parent_plan += ['root']
+        persona.scratch.f_daily_schedule.append(["sleeping", 1440 - x_emergency])
+        persona.scratch.f_daily_new_plan.append(False)
+        persona.scratch.f_daily_parent_plan.append('root')
 
     act_desp, act_dura = persona.scratch.f_daily_schedule[curr_index]
     new_plan_emoji = persona.scratch.f_daily_new_plan[curr_index]
@@ -750,82 +749,24 @@ def _determine_action_(persona, maze, new_plan):
     """
     
     # Unpack the new plan
-    new_activity = new_plan["activity"]
+    act_desp = new_plan["activity"]
     start_time = datetime.datetime.strptime(new_plan["start"], '%I:%M %p')
     end_time = datetime.datetime.strptime(new_plan["end"], '%I:%M %p')
-    duration = (end_time - start_time).total_seconds() // 60
+    act_dura = (end_time - start_time).total_seconds() // 60
     
-    # Insert the new plan at the current index
     curr_index = persona.scratch.get_f_daily_schedule_index()
-    persona.scratch.f_daily_schedule.insert(curr_index, [new_activity, duration])
-    persona.scratch.f_daily_new_plan.insert(curr_index, True)
-    persona.scratch.f_daily_parent_plan.insert(curr_index, 'root')
 
-    # Update the schedule by calculating remaining time
-    x_emergency = sum(i[1] for i in persona.scratch.f_daily_schedule)
-    if 1440 - x_emergency > 0:
-        persona.scratch.f_daily_schedule.append(["sleeping", 1440 - x_emergency])
-        persona.scratch.f_daily_new_plan.append(False)
-        persona.scratch.f_daily_parent_plan.append('root')
-
-    act_desp, act_dura = persona.scratch.f_daily_schedule[curr_index]
-    new_plan_emoji = persona.scratch.f_daily_new_plan[curr_index]
-    parent_plan = persona.scratch.f_daily_parent_plan[curr_index]
-    pre_emoji = "🧠🚫->"
-    
-    if new_plan_emoji:
-        pre_emoji = "🧠💡->"
-    else:
-        if parent_plan == 'root' and act_dura < 60 and act_desp != 'sleeping':
-            task_info = get_policy_pool(persona.name, act_desp, act_dura)
-            if task_info is None:
-                task_embedding = get_embedding(act_desp)
-                _, task_name = get_relate_policy(persona.name, act_desp, act_dura, task_embedding)
-                if task_name is None:
-                    pre_emoji = "🧠💡->"
-                    persona.scratch.f_daily_new_plan[curr_index] = True
-                    new_plan_emoji = True
-                    update_policy_pool(persona.name, act_desp, act_dura, [], task_embedding)
-                else:
-                    act_desp = task_name
-
-    update_record_tree(persona.name, act_desp, parent_plan, new_plan_emoji, act_dura, persona.scratch.curr_time, {})
-
-    exist_sub_task = get_sub_task_pool(persona.name, act_desp)
-    if exist_sub_task is not None and utils.use_policy:
-        new_address = exist_sub_task["new_address"]
-        act_pron = exist_sub_task["act_pron"]
-        act_event = exist_sub_task["act_event"]
-        act_game_object = exist_sub_task["act_game_object"]
-        act_obj_desp = exist_sub_task["act_obj_desp"]
-        act_obj_pron = exist_sub_task["act_obj_pron"]
-        act_obj_event = exist_sub_task["act_obj_event"]
-    else:
-        act_world = maze.access_tile(persona.scratch.curr_tile)["world"]
-        act_sector = generate_action_sector(act_desp, persona, maze)
-        act_arena = generate_action_arena(act_desp, persona, maze, act_world, act_sector)
-        act_address = f"{act_world}:{act_sector}:{act_arena}"
-        act_game_object = generate_action_game_object(act_desp, act_address, persona, maze)
-        new_address = f"{act_world}:{act_sector}:{act_arena}:{act_game_object}"
-        act_pron = generate_action_pronunciatio(act_desp, persona)
-        act_event = generate_action_event_triple(act_desp, persona)
-        act_obj_desp = generate_act_obj_desc(act_game_object, act_desp, persona)
-        act_obj_pron = generate_action_pronunciatio(act_obj_desp, persona)
-        act_obj_event = generate_act_obj_event_triple(act_game_object, act_obj_desp, persona)
-
-        sub_task_info = {
-            "new_address": new_address,
-            "act_pron": act_pron,
-            "act_event": act_event,
-            "act_game_object": act_game_object,
-            "act_obj_desp": act_obj_desp,
-            "act_obj_pron": act_obj_pron,
-            "act_obj_event": act_obj_event,
-        }
-        if utils.use_policy:
-            update_sub_task_pool(persona.name, act_desp, sub_task_info)
-
-    persona.scratch.add_new_action(new_address, int(act_dura), act_desp, pre_emoji + act_pron, act_event, None, None, None, None, act_obj_desp, act_obj_pron, act_obj_event)
+    # Insert the new plan at the current index
+    if determine_decomp(act_desp, act_dura):
+        sub_task, is_new_plan, task_name = generate_task_decomp(persona, act_desp, act_dura)
+        print("DEBUG::: ", sub_task)
+        persona.scratch.f_daily_schedule[curr_index:curr_index + 1] = sub_task
+        persona.scratch.f_daily_new_plan[curr_index:curr_index + 1] = [is_new_plan] * len(sub_task)
+        persona.scratch.f_daily_parent_plan[curr_index:curr_index + 1] = [task_name] * len(sub_task)
+        for _sub_task in sub_task:
+            persona.scratch.f_daily_subtask_parent[_sub_task[0]] = act_desp
+            
+    perform_action(persona, maze)
 
 def _choose_retrieved(persona, retrieved):
     """

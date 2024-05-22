@@ -39,6 +39,36 @@ def get_random_alphanumeric(i=6, j=6):
     return x
 
 
+
+def adjust_durations(tasks, total_allowed):
+    total_duration = sum(duration for _, duration in tasks)
+
+    if total_duration == total_allowed:
+        return tasks  # No adjustment needed if durations match
+
+    adjusted_tasks = tasks.copy()
+
+    if total_duration < total_allowed:
+        # Distribute additional time when total duration is less
+        additional_time = total_allowed - total_duration
+        for i in range(additional_time):
+            adjusted_tasks[i % len(tasks)][1] += 1
+    else:
+        # Adjust durations proportionally when total duration is more
+        factor = total_allowed / total_duration
+        adjusted_tasks = [[task, int(duration * factor)] for task, duration in tasks]
+
+        # Distribute any rounding differences
+        total_adjusted = sum(duration for _, duration in adjusted_tasks)
+        i = 0
+        while total_adjusted < total_allowed:
+            adjusted_tasks[i][1] += 1
+            total_adjusted += 1
+            i = (i + 1) % len(adjusted_tasks)
+
+    return adjusted_tasks
+
+
 ##############################################################################
 # CHAPTER 1: Run GPT Prompt
 ##############################################################################
@@ -123,44 +153,6 @@ def run_gpt_prompt_daily_plan(persona,
         prompt_input += [f"{str(wake_up_hour)}:00 AM"]
         return prompt_input
 
-    def __func_clean_up(gpt_response, prompt=""):
-        json_data = json.loads(gpt_response)
-        assert isinstance(json_data, list), "run_gpt_prompt_daily_plan -> gpt_response should be a list"
-        daily_req = []
-        n_m1_hourly_compressed = []
-
-        curr_min = 0
-
-        rest_time = 24 * 60
-        n_m1_hourly_compressed += [["sleeping", int(wake_up_hour * 60) - curr_min]]
-        rest_time -= int(wake_up_hour * 60) - curr_min
-
-        for activity_json in json_data:
-            activity = activity_json["activity"]
-            start_time = datetime.datetime.strptime(activity_json["start"], '%I:%M %p')
-            end_time = datetime.datetime.strptime(activity_json["end"], '%I:%M %p')
-            daily_req.append(f"{activity} from {activity_json['start']} to {activity_json['end']}")
-            min_diff_time = (end_time - start_time).total_seconds() / 60
-            if min_diff_time < 0:
-                min_diff_time = 1440 + min_diff_time
-
-            n_m1_hourly_compressed += [[activity, int(min_diff_time)]]
-            rest_time -= min_diff_time
-            print(f"activity_json -> s:{start_time} e:{end_time} m:{min_diff_time} r:{rest_time} t:{activity}")
-
-            # assert rest_time > 0, "generate_first_daily_plan -> rest time should larger than 0"
-            assert min_diff_time > 0, "generate_first_daily_plan -> min_diff_time time should larger than 0"
-
-        return json_data
-
-    def __func_validate(gpt_response, prompt=""):
-        try:
-            __func_clean_up(gpt_response)
-        except Exception as e:
-            metrics.fail_record(e)
-            return False
-        return True
-
     def get_fail_safe():
         fs = []
         fs.append({"activity": "sleep", "hour": "06:00 AM"})
@@ -210,19 +202,6 @@ def run_gpt_prompt_generate_hourly_schedule(persona,
             daily_plan += f"{str(count + 1)}) {i}.\n"
         return [persona.scratch.get_str_firstname(), start_hour, end_hour, persona.scratch.get_str_iss(), daily_plan]
 
-    def __func_clean_up(gpt_response, prompt=""):
-        json_data = json.loads(gpt_response)
-        assert isinstance(json_data, list), "run_gpt_prompt_generate_hourly_schedule -> gpt_response should be a list"
-
-        return json_data
-
-    def __func_validate(gpt_response, prompt=""):
-        try:
-            __func_clean_up(gpt_response)
-        except Exception as e:
-            metrics.fail_record(e)
-            return False
-        return True
 
     def get_fail_safe():
         fs = []
@@ -237,9 +216,21 @@ def run_gpt_prompt_generate_hourly_schedule(persona,
     prompt = generate_prompt(prompt_input, prompt_template)
     fail_safe = get_fail_safe()
 
-    output = ChatGPT_safe_generate_response_OLD(prompt, 3, fail_safe, __func_validate, __func_clean_up)
+    # output = ChatGPT_safe_generate_response_OLD(prompt, 3, fail_safe, __func_validate, __func_clean_up)
     # output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
     #                                 __func_validate, __func_clean_up)
+    parser = JsonOutputParser(pydantic_object=Plans)
+
+    langchain_prompt = PromptTemplate(
+        template="{format_instructions}\n\n{query}\n",
+        input_variables=["query"],
+        partial_variables={"format_instructions": parser.get_format_instructions()},
+    )
+
+    chain = langchain_prompt | model_to_run | parser
+    print(parser.get_format_instructions())
+    output = chain.invoke({"query": prompt})
+    output = output['plans']
 
     if debug or verbose:
         print_run_prompts(prompt_template, persona, gpt_param,
@@ -386,7 +377,6 @@ def run_gpt_prompt_next_day_plan(persona,
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
 
-
 def run_gpt_prompt_task_decomp(persona,
                                task,
                                duration,
@@ -449,72 +439,6 @@ def run_gpt_prompt_task_decomp(persona,
         prompt_input += [persona.scratch.get_str_firstname()]
         return prompt_input
 
-    def __func_clean_up(gpt_response, prompt=""):
-        print("TOODOOOOOO")
-        print(gpt_response)
-        print("-==- -==- -==- ")
-
-        # TODO SOMETHING HERE sometimes fails... See screenshot
-        temp = [i.strip() for i in gpt_response.split("\n")]
-        _cr = []
-        cr = []
-        for count, i in enumerate(temp):
-            if count != 0:
-                _cr += [" ".join([j.strip() for j in i.split(" ")][3:])]
-            else:
-                _cr += [i]
-        for count, i in enumerate(_cr):
-            k = [j.strip() for j in i.split("(duration in minutes:")]
-            task = k[0]
-            if task[-1] == ".":
-                task = task[:-1]
-            duration = int(k[1].split(",")[0].strip())
-            cr += [[task, duration]]
-
-        total_expected_min = int(prompt.split("(total duration in minutes")[-1]
-                                 .split("):")[0].strip())
-
-        # TODO -- now, you need to make sure that this is the same as the sum of
-        #         the current action sequence.
-        curr_min_slot = [["dummy", -1], ]  # (task_name, task_index)
-        for count, i in enumerate(cr):
-            i_task = i[0]
-            i_duration = i[1]
-
-            i_duration -= (i_duration % 5)
-            if i_duration > 0:
-                for j in range(i_duration):
-                    curr_min_slot += [(i_task, count)]
-        curr_min_slot = curr_min_slot[1:]
-
-        if len(curr_min_slot) > total_expected_min:
-            last_task = curr_min_slot[60]
-            for i in range(1, 6):
-                curr_min_slot[-1 * i] = last_task
-        elif len(curr_min_slot) < total_expected_min:
-            last_task = curr_min_slot[-1]
-            for i in range(total_expected_min - len(curr_min_slot)):
-                curr_min_slot += [last_task]
-
-        cr_ret = [["dummy", -1], ]
-        for task, task_index in curr_min_slot:
-            if task != cr_ret[-1][0]:
-                cr_ret += [[task, 1]]
-            else:
-                cr_ret[-1][1] += 1
-        cr = cr_ret[1:]
-
-        return cr
-
-    def __func_validate(gpt_response, prompt=""):
-        # TODO -- this sometimes generates error
-        try:
-            __func_clean_up(gpt_response, prompt)
-        except Exception as e:
-            metrics.fail_record(e)
-            return False
-        return gpt_response
-
     def get_fail_safe():
         fs = ["asleep"]
         return fs
@@ -522,54 +446,31 @@ def run_gpt_prompt_task_decomp(persona,
     gpt_param = {"engine": model, "api_type": "azure", "max_tokens": 1000,
                  "temperature": 0, "top_p": 1, "stream": False,
                  "frequency_penalty": 0, "presence_penalty": 0, "stop": None}
-    prompt_template = "persona/prompt_template/v2/task_decomp_v3.txt"
+    prompt_template = "persona/prompt_template/v4/task_decomp_v3.txt"
     prompt_input = create_prompt_input(persona, task, duration)
     prompt = generate_prompt(prompt_input, prompt_template)
     fail_safe = get_fail_safe()
 
     print("?????")
     print(prompt)
-    output = safe_generate_response(prompt, gpt_param, 5, get_fail_safe(),
-                                    __func_validate, __func_clean_up)
 
-    # TODO THERE WAS A BUG HERE...
-    # This is for preventing overflows...
-    """
-  File "/Users/joonsungpark/Desktop/Stanford/Projects/
-  generative-personas/src_exploration/reverie_simulation/
-  brain/get_next_action_v3.py", line 364, in run_gpt_prompt_task_decomp
-  fin_output[-1][1] += (duration - ftime_sum)
-  IndexError: list index out of range
-  """
 
-    print("IMPORTANT VVV DEBUG")
+    planner_prompt = PromptTemplate.from_template(prompt)
+    planner = planner_prompt | model_to_run.with_structured_output(SubPlans)
+    output = planner.invoke({"duration":duration})
+    output = [[i.activity, i.duration] for i in output.subplans]
 
-    # print (prompt_input)
-    # print (prompt)
     print(output)
 
-    fin_output = []
-    time_sum = 0
-    for i_task, i_duration in output:
-        time_sum += i_duration
-        # HM?????????
-        # if time_sum < duration:
-        if time_sum <= duration:
-            fin_output += [[i_task, i_duration]]
-        else:
-            break
-    ftime_sum = 0
-    for fi_task, fi_duration in fin_output:
-        ftime_sum += fi_duration
-
-    # print ("for debugging... line 365", fin_output)
-    fin_output[-1][1] += (duration - ftime_sum)
-    output = fin_output
+    output = adjust_durations(output, duration)
 
     task_decomp = output
     ret = []
     for decomp_task, duration in task_decomp:
-        ret += [[f"{task} ({decomp_task})", duration]]
+        if decomp_task == task:
+            ret += [[f"{task}", duration]]
+        else:
+            ret += [[f"{task} ({decomp_task})", duration]]
     output = ret
 
     if debug or verbose:
@@ -577,7 +478,6 @@ def run_gpt_prompt_task_decomp(persona,
                           prompt_input, prompt, output)
 
     return output, [output, prompt, gpt_param, prompt_input, fail_safe]
-
 
 def run_gpt_prompt_action_sector(action_description,
                                  persona,
