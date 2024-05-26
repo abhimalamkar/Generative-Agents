@@ -385,10 +385,18 @@ class ReverieServer:
                         #   writing her next novel (editing her novel)
                         #   @ double studio:double studio:common room:sofa
                         persona.scratch.curr_tile = self.personas_tile[persona_name]
+                        new_day = False
+                        if not persona.scratch.curr_time: 
+                            new_day = "First day"
+                        elif (persona.scratch.curr_time.strftime('%a %b %d')
+                                != self.curr_time.strftime('%a %b %d')):
+                            new_day = "New day"
+                        persona.scratch.curr_time = self.curr_time
                         perceived = await persona.perceive(self.maze)
+                        
                         next_tile, pronunciatio, description, plan = await persona.move(
                             self.maze, self.personas, self.personas_tile[persona_name],
-                            self.curr_time, perceived)
+                            self.curr_time, perceived, new_day)
                         movements["persona"][persona_name] = {}
                         movements["persona"][persona_name]["movement"] = next_tile
                         backend_data["persona"][persona_name] = next_tile
@@ -680,10 +688,10 @@ def rs_answer_question(file_name, rs, _question):
 def opt():
     parser = argparse.ArgumentParser(description='This is the offline version of reverie which can run without the '
                                                  'frontend')
-    parser.add_argument('-o', '--origin', type=str, default='July1_the_ville_isabella_maria_klaus-step-3-1',
+    parser.add_argument('-o', '--origin', type=str, default='base_the_ville_isabella_maria_klaus',
                         help='the forked simulation')
     parser.add_argument('-t', '--target', type=str, help='the new simulation', default='offline')
-    parser.add_argument('-s', '--step', type=int, help='the total run step', default=1000)
+    parser.add_argument('-s', '--step', type=int, help='the total run step', default=50)
     parser.add_argument('--disable_policy', action='store_false', help='Disable the lifestyle policy')
     parser.add_argument('--disable_relationship', action='store_false', help='Disable the social impression memory')
     parser.add_argument('-c', '--call', type=str, help='call interview with agent')

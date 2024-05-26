@@ -120,7 +120,7 @@ class AssociativeMemory:
             r[node_id]["type_count"] = node.type_count
             r[node_id]["type"] = node.type
             r[node_id]["depth"] = node.depth
-
+            print(node.created, node.spo_summary())
             r[node_id]["created"] = node.created.strftime('%Y-%m-%d %H:%M:%S')
             r[node_id]["expiration"] = None
             if node.expiration:

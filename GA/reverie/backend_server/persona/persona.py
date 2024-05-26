@@ -182,13 +182,13 @@ class Persona:
     reflect(self)
 
 
-  async def move(self, maze, personas, curr_tile, curr_time, perceived):
+  async def move(self, maze, personas, curr_tile, curr_time, perceived, new_day):
     """
     This is the main cognitive function where our main sequence is called. 
 
     INPUT: 
       maze: The Maze class of the current world. 
-      personas: A dictionary that contains all persona names as keys, and the 
+      personas: A dictionary that contains all persona names as keys, and the   
                 Persona instance as values. 
       curr_tile: A tuple that designates the persona's current tile location 
                  in (row, col) form. e.g., (58, 39)
@@ -208,13 +208,13 @@ class Persona:
     # day, whether it is the very first day of the simulation. This is 
     # important because we set up the persona's long term plan at the start of
     # a new day. 
-    new_day = False
-    if not self.scratch.curr_time: 
-      new_day = "First day"
-    elif (self.scratch.curr_time.strftime('%a %b %d')
-          != curr_time.strftime('%a %b %d')):
-      new_day = "New day"
-    self.scratch.curr_time = curr_time
+    # new_day = False
+    # if not self.scratch.curr_time: 
+    #   new_day = "First day"
+    # elif (self.scratch.curr_time.strftime('%a %b %d')
+    #       != curr_time.strftime('%a %b %d')):
+    #   new_day = "New day"
+    # self.scratch.curr_time = curr_time
 
     # Main cognitive sequence begins here. 
     # perceived = await self.perceive(maze)

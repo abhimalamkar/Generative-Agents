@@ -916,12 +916,12 @@ def _should_react(persona, retrieved, personas):
         react_mode = lets_react(persona, personas[curr_event.subject],
                                 retrieved)
         return react_mode
-    else: 
-        # this is a general event.
-        # decide to react or not
-        react_mode = generate_decide_to_react_all(persona, retrieved)
+    # else: 
+    #     # this is a general event.
+    #     # decide to react or not
+    #     react_mode = generate_decide_to_react_all(persona, retrieved)
 
-        return react_mode
+    #     return react_mode
     return False
 
 
@@ -1134,10 +1134,10 @@ def plan(persona, maze, personas, new_day, retrieved):
                 _wait_react(persona, reaction_mode)
             # elif reaction_mode == "do other things":
             #   _chat_react(persona, focused_event, reaction_mode, personas)
-        elif reaction_mode and isinstance(reaction_mode, dict):
-            print("DEBUG: reaction_mode is a dictionary")
-            _determine_action_(persona, maze, reaction_mode)
-            print(reaction_mode)
+        # elif reaction_mode and isinstance(reaction_mode, dict):
+        #     print("DEBUG: reaction_mode is a dictionary")
+        #     _determine_action_(persona, maze, reaction_mode)
+        #     print(reaction_mode)
     # Step 3: Chat-related state clean up.
     # If the persona is not chatting with anyone, we clean up any of the
     # chat-related states here.
