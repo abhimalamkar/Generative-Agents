@@ -154,7 +154,7 @@ class ReverieServer:
         # REVERIE SETTINGS PARAMETERS:
         # <server_sleep> denotes the amount of time that our while loop rests each
         # cycle; this is to not kill our machine.
-        self.server_sleep = 0.1
+        self.server_sleep = 0.0
 
         # SIGNALING THE FRONTEND SERVER:
         # curr_sim_code.json contains the current simulation code, and
@@ -595,7 +595,7 @@ def opt():
     parser.add_argument('-o', '--origin', type=str, default='base_rivenwood_elara_brian_finn',
                         help='the forked simulation')
     parser.add_argument('-t', '--target', type=str, help='the new simulation', default='offline')
-    parser.add_argument('-s', '--step', type=int, help='the total run step', default=50)
+    parser.add_argument('-s', '--step', type=int, help='the total run step', default=5000)
     parser.add_argument('--disable_policy', action='store_false', help='Disable the lifestyle policy')
     parser.add_argument('--disable_relationship', action='store_false', help='Disable the social impression memory')
     parser.add_argument('-c', '--call', type=str, help='call interview with agent')

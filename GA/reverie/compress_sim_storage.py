@@ -62,7 +62,7 @@ def compress(sim_code):
 
 if __name__ == '__main__':
   print("new")
-  compress("base_the_ville_n7_together")
+  compress("offline")
 
 
 
