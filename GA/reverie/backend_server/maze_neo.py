@@ -18,7 +18,9 @@ class Maze:
 
     def construct_tree(self):
         query = """
-        MATCH (w:World {name: $maze_name})-[:HAS_SECTOR]->(s:Sector)-[:HAS_ARENA]->(a:Arena)-[:HAS_OBJECT]->(o:Object)
+        MATCH (w:World {name: $maze_name})-[:HAS_SECTOR]->(s:Sector)
+        OPTIONAL MATCH (s)-[:HAS_ARENA]->(a:Arena)
+        OPTIONAL MATCH (a)-[:HAS_OBJECT]->(o:Object)
         OPTIONAL MATCH (s)<-[:CONNECTS_TO]-(road:Road)-[:CONNECTS_TO]->(connected_sector:Sector)
         OPTIONAL MATCH (s)-[:HAS_ARENA]->(connected_arena:Arena)
         RETURN w.name AS world, id(s) AS sector_id, s.name AS sector, s.owner AS owner, s.description AS sector_description,
@@ -43,9 +45,6 @@ class Maze:
                 connected_sector_ids = [s for s in record["connected_sector_ids"] if s != sector_id]
                 connected_arena_ids = [a for a in record["connected_arena_ids"] if a != arena_id]
 
-                # print(f"Sector ID: {sector_id}, Connected Sectors: {connected_sector_ids}")
-                # print(f"Arena ID: {arena_id}, Connected Arenas: {connected_arena_ids}")
-
                 if world not in tree:
                     tree[world] = {"sectors": {}}
                 
@@ -57,6 +56,7 @@ class Maze:
                         "owner": record["owner"],
                         "description": record["sector_description"],
                         "arenas": {},
+                        "events": set(),
                         "world": world,
                         "connected_sectors": connected_sector_ids
                     }
@@ -65,30 +65,40 @@ class Maze:
                         [s for s in connected_sector_ids if s not in tree[world]["sectors"][sector_id]["connected_sectors"]]
                     )
                 
-                if arena_id not in arenas_by_id:
-                    arenas_by_id[arena_id] = arena
-                    tree[world]["sectors"][sector_id]["arenas"][arena_id] = {
-                        "name": arena,
-                        "path": f"{world}:{sector}:{arena}",
-                        "description": record["arena_description"],
-                        "objects": [],
-                        "world": world,
-                        "sector": sector,
-                        "connected_arenas": connected_arena_ids
-                    }
-                else:
-                    tree[world]["sectors"][sector_id]["arenas"][arena_id]["connected_arenas"].extend(
-                        [a for a in connected_arena_ids if a not in tree[world]["sectors"][sector_id]["arenas"][arena_id]["connected_arenas"]]
-                    )
+                if arena_id is not None:
+                    if arena_id not in arenas_by_id:
+                        arenas_by_id[arena_id] = arena
+                        tree[world]["sectors"][sector_id]["arenas"][arena_id] = {
+                            "name": arena,
+                            "path": f"{world}:{sector}:{arena}",
+                            "description": record["arena_description"],
+                            "objects": [],
+                            "events": set(),
+                            "world": world,
+                            "sector": sector,
+                            "arena": arena,
+                            "connected_arenas": connected_arena_ids
+                        }
+                    else:
+                        tree[world]["sectors"][sector_id]["arenas"][arena_id]["connected_arenas"].extend(
+                            [a for a in connected_arena_ids if a not in tree[world]["sectors"][sector_id]["arenas"][arena_id]["connected_arenas"]]
+                        )
 
-                tree[world]["sectors"][sector_id]["arenas"][arena_id]["objects"].append({
-                    "name": obj,
-                    "path": f"{world}:{sector}:{arena}:{obj}",
-                    "world": world,
-                    "sector": sector,
-                    "arena": arena,
-                    "description": record["object_description"]
-                })
+                    if obj is not None:
+                        object = {
+                            "name": obj,
+                            "path": f"{world}:{sector}:{arena}:{obj}",
+                            "events": set(),
+                            "world": world,
+                            "sector": sector,
+                            "arena": arena,
+                            "game_object": obj,
+                            "description": record["object_description"]
+                        }
+                        go_event = (f"{world}:{sector}:{arena}:{obj}", None, None, None)
+                        object["events"].add(go_event)
+                        tree[world]["sectors"][sector_id]["arenas"][arena_id]["objects"].append(object)
+
 
         return tree
 
@@ -185,7 +195,10 @@ class Maze:
         elif len(levels) == 3:  # It's an arena
             connected_arenas = tile.get("connected_arenas", [])
             print(self.get_section_or_arena_by_id(connected_arenas[0]))
-            return [self.get_section_or_arena_by_id(arena)["path"] for arena in connected_arenas]
+            objects = [obj["path"] for obj in tile.get("objects", [])]
+            result = [self.get_section_or_arena_by_id(arena)["path"] for arena in connected_arenas]
+            result.extend(objects)
+            return result
         else:
             return []
 
@@ -299,21 +312,21 @@ class Maze:
 # Example usage
 
 
-maze_name = "Rivenwood"
+# maze_name = "Rivenwood"
 
-maze = Maze(maze_name)
+# maze = Maze(maze_name)
 
-# pprint.pprint(maze.tree)
+# # pprint.pprint(maze.tree)
 
-path = "Rivenwood:Elder Elara's House:Living Room"
+# path = "Rivenwood:Elder Elara's House:Living Room"
 # print(maze.access_tile(path))
-print(maze.get_section_or_arena_by_id(3719))
+# print(maze.get_section_or_arena_by_id(3867))
 # print(maze.get_tile_path(path, "sector"))
 
-path = "Rivenwood:Blacksmith Barin's House:Living Quarters"
-print(maze.get_nearby_tiles(path))
+# path = "Rivenwood:Blacksmith Barin's House:Living Quarters"
+# print(maze.get_nearby_tiles(path))
 
-maze.save_tree_as_json("maze_tree.json")
+# maze.save_tree_as_json("maze_tree.json")
 
 
-maze.close()
+# maze.close()

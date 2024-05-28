@@ -37,10 +37,10 @@ def execute(persona, maze, personas, plan):
 
   # <act_path_set> is set to True if the path is set for the current action. 
   # It is False otherwise, and means we need to construct a new path. 
+  target_tiles = plan
   if not persona.scratch.act_path_set: 
     # <target_tiles> is a list of tile coordinates where the persona may go 
     # to execute the current action. The goal is to pick one of them.
-    target_tiles = None
 
     print ('aldhfoaf/????')
     print (plan)
@@ -69,6 +69,7 @@ def execute(persona, maze, personas, plan):
       # Retrieve the target addresses. Again, plan is an action address in its
       # string form. <maze.address_tiles> takes this and returns candidate 
       # coordinates. 
+      target_tiles = plan
       print('plan:', plan)
 
     # There are sometimes more than one tile returned from this (e.g., a tabe
