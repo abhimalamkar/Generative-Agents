@@ -244,7 +244,7 @@ class Maze:
     y = tile[1]
     return self.tiles[y][x]
 
-
+  # This can become current node for unreal engine
   def get_tile_path(self, tile, level): 
     """
     Get the tile string address given its coordinate. You designate the level

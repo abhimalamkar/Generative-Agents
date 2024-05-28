@@ -34,7 +34,7 @@ from selenium import webdriver
 import utils
 from global_methods import *
 from utils import *
-from maze import *
+from maze_neo import *
 from persona.persona import *
 from metrics import metrics
 import argparse
@@ -60,6 +60,11 @@ class ReverieServer:
         # reverie/meta/json's fork variable.
         self.sim_code = sim_code
         sim_folder = f"{fs_storage}/{self.sim_code}"
+
+        # remove the sim folder if it already exists
+        if os.path.exists(sim_folder):
+            shutil.rmtree(sim_folder)
+
         copyanything(fork_folder, sim_folder)
 
         #
@@ -134,14 +139,17 @@ class ReverieServer:
             persona_folder = f"{sim_folder}/personas/{persona_name}"
             p_x = init_env[persona_name]["x"]
             p_y = init_env[persona_name]["y"]
+            start_node = init_env[persona_name]["start_node"]
 
             curr_persona = Persona(persona_name, persona_folder)
 
             self.personas[persona_name] = curr_persona
-            self.personas_tile[persona_name] = (p_x, p_y)
-            frontend_pos[persona_name] = [p_x, p_y]
-            self.maze.tiles[p_y][p_x]["events"].add(curr_persona.scratch
-                                                    .get_curr_event_and_desc())
+            self.personas_tile[persona_name] = start_node
+            frontend_pos[persona_name] = start_node
+            self.maze.add_event_from_tile(curr_persona.scratch.get_curr_event_and_desc(),
+                                          start_node)
+            # self.maze.tiles[p_y][p_x]["events"].add(curr_persona.scratch
+            #                                         .get_curr_event_and_desc())
 
         # REVERIE SETTINGS PARAMETERS:
         # <server_sleep> denotes the amount of time that our while loop rests each
@@ -197,96 +205,6 @@ class ReverieServer:
             persona.save(save_folder)
 
         metrics.save()
-
-    def start_path_tester_server(self):
-        """
-    Starts the path tester server. This is for generating the spatial memory
-    that we need for bootstrapping a persona's state. 
-
-    To use this, you need to open server and enter the path tester mode, and
-    open the front-end side of the browser. 
-
-    INPUT 
-      None
-    OUTPUT 
-      None
-      * Saves the spatial memory of the test agent to the path_tester_env.json
-        of the temp storage. 
-    """
-
-        def print_tree(tree):
-            def _print_tree(tree, depth):
-                dash = " >" * depth
-
-                if type(tree) == type(list()):
-                    if tree:
-                        print(dash, tree)
-                    return
-
-                for key, val in tree.items():
-                    if key:
-                        print(dash, key)
-                    _print_tree(val, depth + 1)
-
-            _print_tree(tree, 0)
-
-        # <curr_vision> is the vision radius of the test agent. Recommend 8 as
-        # our default.
-        curr_vision = 8
-        # <s_mem> is our test spatial memory.
-        s_mem = dict()
-
-        # The main while loop for the test agent.
-        while (True):
-            try:
-                curr_dict = {}
-                tester_file = fs_temp_storage + "/path_tester_env.json"
-                if check_if_file_exists(tester_file):
-                    with open(tester_file) as json_file:
-                        curr_dict = json.load(json_file)
-                        os.remove(tester_file)
-
-                    # Current camera location
-                    curr_sts = self.maze.sq_tile_size
-                    curr_camera = (int(math.ceil(curr_dict["x"] / curr_sts)),
-                                   int(math.ceil(curr_dict["y"] / curr_sts)) + 1)
-                    curr_tile_det = self.maze.access_tile(curr_camera)
-
-                    # Initiating the s_mem
-                    world = curr_tile_det["world"]
-                    if curr_tile_det["world"] not in s_mem:
-                        s_mem[world] = dict()
-
-                    # Iterating throughn the nearby tiles.
-                    nearby_tiles = self.maze.get_nearby_tiles(curr_camera, curr_vision)
-                    for i in nearby_tiles:
-                        i_det = self.maze.access_tile(i)
-                        if (curr_tile_det["sector"] == i_det["sector"]
-                                and curr_tile_det["arena"] == i_det["arena"]):
-                            if i_det["sector"] != "":
-                                if i_det["sector"] not in s_mem[world]:
-                                    s_mem[world][i_det["sector"]] = dict()
-                            if i_det["arena"] != "":
-                                if i_det["arena"] not in s_mem[world][i_det["sector"]]:
-                                    s_mem[world][i_det["sector"]][i_det["arena"]] = list()
-                            if i_det["game_object"] != "":
-                                if (i_det["game_object"]
-                                        not in s_mem[world][i_det["sector"]][i_det["arena"]]):
-                                    s_mem[world][i_det["sector"]][i_det["arena"]] += [
-                                        i_det["game_object"]]
-
-                # Incrementally outputting the s_mem and saving the json file.
-                print("= " * 15)
-                out_file = fs_temp_storage + "/path_tester_out.json"
-                with open(out_file, "w") as outfile:
-                    outfile.write(json.dumps(s_mem, indent=2))
-                print_tree(s_mem)
-
-            except Exception as e:
-                metrics.fail_record(e)
-                pass
-
-            # time.sleep(self.server_sleep * 10)
 
     async def start_server(self, int_counter):
         """
@@ -348,8 +266,7 @@ class ReverieServer:
                         curr_tile = self.personas_tile[persona_name]
                         # <new_tile> is the tile that the persona will move to right now,
                         # during this cycle.
-                        new_tile = (frontend_data[persona_name]["x"],
-                                    frontend_data[persona_name]["y"])
+                        new_tile = frontend_data[persona_name]
 
                         # We actually move the persona on the backend tile map here.
                         self.personas_tile[persona_name] = new_tile
@@ -633,27 +550,14 @@ def sim_frontend(frontend_pos,backend_data, step, sim_code):
 
     ## frontend process data
     for person_name, person_info in persona_dict.items():
-        target_x = person_info[0]
-        target_y = person_info[1]
-
-        if frontend_pos[person_name][0] < target_x:
-            frontend_pos[person_name][0] += 1
-        elif frontend_pos[person_name][0] > target_x:
-            frontend_pos[person_name][0] -= 1
-        elif frontend_pos[person_name][1] < target_y:
-            frontend_pos[person_name][1] += 1
-        elif frontend_pos[person_name][1] > target_y:
-            frontend_pos[person_name][1] -= 1
+        frontend_pos[person_name] = person_info
 
     step += 1
 
     environment = dict()
     for k, v in persona_dict.items():
-        environment[k] = {
-            'maze': 'the_ville',
-            'x': frontend_pos[k][0],
-            'y': frontend_pos[k][1],
-        }
+        environment[k] = frontend_pos[k]
+
     data = dict()
     data['step'] = step
     data['sim_code'] = sim_code
@@ -688,7 +592,7 @@ def rs_answer_question(file_name, rs, _question):
 def opt():
     parser = argparse.ArgumentParser(description='This is the offline version of reverie which can run without the '
                                                  'frontend')
-    parser.add_argument('-o', '--origin', type=str, default='base_the_ville_isabella_maria_klaus',
+    parser.add_argument('-o', '--origin', type=str, default='base_rivenwood_elara_brian_finn',
                         help='the forked simulation')
     parser.add_argument('-t', '--target', type=str, help='the new simulation', default='offline')
     parser.add_argument('-s', '--step', type=int, help='the total run step', default=50)

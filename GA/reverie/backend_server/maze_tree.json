@@ -1,0 +1,2398 @@
+{
+    "Rivenwood": {
+        "sectors": {
+            "3522": {
+                "name": "Carpenter Colin's House",
+                "path": "Rivenwood:Carpenter Colin's House",
+                "owner": "Carpenter Colin",
+                "description": "Carpenter Colin's House",
+                "arenas": {
+                    "3579": {
+                        "name": "Showroom",
+                        "path": "Rivenwood:Carpenter Colin's House:Showroom",
+                        "description": "Showroom of Carpenter Colin",
+                        "objects": [
+                            {
+                                "name": "Wooden Table",
+                                "path": "Rivenwood:Carpenter Colin's House:Showroom:Wooden Table",
+                                "world": "Rivenwood",
+                                "sector": "Carpenter Colin's House",
+                                "arena": "Showroom",
+                                "description": "Handcrafted wooden table"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Carpenter Colin's House",
+                        "connected_arenas": [
+                            3576,
+                            3575,
+                            3577,
+                            3578
+                        ]
+                    },
+                    "3576": {
+                        "name": "Living Quarters",
+                        "path": "Rivenwood:Carpenter Colin's House:Living Quarters",
+                        "description": "Living Quarters of Carpenter Colin",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Carpenter Colin's House:Living Quarters:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Carpenter Colin's House",
+                                "arena": "Living Quarters",
+                                "description": "Simple bed with basic linens"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Carpenter Colin's House",
+                        "connected_arenas": [
+                            3579,
+                            3575,
+                            3577,
+                            3578
+                        ]
+                    },
+                    "3575": {
+                        "name": "Workshop",
+                        "path": "Rivenwood:Carpenter Colin's House:Workshop",
+                        "description": "Workshop of Carpenter Colin",
+                        "objects": [
+                            {
+                                "name": "Workbench",
+                                "path": "Rivenwood:Carpenter Colin's House:Workshop:Workbench",
+                                "world": "Rivenwood",
+                                "sector": "Carpenter Colin's House",
+                                "arena": "Workshop",
+                                "description": "Workbench for carpentry"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Carpenter Colin's House",
+                        "connected_arenas": [
+                            3579,
+                            3576,
+                            3577,
+                            3578
+                        ]
+                    },
+                    "3577": {
+                        "name": "Storage Room",
+                        "path": "Rivenwood:Carpenter Colin's House:Storage Room",
+                        "description": "Storage Room of Carpenter Colin",
+                        "objects": [
+                            {
+                                "name": "Wooden Chair",
+                                "path": "Rivenwood:Carpenter Colin's House:Storage Room:Wooden Chair",
+                                "world": "Rivenwood",
+                                "sector": "Carpenter Colin's House",
+                                "arena": "Storage Room",
+                                "description": "Handcrafted wooden chair"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Carpenter Colin's House",
+                        "connected_arenas": [
+                            3579,
+                            3576,
+                            3575,
+                            3578
+                        ]
+                    },
+                    "3578": {
+                        "name": "Kitchen",
+                        "path": "Rivenwood:Carpenter Colin's House:Kitchen",
+                        "description": "Kitchen of Carpenter Colin",
+                        "objects": [
+                            {
+                                "name": "Toolbox",
+                                "path": "Rivenwood:Carpenter Colin's House:Kitchen:Toolbox",
+                                "world": "Rivenwood",
+                                "sector": "Carpenter Colin's House",
+                                "arena": "Kitchen",
+                                "description": "Box containing carpentry tools"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Carpenter Colin's House",
+                        "connected_arenas": [
+                            3579,
+                            3576,
+                            3575,
+                            3577
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3523
+                ]
+            },
+            "3711": {
+                "name": "Tavern",
+                "path": "Rivenwood:Tavern",
+                "owner": null,
+                "description": "Social gathering place for residents and travelers, serving food and drink",
+                "arenas": {
+                    "3737": {
+                        "name": "Common Room",
+                        "path": "Rivenwood:Tavern:Common Room",
+                        "description": "Common Room in the Tavern",
+                        "objects": [
+                            {
+                                "name": "Bar Counter",
+                                "path": "Rivenwood:Tavern:Common Room:Bar Counter",
+                                "world": "Rivenwood",
+                                "sector": "Tavern",
+                                "arena": "Common Room",
+                                "description": "Counter for serving drinks"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Tavern",
+                        "connected_arenas": [
+                            3738,
+                            3740,
+                            3739
+                        ]
+                    },
+                    "3738": {
+                        "name": "Dining Area",
+                        "path": "Rivenwood:Tavern:Dining Area",
+                        "description": "Dining Area in the Tavern",
+                        "objects": [
+                            {
+                                "name": "Table",
+                                "path": "Rivenwood:Tavern:Dining Area:Table",
+                                "world": "Rivenwood",
+                                "sector": "Tavern",
+                                "arena": "Dining Area",
+                                "description": "Dining tables"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Tavern",
+                        "connected_arenas": [
+                            3737,
+                            3740,
+                            3739
+                        ]
+                    },
+                    "3740": {
+                        "name": "Guest Rooms",
+                        "path": "Rivenwood:Tavern:Guest Rooms",
+                        "description": "Guest Rooms in the Tavern",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Tavern:Guest Rooms:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Tavern",
+                                "arena": "Guest Rooms",
+                                "description": "Beds in guest rooms"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Tavern",
+                        "connected_arenas": [
+                            3737,
+                            3738,
+                            3739
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3518": {
+                "name": "Farmer Finn's House",
+                "path": "Rivenwood:Farmer Finn's House",
+                "owner": "Farmer Finn",
+                "description": "Farmer Finn's House",
+                "arenas": {
+                    "3558": {
+                        "name": "Kitchen",
+                        "path": "Rivenwood:Farmer Finn's House:Kitchen",
+                        "description": "Kitchen of Farmer Finn's House",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Farmer Finn's House:Kitchen:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Farmer Finn's House",
+                                "arena": "Kitchen",
+                                "description": "Modest bed with simple linens"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Farmer Finn's House",
+                        "connected_arenas": [
+                            3556,
+                            3559,
+                            3557
+                        ]
+                    },
+                    "3556": {
+                        "name": "Living Room",
+                        "path": "Rivenwood:Farmer Finn's House:Living Room",
+                        "description": "Living Room of Farmer Finn's House",
+                        "objects": [
+                            {
+                                "name": "Wooden Table",
+                                "path": "Rivenwood:Farmer Finn's House:Living Room:Wooden Table",
+                                "world": "Rivenwood",
+                                "sector": "Farmer Finn's House",
+                                "arena": "Living Room",
+                                "description": "Sturdy wooden table"
+                            },
+                            {
+                                "name": "Chairs",
+                                "path": "Rivenwood:Farmer Finn's House:Living Room:Chairs",
+                                "world": "Rivenwood",
+                                "sector": "Farmer Finn's House",
+                                "arena": "Living Room",
+                                "description": "Simple wooden chairs"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Farmer Finn's House",
+                        "connected_arenas": [
+                            3558,
+                            3559,
+                            3557
+                        ]
+                    },
+                    "3557": {
+                        "name": "Barn",
+                        "path": "Rivenwood:Farmer Finn's House:Barn",
+                        "description": "Barn of Farmer Finn's House",
+                        "objects": [
+                            {
+                                "name": "Barn Tools",
+                                "path": "Rivenwood:Farmer Finn's House:Barn:Barn Tools",
+                                "world": "Rivenwood",
+                                "sector": "Farmer Finn's House",
+                                "arena": "Barn",
+                                "description": "Tools for farming"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Farmer Finn's House",
+                        "connected_arenas": [
+                            3558,
+                            3556,
+                            3559
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3519
+                ]
+            },
+            "3707": {
+                "name": "Watchtower South",
+                "path": "Rivenwood:Watchtower South",
+                "owner": null,
+                "description": "Watchtower for lookout and defense at the southern perimeter",
+                "arenas": {
+                    "3728": {
+                        "name": "Observation Deck",
+                        "path": "Rivenwood:Watchtower South:Observation Deck",
+                        "description": "Observation Deck of the South Watchtower",
+                        "objects": [
+                            {
+                                "name": "Telescope",
+                                "path": "Rivenwood:Watchtower South:Observation Deck:Telescope",
+                                "world": "Rivenwood",
+                                "sector": "Watchtower South",
+                                "arena": "Observation Deck",
+                                "description": "Telescope for observation"
+                            },
+                            {
+                                "name": "Signal Torch",
+                                "path": "Rivenwood:Watchtower South:Observation Deck:Signal Torch",
+                                "world": "Rivenwood",
+                                "sector": "Watchtower South",
+                                "arena": "Observation Deck",
+                                "description": "Torch for signaling"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Watchtower South",
+                        "connected_arenas": [
+                            3729
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3526": {
+                "name": "Shopkeeper Sara's Shop",
+                "path": "Rivenwood:Shopkeeper Sara's Shop",
+                "owner": "Shopkeeper Sara",
+                "description": "Shopkeeper Sara's Shop",
+                "arenas": {
+                    "3596": {
+                        "name": "Storage Room",
+                        "path": "Rivenwood:Shopkeeper Sara's Shop:Storage Room",
+                        "description": "Storage Room of Shopkeeper Sara",
+                        "objects": [
+                            {
+                                "name": "Storage Boxes",
+                                "path": "Rivenwood:Shopkeeper Sara's Shop:Storage Room:Storage Boxes",
+                                "world": "Rivenwood",
+                                "sector": "Shopkeeper Sara's Shop",
+                                "arena": "Storage Room",
+                                "description": "Boxes for storing stock"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Shopkeeper Sara's Shop",
+                        "connected_arenas": [
+                            3597,
+                            3595,
+                            3598,
+                            3599
+                        ]
+                    },
+                    "3597": {
+                        "name": "Living Quarters",
+                        "path": "Rivenwood:Shopkeeper Sara's Shop:Living Quarters",
+                        "description": "Living Quarters of Shopkeeper Sara",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Shopkeeper Sara's Shop:Living Quarters:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Shopkeeper Sara's Shop",
+                                "arena": "Living Quarters",
+                                "description": "Simple bed with basic linens"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Shopkeeper Sara's Shop",
+                        "connected_arenas": [
+                            3596,
+                            3595,
+                            3598,
+                            3599
+                        ]
+                    },
+                    "3595": {
+                        "name": "Shop Floor",
+                        "path": "Rivenwood:Shopkeeper Sara's Shop:Shop Floor",
+                        "description": "Shop Floor of Shopkeeper Sara",
+                        "objects": [
+                            {
+                                "name": "Shelves",
+                                "path": "Rivenwood:Shopkeeper Sara's Shop:Shop Floor:Shelves",
+                                "world": "Rivenwood",
+                                "sector": "Shopkeeper Sara's Shop",
+                                "arena": "Shop Floor",
+                                "description": "Shelves for displaying goods"
+                            },
+                            {
+                                "name": "Counter",
+                                "path": "Rivenwood:Shopkeeper Sara's Shop:Shop Floor:Counter",
+                                "world": "Rivenwood",
+                                "sector": "Shopkeeper Sara's Shop",
+                                "arena": "Shop Floor",
+                                "description": "Counter for serving customers"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Shopkeeper Sara's Shop",
+                        "connected_arenas": [
+                            3596,
+                            3597,
+                            3598,
+                            3599
+                        ]
+                    },
+                    "3599": {
+                        "name": "Office",
+                        "path": "Rivenwood:Shopkeeper Sara's Shop:Office",
+                        "description": "Office of Shopkeeper Sara",
+                        "objects": [
+                            {
+                                "name": "Cash Register",
+                                "path": "Rivenwood:Shopkeeper Sara's Shop:Office:Cash Register",
+                                "world": "Rivenwood",
+                                "sector": "Shopkeeper Sara's Shop",
+                                "arena": "Office",
+                                "description": "Register for handling transactions"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Shopkeeper Sara's Shop",
+                        "connected_arenas": [
+                            3596,
+                            3597,
+                            3595,
+                            3598
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3527
+                ]
+            },
+            "3712": {
+                "name": "Church",
+                "path": "Rivenwood:Church",
+                "owner": null,
+                "description": "Place of worship and community gathering, often the heart of social life",
+                "arenas": {
+                    "3741": {
+                        "name": "Nave",
+                        "path": "Rivenwood:Church:Nave",
+                        "description": "Nave in the Church",
+                        "objects": [
+                            {
+                                "name": "Pew",
+                                "path": "Rivenwood:Church:Nave:Pew",
+                                "world": "Rivenwood",
+                                "sector": "Church",
+                                "arena": "Nave",
+                                "description": "Seating for congregation"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Church",
+                        "connected_arenas": [
+                            3743,
+                            3742
+                        ]
+                    },
+                    "3742": {
+                        "name": "Altar",
+                        "path": "Rivenwood:Church:Altar",
+                        "description": "Altar in the Church",
+                        "objects": [
+                            {
+                                "name": "Altar",
+                                "path": "Rivenwood:Church:Altar:Altar",
+                                "world": "Rivenwood",
+                                "sector": "Church",
+                                "arena": "Altar",
+                                "description": "Altar for religious ceremonies"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Church",
+                        "connected_arenas": [
+                            3743,
+                            3741
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3528": {
+                "name": "Craftsman Caleb's Workshop",
+                "path": "Rivenwood:Craftsman Caleb's Workshop",
+                "owner": "Craftsman Caleb",
+                "description": "Craftsman Caleb's Workshop",
+                "arenas": {
+                    "3605": {
+                        "name": "Workshop Floor",
+                        "path": "Rivenwood:Craftsman Caleb's Workshop:Workshop Floor",
+                        "description": "Workshop Floor of Craftsman Caleb",
+                        "objects": [
+                            {
+                                "name": "Workbench",
+                                "path": "Rivenwood:Craftsman Caleb's Workshop:Workshop Floor:Workbench",
+                                "world": "Rivenwood",
+                                "sector": "Craftsman Caleb's Workshop",
+                                "arena": "Workshop Floor",
+                                "description": "Workbench for crafting items"
+                            },
+                            {
+                                "name": "Toolbox",
+                                "path": "Rivenwood:Craftsman Caleb's Workshop:Workshop Floor:Toolbox",
+                                "world": "Rivenwood",
+                                "sector": "Craftsman Caleb's Workshop",
+                                "arena": "Workshop Floor",
+                                "description": "Box containing various tools"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Craftsman Caleb's Workshop",
+                        "connected_arenas": [
+                            3607,
+                            3606,
+                            3609,
+                            3608
+                        ]
+                    },
+                    "3607": {
+                        "name": "Storage Room",
+                        "path": "Rivenwood:Craftsman Caleb's Workshop:Storage Room",
+                        "description": "Storage Room of Craftsman Caleb",
+                        "objects": [
+                            {
+                                "name": "Wooden Chair",
+                                "path": "Rivenwood:Craftsman Caleb's Workshop:Storage Room:Wooden Chair",
+                                "world": "Rivenwood",
+                                "sector": "Craftsman Caleb's Workshop",
+                                "arena": "Storage Room",
+                                "description": "Handcrafted wooden chair"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Craftsman Caleb's Workshop",
+                        "connected_arenas": [
+                            3605,
+                            3606,
+                            3609,
+                            3608
+                        ]
+                    },
+                    "3606": {
+                        "name": "Living Quarters",
+                        "path": "Rivenwood:Craftsman Caleb's Workshop:Living Quarters",
+                        "description": "Living Quarters of Craftsman Caleb",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Craftsman Caleb's Workshop:Living Quarters:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Craftsman Caleb's Workshop",
+                                "arena": "Living Quarters",
+                                "description": "Simple bed with basic linens"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Craftsman Caleb's Workshop",
+                        "connected_arenas": [
+                            3605,
+                            3607,
+                            3609,
+                            3608
+                        ]
+                    },
+                    "3608": {
+                        "name": "Kitchen",
+                        "path": "Rivenwood:Craftsman Caleb's Workshop:Kitchen",
+                        "description": "Kitchen of Craftsman Caleb",
+                        "objects": [
+                            {
+                                "name": "Wooden Table",
+                                "path": "Rivenwood:Craftsman Caleb's Workshop:Kitchen:Wooden Table",
+                                "world": "Rivenwood",
+                                "sector": "Craftsman Caleb's Workshop",
+                                "arena": "Kitchen",
+                                "description": "Handcrafted wooden table"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Craftsman Caleb's Workshop",
+                        "connected_arenas": [
+                            3605,
+                            3607,
+                            3606,
+                            3609
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3529
+                ]
+            },
+            "3529": {
+                "name": "Alchemist Alana's Alchemy Shop",
+                "path": "Rivenwood:Alchemist Alana's Alchemy Shop",
+                "owner": "Alchemist Alana",
+                "description": "Alchemist Alana's Alchemy Shop",
+                "arenas": {
+                    "3610": {
+                        "name": "Alchemy Lab",
+                        "path": "Rivenwood:Alchemist Alana's Alchemy Shop:Alchemy Lab",
+                        "description": "Alchemy Lab of Alchemist Alana",
+                        "objects": [
+                            {
+                                "name": "Mortar and Pestle",
+                                "path": "Rivenwood:Alchemist Alana's Alchemy Shop:Alchemy Lab:Mortar and Pestle",
+                                "world": "Rivenwood",
+                                "sector": "Alchemist Alana's Alchemy Shop",
+                                "arena": "Alchemy Lab",
+                                "description": "Used for grinding herbs"
+                            },
+                            {
+                                "name": "Alchemy Table",
+                                "path": "Rivenwood:Alchemist Alana's Alchemy Shop:Alchemy Lab:Alchemy Table",
+                                "world": "Rivenwood",
+                                "sector": "Alchemist Alana's Alchemy Shop",
+                                "arena": "Alchemy Lab",
+                                "description": "Table for mixing potions"
+                            },
+                            {
+                                "name": "Herb Cabinet",
+                                "path": "Rivenwood:Alchemist Alana's Alchemy Shop:Alchemy Lab:Herb Cabinet",
+                                "world": "Rivenwood",
+                                "sector": "Alchemist Alana's Alchemy Shop",
+                                "arena": "Alchemy Lab",
+                                "description": "Cabinet for storing herbs"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Alchemist Alana's Alchemy Shop",
+                        "connected_arenas": [
+                            3612,
+                            3611,
+                            3613,
+                            3614
+                        ]
+                    },
+                    "3611": {
+                        "name": "Storage Room",
+                        "path": "Rivenwood:Alchemist Alana's Alchemy Shop:Storage Room",
+                        "description": "Storage Room of Alchemist Alana",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Alchemist Alana's Alchemy Shop:Storage Room:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Alchemist Alana's Alchemy Shop",
+                                "arena": "Storage Room",
+                                "description": "Comfortable bed with soft linens"
+                            },
+                            {
+                                "name": "Bookshelf",
+                                "path": "Rivenwood:Alchemist Alana's Alchemy Shop:Storage Room:Bookshelf",
+                                "world": "Rivenwood",
+                                "sector": "Alchemist Alana's Alchemy Shop",
+                                "arena": "Storage Room",
+                                "description": "Shelf filled with alchemical texts"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Alchemist Alana's Alchemy Shop",
+                        "connected_arenas": [
+                            3612,
+                            3610,
+                            3613,
+                            3614
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3528
+                ]
+            },
+            "3524": {
+                "name": "Baker Bella's House",
+                "path": "Rivenwood:Baker Bella's House",
+                "owner": "Baker Bella",
+                "description": "Baker Bella's House",
+                "arenas": {
+                    "3587": {
+                        "name": "Storage Room",
+                        "path": "Rivenwood:Baker Bella's House:Storage Room",
+                        "description": "Storage Room of Baker Bella",
+                        "objects": [
+                            {
+                                "name": "Dining Table",
+                                "path": "Rivenwood:Baker Bella's House:Storage Room:Dining Table",
+                                "world": "Rivenwood",
+                                "sector": "Baker Bella's House",
+                                "arena": "Storage Room",
+                                "description": "Simple dining table"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Baker Bella's House",
+                        "connected_arenas": [
+                            3589,
+                            3586,
+                            3588,
+                            3585
+                        ]
+                    },
+                    "3586": {
+                        "name": "Living Quarters",
+                        "path": "Rivenwood:Baker Bella's House:Living Quarters",
+                        "description": "Living Quarters of Baker Bella",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Baker Bella's House:Living Quarters:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Baker Bella's House",
+                                "arena": "Living Quarters",
+                                "description": "Comfortable bed with warm blankets"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Baker Bella's House",
+                        "connected_arenas": [
+                            3587,
+                            3589,
+                            3588,
+                            3585
+                        ]
+                    },
+                    "3585": {
+                        "name": "Bakery",
+                        "path": "Rivenwood:Baker Bella's House:Bakery",
+                        "description": "Bakery of Baker Bella",
+                        "objects": [
+                            {
+                                "name": "Oven",
+                                "path": "Rivenwood:Baker Bella's House:Bakery:Oven",
+                                "world": "Rivenwood",
+                                "sector": "Baker Bella's House",
+                                "arena": "Bakery",
+                                "description": "Large oven for baking"
+                            },
+                            {
+                                "name": "Bread Rack",
+                                "path": "Rivenwood:Baker Bella's House:Bakery:Bread Rack",
+                                "world": "Rivenwood",
+                                "sector": "Baker Bella's House",
+                                "arena": "Bakery",
+                                "description": "Rack for cooling bread"
+                            },
+                            {
+                                "name": "Mixing Bowl",
+                                "path": "Rivenwood:Baker Bella's House:Bakery:Mixing Bowl",
+                                "world": "Rivenwood",
+                                "sector": "Baker Bella's House",
+                                "arena": "Bakery",
+                                "description": "Bowl for mixing ingredients"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Baker Bella's House",
+                        "connected_arenas": [
+                            3587,
+                            3589,
+                            3586,
+                            3588
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3525
+                ]
+            },
+            "3527": {
+                "name": "Innkeeper Ian's Inn",
+                "path": "Rivenwood:Innkeeper Ian's Inn",
+                "owner": "Innkeeper Ian",
+                "description": "Innkeeper Ian's Inn",
+                "arenas": {
+                    "3602": {
+                        "name": "Dining Room",
+                        "path": "Rivenwood:Innkeeper Ian's Inn:Dining Room",
+                        "description": "Dining Room of Innkeeper Ian",
+                        "objects": [
+                            {
+                                "name": "Cooking Pot",
+                                "path": "Rivenwood:Innkeeper Ian's Inn:Dining Room:Cooking Pot",
+                                "world": "Rivenwood",
+                                "sector": "Innkeeper Ian's Inn",
+                                "arena": "Dining Room",
+                                "description": "Pot for cooking meals"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Innkeeper Ian's Inn",
+                        "connected_arenas": [
+                            3603,
+                            3604,
+                            3601,
+                            3600
+                        ]
+                    },
+                    "3601": {
+                        "name": "Guest Rooms",
+                        "path": "Rivenwood:Innkeeper Ian's Inn:Guest Rooms",
+                        "description": "Guest Rooms of Innkeeper Ian",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Innkeeper Ian's Inn:Guest Rooms:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Innkeeper Ian's Inn",
+                                "arena": "Guest Rooms",
+                                "description": "Beds in guest rooms"
+                            },
+                            {
+                                "name": "Table",
+                                "path": "Rivenwood:Innkeeper Ian's Inn:Guest Rooms:Table",
+                                "world": "Rivenwood",
+                                "sector": "Innkeeper Ian's Inn",
+                                "arena": "Guest Rooms",
+                                "description": "Dining tables"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Innkeeper Ian's Inn",
+                        "connected_arenas": [
+                            3602,
+                            3603,
+                            3604,
+                            3600
+                        ]
+                    },
+                    "3600": {
+                        "name": "Common Room",
+                        "path": "Rivenwood:Innkeeper Ian's Inn:Common Room",
+                        "description": "Common Room of Innkeeper Ian",
+                        "objects": [
+                            {
+                                "name": "Bar Counter",
+                                "path": "Rivenwood:Innkeeper Ian's Inn:Common Room:Bar Counter",
+                                "world": "Rivenwood",
+                                "sector": "Innkeeper Ian's Inn",
+                                "arena": "Common Room",
+                                "description": "Counter for serving drinks"
+                            },
+                            {
+                                "name": "Fireplace",
+                                "path": "Rivenwood:Innkeeper Ian's Inn:Common Room:Fireplace",
+                                "world": "Rivenwood",
+                                "sector": "Innkeeper Ian's Inn",
+                                "arena": "Common Room",
+                                "description": "Cozy fireplace in the common room"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Innkeeper Ian's Inn",
+                        "connected_arenas": [
+                            3602,
+                            3603,
+                            3604,
+                            3601
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3526
+                ]
+            },
+            "3523": {
+                "name": "Tailor Talia's House",
+                "path": "Rivenwood:Tailor Talia's House",
+                "owner": "Tailor Talia",
+                "description": "Tailor Talia's House",
+                "arenas": {
+                    "3582": {
+                        "name": "Storage Room",
+                        "path": "Rivenwood:Tailor Talia's House:Storage Room",
+                        "description": "Storage Room of Tailor Talia",
+                        "objects": [
+                            {
+                                "name": "Ironing Board",
+                                "path": "Rivenwood:Tailor Talia's House:Storage Room:Ironing Board",
+                                "world": "Rivenwood",
+                                "sector": "Tailor Talia's House",
+                                "arena": "Storage Room",
+                                "description": "Board for ironing clothes"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Tailor Talia's House",
+                        "connected_arenas": [
+                            3583,
+                            3581,
+                            3584,
+                            3580
+                        ]
+                    },
+                    "3581": {
+                        "name": "Living Quarters",
+                        "path": "Rivenwood:Tailor Talia's House:Living Quarters",
+                        "description": "Living Quarters of Tailor Talia",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Tailor Talia's House:Living Quarters:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Tailor Talia's House",
+                                "arena": "Living Quarters",
+                                "description": "Comfortable bed with soft linens"
+                            },
+                            {
+                                "name": "Mannequin",
+                                "path": "Rivenwood:Tailor Talia's House:Living Quarters:Mannequin",
+                                "world": "Rivenwood",
+                                "sector": "Tailor Talia's House",
+                                "arena": "Living Quarters",
+                                "description": "Mannequin for displaying clothes"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Tailor Talia's House",
+                        "connected_arenas": [
+                            3582,
+                            3583,
+                            3584,
+                            3580
+                        ]
+                    },
+                    "3580": {
+                        "name": "Tailoring Room",
+                        "path": "Rivenwood:Tailor Talia's House:Tailoring Room",
+                        "description": "Tailoring Room of Tailor Talia",
+                        "objects": [
+                            {
+                                "name": "Fabric Roll",
+                                "path": "Rivenwood:Tailor Talia's House:Tailoring Room:Fabric Roll",
+                                "world": "Rivenwood",
+                                "sector": "Tailor Talia's House",
+                                "arena": "Tailoring Room",
+                                "description": "Rolls of fabric for making clothes"
+                            },
+                            {
+                                "name": "Sewing Machine",
+                                "path": "Rivenwood:Tailor Talia's House:Tailoring Room:Sewing Machine",
+                                "world": "Rivenwood",
+                                "sector": "Tailor Talia's House",
+                                "arena": "Tailoring Room",
+                                "description": "Sewing machine for tailoring"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Tailor Talia's House",
+                        "connected_arenas": [
+                            3582,
+                            3583,
+                            3581,
+                            3584
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3522
+                ]
+            },
+            "3705": {
+                "name": "Guard Barracks",
+                "path": "Rivenwood:Guard Barracks",
+                "owner": null,
+                "description": "Housing for the town's guard force, equipped with training grounds",
+                "arenas": {
+                    "3725": {
+                        "name": "Armory",
+                        "path": "Rivenwood:Guard Barracks:Armory",
+                        "description": "Armory in the Guard Barracks",
+                        "objects": [
+                            {
+                                "name": "Weapon Rack",
+                                "path": "Rivenwood:Guard Barracks:Armory:Weapon Rack",
+                                "world": "Rivenwood",
+                                "sector": "Guard Barracks",
+                                "arena": "Armory",
+                                "description": "Rack for storing weapons"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Guard Barracks",
+                        "connected_arenas": [
+                            3723,
+                            3724
+                        ]
+                    },
+                    "3723": {
+                        "name": "Barracks",
+                        "path": "Rivenwood:Guard Barracks:Barracks",
+                        "description": "Sleeping quarters for the guards",
+                        "objects": [
+                            {
+                                "name": "Bunk Bed",
+                                "path": "Rivenwood:Guard Barracks:Barracks:Bunk Bed",
+                                "world": "Rivenwood",
+                                "sector": "Guard Barracks",
+                                "arena": "Barracks",
+                                "description": "Beds for the guards"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Guard Barracks",
+                        "connected_arenas": [
+                            3725,
+                            3724
+                        ]
+                    },
+                    "3724": {
+                        "name": "Training Ground",
+                        "path": "Rivenwood:Guard Barracks:Training Ground",
+                        "description": "Training ground for the guards",
+                        "objects": [
+                            {
+                                "name": "Training Dummy",
+                                "path": "Rivenwood:Guard Barracks:Training Ground:Training Dummy",
+                                "world": "Rivenwood",
+                                "sector": "Guard Barracks",
+                                "arena": "Training Ground",
+                                "description": "Dummy for training exercises"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Guard Barracks",
+                        "connected_arenas": [
+                            3725,
+                            3723
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3718": {
+                "name": "Fish Market",
+                "path": "Rivenwood:Fish Market",
+                "owner": null,
+                "description": "Sells fresh fish and seafood, crucial for the town's diet",
+                "arenas": {
+                    "3759": {
+                        "name": "Fish Stalls",
+                        "path": "Rivenwood:Fish Market:Fish Stalls",
+                        "description": "Fish Stalls in the Fish Market",
+                        "objects": [
+                            {
+                                "name": "Fish Stall",
+                                "path": "Rivenwood:Fish Market:Fish Stalls:Fish Stall",
+                                "world": "Rivenwood",
+                                "sector": "Fish Market",
+                                "arena": "Fish Stalls",
+                                "description": "Stalls for selling fish"
+                            },
+                            {
+                                "name": "Ice Box",
+                                "path": "Rivenwood:Fish Market:Fish Stalls:Ice Box",
+                                "world": "Rivenwood",
+                                "sector": "Fish Market",
+                                "arena": "Fish Stalls",
+                                "description": "Boxes for keeping fish fresh"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Fish Market",
+                        "connected_arenas": [
+                            3761,
+                            3760
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3717": {
+                "name": "Shipyard",
+                "path": "Rivenwood:Shipyard",
+                "owner": null,
+                "description": "Facility for building and repairing ships",
+                "arenas": {
+                    "3756": {
+                        "name": "Ship Building Area",
+                        "path": "Rivenwood:Shipyard:Ship Building Area",
+                        "description": "Ship Building Area in the Shipyard",
+                        "objects": [
+                            {
+                                "name": "Crane",
+                                "path": "Rivenwood:Shipyard:Ship Building Area:Crane",
+                                "world": "Rivenwood",
+                                "sector": "Shipyard",
+                                "arena": "Ship Building Area",
+                                "description": "Crane for lifting heavy parts"
+                            },
+                            {
+                                "name": "Dry Dock",
+                                "path": "Rivenwood:Shipyard:Ship Building Area:Dry Dock",
+                                "world": "Rivenwood",
+                                "sector": "Shipyard",
+                                "arena": "Ship Building Area",
+                                "description": "Dry dock for shipbuilding"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Shipyard",
+                        "connected_arenas": [
+                            3757,
+                            3758
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3521": {
+                "name": "Guard Captain Garen's House",
+                "path": "Rivenwood:Guard Captain Garen's House",
+                "owner": "Guard Captain Garen",
+                "description": "Guard Captain Garen's House",
+                "arenas": {
+                    "3572": {
+                        "name": "Armory",
+                        "path": "Rivenwood:Guard Captain Garen's House:Armory",
+                        "description": "Armory of Guard Captain Garen",
+                        "objects": [
+                            {
+                                "name": "Training Dummy",
+                                "path": "Rivenwood:Guard Captain Garen's House:Armory:Training Dummy",
+                                "world": "Rivenwood",
+                                "sector": "Guard Captain Garen's House",
+                                "arena": "Armory",
+                                "description": "Dummy for training exercises"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Guard Captain Garen's House",
+                        "connected_arenas": [
+                            3573,
+                            3571,
+                            3574,
+                            3570
+                        ]
+                    },
+                    "3571": {
+                        "name": "Living Quarters",
+                        "path": "Rivenwood:Guard Captain Garen's House:Living Quarters",
+                        "description": "Living Quarters of Guard Captain Garen",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Guard Captain Garen's House:Living Quarters:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Guard Captain Garen's House",
+                                "arena": "Living Quarters",
+                                "description": "Sturdy bed with military-style linens"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Guard Captain Garen's House",
+                        "connected_arenas": [
+                            3573,
+                            3572,
+                            3574,
+                            3570
+                        ]
+                    },
+                    "3574": {
+                        "name": "Kitchen",
+                        "path": "Rivenwood:Guard Captain Garen's House:Kitchen",
+                        "description": "Kitchen of Guard Captain Garen",
+                        "objects": [
+                            {
+                                "name": "Dining Table",
+                                "path": "Rivenwood:Guard Captain Garen's House:Kitchen:Dining Table",
+                                "world": "Rivenwood",
+                                "sector": "Guard Captain Garen's House",
+                                "arena": "Kitchen",
+                                "description": "Simple dining table"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Guard Captain Garen's House",
+                        "connected_arenas": [
+                            3573,
+                            3572,
+                            3571,
+                            3570
+                        ]
+                    },
+                    "3570": {
+                        "name": "Office",
+                        "path": "Rivenwood:Guard Captain Garen's House:Office",
+                        "description": "Office of Guard Captain Garen",
+                        "objects": [
+                            {
+                                "name": "Armor Stand",
+                                "path": "Rivenwood:Guard Captain Garen's House:Office:Armor Stand",
+                                "world": "Rivenwood",
+                                "sector": "Guard Captain Garen's House",
+                                "arena": "Office",
+                                "description": "Stand for displaying armor"
+                            },
+                            {
+                                "name": "Weapon Rack",
+                                "path": "Rivenwood:Guard Captain Garen's House:Office:Weapon Rack",
+                                "world": "Rivenwood",
+                                "sector": "Guard Captain Garen's House",
+                                "arena": "Office",
+                                "description": "Rack for storing weapons"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Guard Captain Garen's House",
+                        "connected_arenas": [
+                            3573,
+                            3572,
+                            3571,
+                            3574
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3520
+                ]
+            },
+            "3531": {
+                "name": "Harbormaster Hank's House",
+                "path": "Rivenwood:Harbormaster Hank's House",
+                "owner": "Harbormaster Hank",
+                "description": "Harbormaster Hank's House",
+                "arenas": {
+                    "3620": {
+                        "name": "Office",
+                        "path": "Rivenwood:Harbormaster Hank's House:Office",
+                        "description": "Office of Harbormaster Hank",
+                        "objects": [
+                            {
+                                "name": "Desk",
+                                "path": "Rivenwood:Harbormaster Hank's House:Office:Desk",
+                                "world": "Rivenwood",
+                                "sector": "Harbormaster Hank's House",
+                                "arena": "Office",
+                                "description": "Large wooden desk"
+                            },
+                            {
+                                "name": "Logbook",
+                                "path": "Rivenwood:Harbormaster Hank's House:Office:Logbook",
+                                "world": "Rivenwood",
+                                "sector": "Harbormaster Hank's House",
+                                "arena": "Office",
+                                "description": "Logbook for recording ship arrivals and departures"
+                            },
+                            {
+                                "name": "Map",
+                                "path": "Rivenwood:Harbormaster Hank's House:Office:Map",
+                                "world": "Rivenwood",
+                                "sector": "Harbormaster Hank's House",
+                                "arena": "Office",
+                                "description": "Map of the harbor and surrounding waters"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Harbormaster Hank's House",
+                        "connected_arenas": [
+                            3623,
+                            3622,
+                            3621,
+                            3624
+                        ]
+                    },
+                    "3622": {
+                        "name": "Kitchen",
+                        "path": "Rivenwood:Harbormaster Hank's House:Kitchen",
+                        "description": "Kitchen of Harbormaster Hank",
+                        "objects": [
+                            {
+                                "name": "Dining Table",
+                                "path": "Rivenwood:Harbormaster Hank's House:Kitchen:Dining Table",
+                                "world": "Rivenwood",
+                                "sector": "Harbormaster Hank's House",
+                                "arena": "Kitchen",
+                                "description": "Simple dining table"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Harbormaster Hank's House",
+                        "connected_arenas": [
+                            3623,
+                            3620,
+                            3621,
+                            3624
+                        ]
+                    },
+                    "3621": {
+                        "name": "Living Quarters",
+                        "path": "Rivenwood:Harbormaster Hank's House:Living Quarters",
+                        "description": "Living Quarters of Harbormaster Hank",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Harbormaster Hank's House:Living Quarters:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Harbormaster Hank's House",
+                                "arena": "Living Quarters",
+                                "description": "Comfortable bed with soft linens"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Harbormaster Hank's House",
+                        "connected_arenas": [
+                            3623,
+                            3620,
+                            3622,
+                            3624
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3517,
+                    3516,
+                    3530
+                ]
+            },
+            "3714": {
+                "name": "Apothecary",
+                "path": "Rivenwood:Apothecary",
+                "owner": null,
+                "description": "Provides medicinal herbs and remedies, crucial for health care",
+                "arenas": {
+                    "3747": {
+                        "name": "Herb Room",
+                        "path": "Rivenwood:Apothecary:Herb Room",
+                        "description": "Herb Room in the Apothecary",
+                        "objects": [
+                            {
+                                "name": "Mortar and Pestle",
+                                "path": "Rivenwood:Apothecary:Herb Room:Mortar and Pestle",
+                                "world": "Rivenwood",
+                                "sector": "Apothecary",
+                                "arena": "Herb Room",
+                                "description": "Used for grinding herbs"
+                            },
+                            {
+                                "name": "Herb Cabinet",
+                                "path": "Rivenwood:Apothecary:Herb Room:Herb Cabinet",
+                                "world": "Rivenwood",
+                                "sector": "Apothecary",
+                                "arena": "Herb Room",
+                                "description": "Cabinet for storing herbs"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Apothecary",
+                        "connected_arenas": [
+                            3748,
+                            3749
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3516": {
+                "name": "Elder Elara's House",
+                "path": "Rivenwood:Elder Elara's House",
+                "owner": "Elder Elara",
+                "description": "Elder Elara's House",
+                "arenas": {
+                    "3549": {
+                        "name": "Bedroom",
+                        "path": "Rivenwood:Elder Elara's House:Bedroom",
+                        "description": "Bedroom of Elder Elara's House",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Elder Elara's House:Bedroom:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Elder Elara's House",
+                                "arena": "Bedroom",
+                                "description": "King-sized bed with fine linens"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Elder Elara's House",
+                        "connected_arenas": [
+                            3550,
+                            3548,
+                            3551
+                        ]
+                    },
+                    "3550": {
+                        "name": "Kitchen",
+                        "path": "Rivenwood:Elder Elara's House:Kitchen",
+                        "description": "Kitchen of Elder Elara's House",
+                        "objects": [
+                            {
+                                "name": "Carpet",
+                                "path": "Rivenwood:Elder Elara's House:Kitchen:Carpet",
+                                "world": "Rivenwood",
+                                "sector": "Elder Elara's House",
+                                "arena": "Kitchen",
+                                "description": "Luxurious carpet covering the floor"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Elder Elara's House",
+                        "connected_arenas": [
+                            3549,
+                            3548,
+                            3551
+                        ]
+                    },
+                    "3548": {
+                        "name": "Living Room",
+                        "path": "Rivenwood:Elder Elara's House:Living Room",
+                        "description": "Living Room of Elder Elara's House",
+                        "objects": [
+                            {
+                                "name": "Ornate Chair",
+                                "path": "Rivenwood:Elder Elara's House:Living Room:Ornate Chair",
+                                "world": "Rivenwood",
+                                "sector": "Elder Elara's House",
+                                "arena": "Living Room",
+                                "description": "Comfortable chair with intricate designs"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Elder Elara's House",
+                        "connected_arenas": [
+                            3549,
+                            3550,
+                            3551
+                        ]
+                    },
+                    "3551": {
+                        "name": "Library",
+                        "path": "Rivenwood:Elder Elara's House:Library",
+                        "description": "Library of Elder Elara's House",
+                        "objects": [
+                            {
+                                "name": "Desk",
+                                "path": "Rivenwood:Elder Elara's House:Library:Desk",
+                                "world": "Rivenwood",
+                                "sector": "Elder Elara's House",
+                                "arena": "Library",
+                                "description": "Large wooden desk"
+                            },
+                            {
+                                "name": "Bookshelf",
+                                "path": "Rivenwood:Elder Elara's House:Library:Bookshelf",
+                                "world": "Rivenwood",
+                                "sector": "Elder Elara's House",
+                                "arena": "Library",
+                                "description": "Filled with ancient books"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Elder Elara's House",
+                        "connected_arenas": [
+                            3549,
+                            3550,
+                            3548
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3517,
+                    3531,
+                    3530
+                ]
+            },
+            "3519": {
+                "name": "Healer Hera's House",
+                "path": "Rivenwood:Healer Hera's House",
+                "owner": "Healer Hera",
+                "description": "Healer Hera's House",
+                "arenas": {
+                    "3564": {
+                        "name": "Garden",
+                        "path": "Rivenwood:Healer Hera's House:Garden",
+                        "description": "Garden of Healer Hera",
+                        "objects": [
+                            {
+                                "name": "Garden Tools",
+                                "path": "Rivenwood:Healer Hera's House:Garden:Garden Tools",
+                                "world": "Rivenwood",
+                                "sector": "Healer Hera's House",
+                                "arena": "Garden",
+                                "description": "Tools for gardening"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Healer Hera's House",
+                        "connected_arenas": [
+                            3560,
+                            3562,
+                            3563,
+                            3561
+                        ]
+                    },
+                    "3560": {
+                        "name": "Herbal Room",
+                        "path": "Rivenwood:Healer Hera's House:Herbal Room",
+                        "description": "Herbal Room of Healer Hera",
+                        "objects": [
+                            {
+                                "name": "Herb Shelf",
+                                "path": "Rivenwood:Healer Hera's House:Herbal Room:Herb Shelf",
+                                "world": "Rivenwood",
+                                "sector": "Healer Hera's House",
+                                "arena": "Herbal Room",
+                                "description": "Shelf filled with various herbs"
+                            },
+                            {
+                                "name": "Mortar and Pestle",
+                                "path": "Rivenwood:Healer Hera's House:Herbal Room:Mortar and Pestle",
+                                "world": "Rivenwood",
+                                "sector": "Healer Hera's House",
+                                "arena": "Herbal Room",
+                                "description": "Used for grinding herbs"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Healer Hera's House",
+                        "connected_arenas": [
+                            3564,
+                            3562,
+                            3563,
+                            3561
+                        ]
+                    },
+                    "3561": {
+                        "name": "Living Quarters",
+                        "path": "Rivenwood:Healer Hera's House:Living Quarters",
+                        "description": "Living Quarters of Healer Hera",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Healer Hera's House:Living Quarters:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Healer Hera's House",
+                                "arena": "Living Quarters",
+                                "description": "Comfortable bed with soft linens"
+                            },
+                            {
+                                "name": "Wooden Chair",
+                                "path": "Rivenwood:Healer Hera's House:Living Quarters:Wooden Chair",
+                                "world": "Rivenwood",
+                                "sector": "Healer Hera's House",
+                                "arena": "Living Quarters",
+                                "description": "Simple wooden chair"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Healer Hera's House",
+                        "connected_arenas": [
+                            3564,
+                            3560,
+                            3562,
+                            3563
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3518
+                ]
+            },
+            "3520": {
+                "name": "Merchant Morgan's House",
+                "path": "Rivenwood:Merchant Morgan's House",
+                "owner": "Merchant Morgan",
+                "description": "Merchant Morgan's House",
+                "arenas": {
+                    "3567": {
+                        "name": "Kitchen",
+                        "path": "Rivenwood:Merchant Morgan's House:Kitchen",
+                        "description": "Kitchen of Merchant Morgan",
+                        "objects": [
+                            {
+                                "name": "Dining Table",
+                                "path": "Rivenwood:Merchant Morgan's House:Kitchen:Dining Table",
+                                "world": "Rivenwood",
+                                "sector": "Merchant Morgan's House",
+                                "arena": "Kitchen",
+                                "description": "Large dining table"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Merchant Morgan's House",
+                        "connected_arenas": [
+                            3566,
+                            3568,
+                            3565,
+                            3569
+                        ]
+                    },
+                    "3566": {
+                        "name": "Living Quarters",
+                        "path": "Rivenwood:Merchant Morgan's House:Living Quarters",
+                        "description": "Living Quarters of Merchant Morgan",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Merchant Morgan's House:Living Quarters:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Merchant Morgan's House",
+                                "arena": "Living Quarters",
+                                "description": "Luxurious bed with fine linens"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Merchant Morgan's House",
+                        "connected_arenas": [
+                            3567,
+                            3568,
+                            3565,
+                            3569
+                        ]
+                    },
+                    "3568": {
+                        "name": "Office",
+                        "path": "Rivenwood:Merchant Morgan's House:Office",
+                        "description": "Office of Merchant Morgan",
+                        "objects": [
+                            {
+                                "name": "Bookshelf",
+                                "path": "Rivenwood:Merchant Morgan's House:Office:Bookshelf",
+                                "world": "Rivenwood",
+                                "sector": "Merchant Morgan's House",
+                                "arena": "Office",
+                                "description": "Bookshelf filled with trade books"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Merchant Morgan's House",
+                        "connected_arenas": [
+                            3567,
+                            3566,
+                            3565,
+                            3569
+                        ]
+                    },
+                    "3565": {
+                        "name": "Trading Room",
+                        "path": "Rivenwood:Merchant Morgan's House:Trading Room",
+                        "description": "Trading Room of Merchant Morgan",
+                        "objects": [
+                            {
+                                "name": "Trading Ledger",
+                                "path": "Rivenwood:Merchant Morgan's House:Trading Room:Trading Ledger",
+                                "world": "Rivenwood",
+                                "sector": "Merchant Morgan's House",
+                                "arena": "Trading Room",
+                                "description": "Ledger for keeping trade records"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Merchant Morgan's House",
+                        "connected_arenas": [
+                            3567,
+                            3566,
+                            3568,
+                            3569
+                        ]
+                    },
+                    "3569": {
+                        "name": "Storage Room",
+                        "path": "Rivenwood:Merchant Morgan's House:Storage Room",
+                        "description": "Storage Room of Merchant Morgan",
+                        "objects": [
+                            {
+                                "name": "Chest",
+                                "path": "Rivenwood:Merchant Morgan's House:Storage Room:Chest",
+                                "world": "Rivenwood",
+                                "sector": "Merchant Morgan's House",
+                                "arena": "Storage Room",
+                                "description": "Chest for storing valuable items"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Merchant Morgan's House",
+                        "connected_arenas": [
+                            3567,
+                            3566,
+                            3568,
+                            3565
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3521
+                ]
+            },
+            "3716": {
+                "name": "Mill",
+                "path": "Rivenwood:Mill",
+                "owner": null,
+                "description": "Grinds grain into flour, essential for food production",
+                "arenas": {
+                    "3753": {
+                        "name": "Mill Room",
+                        "path": "Rivenwood:Mill:Mill Room",
+                        "description": "Mill Room in the Mill",
+                        "objects": [
+                            {
+                                "name": "Millstone",
+                                "path": "Rivenwood:Mill:Mill Room:Millstone",
+                                "world": "Rivenwood",
+                                "sector": "Mill",
+                                "arena": "Mill Room",
+                                "description": "Millstone for grinding grain"
+                            },
+                            {
+                                "name": "Sack of Grain",
+                                "path": "Rivenwood:Mill:Mill Room:Sack of Grain",
+                                "world": "Rivenwood",
+                                "sector": "Mill",
+                                "arena": "Mill Room",
+                                "description": "Sacks of grain for milling"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Mill",
+                        "connected_arenas": [
+                            3755,
+                            3754
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3525": {
+                "name": "Fisherman Finn's House",
+                "path": "Rivenwood:Fisherman Finn's House",
+                "owner": "Fisherman Finn",
+                "description": "Fisherman Finn's House",
+                "arenas": {
+                    "3591": {
+                        "name": "Living Quarters",
+                        "path": "Rivenwood:Fisherman Finn's House:Living Quarters",
+                        "description": "Living Quarters of Fisherman Finn",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Fisherman Finn's House:Living Quarters:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Fisherman Finn's House",
+                                "arena": "Living Quarters",
+                                "description": "Simple bed with basic linens"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Fisherman Finn's House",
+                        "connected_arenas": [
+                            3594,
+                            3593,
+                            3592,
+                            3590
+                        ]
+                    },
+                    "3592": {
+                        "name": "Storage Room",
+                        "path": "Rivenwood:Fisherman Finn's House:Storage Room",
+                        "description": "Storage Room of Fisherman Finn",
+                        "objects": [
+                            {
+                                "name": "Dining Table",
+                                "path": "Rivenwood:Fisherman Finn's House:Storage Room:Dining Table",
+                                "world": "Rivenwood",
+                                "sector": "Fisherman Finn's House",
+                                "arena": "Storage Room",
+                                "description": "Sturdy wooden table"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Fisherman Finn's House",
+                        "connected_arenas": [
+                            3594,
+                            3593,
+                            3591,
+                            3590
+                        ]
+                    },
+                    "3590": {
+                        "name": "Fishing Gear Room",
+                        "path": "Rivenwood:Fisherman Finn's House:Fishing Gear Room",
+                        "description": "Fishing Gear Room of Fisherman Finn",
+                        "objects": [
+                            {
+                                "name": "Boat",
+                                "path": "Rivenwood:Fisherman Finn's House:Fishing Gear Room:Boat",
+                                "world": "Rivenwood",
+                                "sector": "Fisherman Finn's House",
+                                "arena": "Fishing Gear Room",
+                                "description": "Small fishing boat"
+                            },
+                            {
+                                "name": "Fishing Rod",
+                                "path": "Rivenwood:Fisherman Finn's House:Fishing Gear Room:Fishing Rod",
+                                "world": "Rivenwood",
+                                "sector": "Fisherman Finn's House",
+                                "arena": "Fishing Gear Room",
+                                "description": "Rod for fishing"
+                            },
+                            {
+                                "name": "Fishing Net",
+                                "path": "Rivenwood:Fisherman Finn's House:Fishing Gear Room:Fishing Net",
+                                "world": "Rivenwood",
+                                "sector": "Fisherman Finn's House",
+                                "arena": "Fishing Gear Room",
+                                "description": "Net for catching fish"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Fisherman Finn's House",
+                        "connected_arenas": [
+                            3594,
+                            3593,
+                            3591,
+                            3592
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3524
+                ]
+            },
+            "3713": {
+                "name": "Schoolhouse",
+                "path": "Rivenwood:Schoolhouse",
+                "owner": null,
+                "description": "Building for educating the children of the town",
+                "arenas": {
+                    "3744": {
+                        "name": "Classroom",
+                        "path": "Rivenwood:Schoolhouse:Classroom",
+                        "description": "Classroom in the Schoolhouse",
+                        "objects": [
+                            {
+                                "name": "Desk",
+                                "path": "Rivenwood:Schoolhouse:Classroom:Desk",
+                                "world": "Rivenwood",
+                                "sector": "Schoolhouse",
+                                "arena": "Classroom",
+                                "description": "Desks for students"
+                            },
+                            {
+                                "name": "Blackboard",
+                                "path": "Rivenwood:Schoolhouse:Classroom:Blackboard",
+                                "world": "Rivenwood",
+                                "sector": "Schoolhouse",
+                                "arena": "Classroom",
+                                "description": "Blackboard for teaching"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Schoolhouse",
+                        "connected_arenas": [
+                            3745,
+                            3746
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3719": {
+                "name": "Harbormaster\u2019s Office",
+                "path": "Rivenwood:Harbormaster\u2019s Office",
+                "owner": null,
+                "description": "Manages dock operations and maritime activities",
+                "arenas": {
+                    "3762": {
+                        "name": "Office",
+                        "path": "Rivenwood:Harbormaster\u2019s Office:Office",
+                        "description": "Office of the Harbormaster",
+                        "objects": [
+                            {
+                                "name": "Logbook",
+                                "path": "Rivenwood:Harbormaster\u2019s Office:Office:Logbook",
+                                "world": "Rivenwood",
+                                "sector": "Harbormaster\u2019s Office",
+                                "arena": "Office",
+                                "description": "Logbook for recording ship arrivals and departures"
+                            },
+                            {
+                                "name": "Map",
+                                "path": "Rivenwood:Harbormaster\u2019s Office:Office:Map",
+                                "world": "Rivenwood",
+                                "sector": "Harbormaster\u2019s Office",
+                                "arena": "Office",
+                                "description": "Map of the harbor and surrounding waters"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Harbormaster\u2019s Office",
+                        "connected_arenas": [
+                            3763,
+                            3764
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3517": {
+                "name": "Blacksmith Barin's House",
+                "path": "Rivenwood:Blacksmith Barin's House",
+                "owner": "Blacksmith Barin",
+                "description": "Blacksmith Barin's House",
+                "arenas": {
+                    "3555": {
+                        "name": "Workshop",
+                        "path": "Rivenwood:Blacksmith Barin's House:Workshop",
+                        "description": "Workshop of Blacksmith Barin",
+                        "objects": [
+                            {
+                                "name": "Workbench",
+                                "path": "Rivenwood:Blacksmith Barin's House:Workshop:Workbench",
+                                "world": "Rivenwood",
+                                "sector": "Blacksmith Barin's House",
+                                "arena": "Workshop",
+                                "description": "Workbench for crafting items"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Blacksmith Barin's House",
+                        "connected_arenas": [
+                            3552,
+                            3553,
+                            3554
+                        ]
+                    },
+                    "3552": {
+                        "name": "Forge",
+                        "path": "Rivenwood:Blacksmith Barin's House:Forge",
+                        "description": "Blacksmith Barin's Forge",
+                        "objects": [
+                            {
+                                "name": "Hammer",
+                                "path": "Rivenwood:Blacksmith Barin's House:Forge:Hammer",
+                                "world": "Rivenwood",
+                                "sector": "Blacksmith Barin's House",
+                                "arena": "Forge",
+                                "description": "Heavy hammer for blacksmithing"
+                            },
+                            {
+                                "name": "Forge",
+                                "path": "Rivenwood:Blacksmith Barin's House:Forge:Forge",
+                                "world": "Rivenwood",
+                                "sector": "Blacksmith Barin's House",
+                                "arena": "Forge",
+                                "description": "Large forge for heating metal"
+                            },
+                            {
+                                "name": "Anvil",
+                                "path": "Rivenwood:Blacksmith Barin's House:Forge:Anvil",
+                                "world": "Rivenwood",
+                                "sector": "Blacksmith Barin's House",
+                                "arena": "Forge",
+                                "description": "Sturdy anvil for forging"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Blacksmith Barin's House",
+                        "connected_arenas": [
+                            3555,
+                            3553,
+                            3554
+                        ]
+                    },
+                    "3553": {
+                        "name": "Living Quarters",
+                        "path": "Rivenwood:Blacksmith Barin's House:Living Quarters",
+                        "description": "Living Quarters of Blacksmith Barin",
+                        "objects": [
+                            {
+                                "name": "Simple Bed",
+                                "path": "Rivenwood:Blacksmith Barin's House:Living Quarters:Simple Bed",
+                                "world": "Rivenwood",
+                                "sector": "Blacksmith Barin's House",
+                                "arena": "Living Quarters",
+                                "description": "Simple bed with basic linens"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Blacksmith Barin's House",
+                        "connected_arenas": [
+                            3555,
+                            3552,
+                            3554
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3516,
+                    3531,
+                    3530
+                ]
+            },
+            "3710": {
+                "name": "Blacksmith Forge",
+                "path": "Rivenwood:Blacksmith Forge",
+                "owner": null,
+                "description": "Essential for producing and repairing tools, weapons, and armor",
+                "arenas": {
+                    "3734": {
+                        "name": "Forge Room",
+                        "path": "Rivenwood:Blacksmith Forge:Forge Room",
+                        "description": "Forge Room in the Blacksmith Forge",
+                        "objects": [
+                            {
+                                "name": "Hammer",
+                                "path": "Rivenwood:Blacksmith Forge:Forge Room:Hammer",
+                                "world": "Rivenwood",
+                                "sector": "Blacksmith Forge",
+                                "arena": "Forge Room",
+                                "description": "Hammer for blacksmithing"
+                            },
+                            {
+                                "name": "Forge",
+                                "path": "Rivenwood:Blacksmith Forge:Forge Room:Forge",
+                                "world": "Rivenwood",
+                                "sector": "Blacksmith Forge",
+                                "arena": "Forge Room",
+                                "description": "Forge for heating metal"
+                            },
+                            {
+                                "name": "Anvil",
+                                "path": "Rivenwood:Blacksmith Forge:Forge Room:Anvil",
+                                "world": "Rivenwood",
+                                "sector": "Blacksmith Forge",
+                                "arena": "Forge Room",
+                                "description": "Anvil for blacksmithing"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Blacksmith Forge",
+                        "connected_arenas": [
+                            3735,
+                            3736
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3704": {
+                "name": "Town Hall",
+                "path": "Rivenwood:Town Hall",
+                "owner": null,
+                "description": "Central administrative building where the town's leaders meet and manage town affairs",
+                "arenas": {
+                    "3720": {
+                        "name": "Meeting Hall",
+                        "path": "Rivenwood:Town Hall:Meeting Hall",
+                        "description": "Main meeting hall in the Town Hall",
+                        "objects": [
+                            {
+                                "name": "Chair",
+                                "path": "Rivenwood:Town Hall:Meeting Hall:Chair",
+                                "world": "Rivenwood",
+                                "sector": "Town Hall",
+                                "arena": "Meeting Hall",
+                                "description": "Comfortable chairs for meetings"
+                            },
+                            {
+                                "name": "Table",
+                                "path": "Rivenwood:Town Hall:Meeting Hall:Table",
+                                "world": "Rivenwood",
+                                "sector": "Town Hall",
+                                "arena": "Meeting Hall",
+                                "description": "Large meeting table"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Town Hall",
+                        "connected_arenas": [
+                            3721,
+                            3722
+                        ]
+                    },
+                    "3722": {
+                        "name": "Records Room",
+                        "path": "Rivenwood:Town Hall:Records Room",
+                        "description": "Records Room in the Town Hall",
+                        "objects": [
+                            {
+                                "name": "Bookshelf",
+                                "path": "Rivenwood:Town Hall:Records Room:Bookshelf",
+                                "world": "Rivenwood",
+                                "sector": "Town Hall",
+                                "arena": "Records Room",
+                                "description": "Bookshelf containing town records"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Town Hall",
+                        "connected_arenas": [
+                            3720,
+                            3721
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3709": {
+                "name": "Warehouse",
+                "path": "Rivenwood:Warehouse",
+                "owner": null,
+                "description": "Storage for goods and trade supplies, especially those arriving by ship",
+                "arenas": {
+                    "3732": {
+                        "name": "Storage Room",
+                        "path": "Rivenwood:Warehouse:Storage Room",
+                        "description": "Storage Room in the Warehouse",
+                        "objects": [
+                            {
+                                "name": "Pallet",
+                                "path": "Rivenwood:Warehouse:Storage Room:Pallet",
+                                "world": "Rivenwood",
+                                "sector": "Warehouse",
+                                "arena": "Storage Room",
+                                "description": "Wooden pallets for goods"
+                            },
+                            {
+                                "name": "Crate",
+                                "path": "Rivenwood:Warehouse:Storage Room:Crate",
+                                "world": "Rivenwood",
+                                "sector": "Warehouse",
+                                "arena": "Storage Room",
+                                "description": "Storage crates"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Warehouse",
+                        "connected_arenas": [
+                            3733
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3706": {
+                "name": "Watchtower North",
+                "path": "Rivenwood:Watchtower North",
+                "owner": null,
+                "description": "Watchtower for lookout and defense at the northern perimeter",
+                "arenas": {
+                    "3726": {
+                        "name": "Observation Deck",
+                        "path": "Rivenwood:Watchtower North:Observation Deck",
+                        "description": "Observation Deck of the North Watchtower",
+                        "objects": [
+                            {
+                                "name": "Signal Torch",
+                                "path": "Rivenwood:Watchtower North:Observation Deck:Signal Torch",
+                                "world": "Rivenwood",
+                                "sector": "Watchtower North",
+                                "arena": "Observation Deck",
+                                "description": "Torch for signaling"
+                            },
+                            {
+                                "name": "Telescope",
+                                "path": "Rivenwood:Watchtower North:Observation Deck:Telescope",
+                                "world": "Rivenwood",
+                                "sector": "Watchtower North",
+                                "arena": "Observation Deck",
+                                "description": "Telescope for observation"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Watchtower North",
+                        "connected_arenas": [
+                            3727
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3715": {
+                "name": "Butcher Shop",
+                "path": "Rivenwood:Butcher Shop",
+                "owner": null,
+                "description": "Prepares and sells meat products",
+                "arenas": {
+                    "3750": {
+                        "name": "Butchery",
+                        "path": "Rivenwood:Butcher Shop:Butchery",
+                        "description": "Butchery in the Butcher Shop",
+                        "objects": [
+                            {
+                                "name": "Butcher Block",
+                                "path": "Rivenwood:Butcher Shop:Butchery:Butcher Block",
+                                "world": "Rivenwood",
+                                "sector": "Butcher Shop",
+                                "arena": "Butchery",
+                                "description": "Block for cutting meat"
+                            },
+                            {
+                                "name": "Meat Hook",
+                                "path": "Rivenwood:Butcher Shop:Butchery:Meat Hook",
+                                "world": "Rivenwood",
+                                "sector": "Butcher Shop",
+                                "arena": "Butchery",
+                                "description": "Hooks for hanging meat"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Butcher Shop",
+                        "connected_arenas": [
+                            3751,
+                            3752
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            },
+            "3530": {
+                "name": "Sailor Sam's House",
+                "path": "Rivenwood:Sailor Sam's House",
+                "owner": "Sailor Sam",
+                "description": "Sailor Sam's House",
+                "arenas": {
+                    "3615": {
+                        "name": "Living Room",
+                        "path": "Rivenwood:Sailor Sam's House:Living Room",
+                        "description": "Living Room of Sailor Sam's House",
+                        "objects": [
+                            {
+                                "name": "Boat",
+                                "path": "Rivenwood:Sailor Sam's House:Living Room:Boat",
+                                "world": "Rivenwood",
+                                "sector": "Sailor Sam's House",
+                                "arena": "Living Room",
+                                "description": "Small fishing boat"
+                            },
+                            {
+                                "name": "Fishing Net",
+                                "path": "Rivenwood:Sailor Sam's House:Living Room:Fishing Net",
+                                "world": "Rivenwood",
+                                "sector": "Sailor Sam's House",
+                                "arena": "Living Room",
+                                "description": "Net for catching fish"
+                            },
+                            {
+                                "name": "Fishing Rod",
+                                "path": "Rivenwood:Sailor Sam's House:Living Room:Fishing Rod",
+                                "world": "Rivenwood",
+                                "sector": "Sailor Sam's House",
+                                "arena": "Living Room",
+                                "description": "Rod for fishing"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Sailor Sam's House",
+                        "connected_arenas": [
+                            3616,
+                            3619,
+                            3617,
+                            3618
+                        ]
+                    },
+                    "3616": {
+                        "name": "Bedroom",
+                        "path": "Rivenwood:Sailor Sam's House:Bedroom",
+                        "description": "Bedroom of Sailor Sam's House",
+                        "objects": [
+                            {
+                                "name": "Bed",
+                                "path": "Rivenwood:Sailor Sam's House:Bedroom:Bed",
+                                "world": "Rivenwood",
+                                "sector": "Sailor Sam's House",
+                                "arena": "Bedroom",
+                                "description": "Simple bed with basic linens"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Sailor Sam's House",
+                        "connected_arenas": [
+                            3615,
+                            3619,
+                            3617,
+                            3618
+                        ]
+                    },
+                    "3617": {
+                        "name": "Kitchen",
+                        "path": "Rivenwood:Sailor Sam's House:Kitchen",
+                        "description": "Kitchen of Sailor Sam's House",
+                        "objects": [
+                            {
+                                "name": "Dining Table",
+                                "path": "Rivenwood:Sailor Sam's House:Kitchen:Dining Table",
+                                "world": "Rivenwood",
+                                "sector": "Sailor Sam's House",
+                                "arena": "Kitchen",
+                                "description": "Sturdy wooden table"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Sailor Sam's House",
+                        "connected_arenas": [
+                            3615,
+                            3616,
+                            3619,
+                            3618
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": [
+                    3517,
+                    3516,
+                    3531
+                ]
+            },
+            "3708": {
+                "name": "Marketplace",
+                "path": "Rivenwood:Marketplace",
+                "owner": null,
+                "description": "Open area where traders and merchants set up stalls to sell goods",
+                "arenas": {
+                    "3730": {
+                        "name": "Stalls",
+                        "path": "Rivenwood:Marketplace:Stalls",
+                        "description": "Stalls in the Marketplace",
+                        "objects": [
+                            {
+                                "name": "Market Stall",
+                                "path": "Rivenwood:Marketplace:Stalls:Market Stall",
+                                "world": "Rivenwood",
+                                "sector": "Marketplace",
+                                "arena": "Stalls",
+                                "description": "Stalls for vendors"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Marketplace",
+                        "connected_arenas": [
+                            3731
+                        ]
+                    },
+                    "3731": {
+                        "name": "Central Plaza",
+                        "path": "Rivenwood:Marketplace:Central Plaza",
+                        "description": "Central Plaza of the Marketplace",
+                        "objects": [
+                            {
+                                "name": "Fountain",
+                                "path": "Rivenwood:Marketplace:Central Plaza:Fountain",
+                                "world": "Rivenwood",
+                                "sector": "Marketplace",
+                                "arena": "Central Plaza",
+                                "description": "Central fountain in the marketplace"
+                            }
+                        ],
+                        "world": "Rivenwood",
+                        "sector": "Marketplace",
+                        "connected_arenas": [
+                            3730
+                        ]
+                    }
+                },
+                "world": "Rivenwood",
+                "connected_sectors": []
+            }
+        }
+    }
+}
