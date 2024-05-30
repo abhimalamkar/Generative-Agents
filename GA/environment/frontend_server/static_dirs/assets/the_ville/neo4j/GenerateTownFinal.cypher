@@ -186,6 +186,23 @@ MERGE (w)-[:HAS_SECTOR]->(hD2_1)
 MERGE (w)-[:HAS_SECTOR]->(hD2_2)
 MERGE (w)-[:HAS_SECTOR]->(hE1_1)
 MERGE (w)-[:HAS_SECTOR]->(hE1_2)
+MERGE (w)-[:HAS_SECTOR]->(th)
+MERGE (w)-[:HAS_SECTOR]->(gb)
+MERGE (w)-[:HAS_SECTOR]->(wt1)
+MERGE (w)-[:HAS_SECTOR]->(wt2)
+MERGE (w)-[:HAS_SECTOR]->(mp)
+MERGE (w)-[:HAS_SECTOR]->(wh)
+MERGE (w)-[:HAS_SECTOR]->(bf)
+MERGE (w)-[:HAS_SECTOR]->(tv)
+MERGE (w)-[:HAS_SECTOR]->(ch)
+MERGE (w)-[:HAS_SECTOR]->(sh)
+MERGE (w)-[:HAS_SECTOR]->(ap)
+MERGE (w)-[:HAS_SECTOR]->(bs)
+MERGE (w)-[:HAS_SECTOR]->(ml)
+MERGE (w)-[:HAS_SECTOR]->(sy)
+MERGE (w)-[:HAS_SECTOR]->(fm)
+MERGE (w)-[:HAS_SECTOR]->(hm)
+
 
 // Elder Elara's House Arenas
 MERGE (rA1_1_1:Arena {name: "Living Room", description: "Living Room of Elder Elara's House", location: point({x: 70, y: 10, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rA1_1_1"})
@@ -374,48 +391,112 @@ MERGE (hE1_2)-[:HAS_ARENA]->(rE1_2_4)
 MERGE (hE1_2)-[:HAS_ARENA]->(rE1_2_5)
 
 
-// Create Roads to Connect All Buildings
-// Create Roads to Connect Sectors
-// MERGE (road1:Road {name: "Main Street", description: "The main road through Rivenwood", length_km: 1.2, location: point({x: 0, y: 0, z: 0})})
-// MERGE (road2:Road {name: "Market Street", description: "The road leading to the market area", length_km: 0.7, location: point({x: 0, y: 700, z: 0})})
-// MERGE (road3:Road {name: "Harbor Road", description: "The road leading to the harbor", length_km: 1.5, location: point({x: 0, y: 1400, z: 0})})
-// MERGE (road4:Road {name: "Castle Road", description: "The road leading to the castle", length_km: 0.9, location: point({x: 300, y: 300, z: 0})})
-// MERGE (road5:Road {name: "Farm Road", description: "The road leading to the farms", length_km: 1.1, location: point({x: -300, y: -300, z: 0})})
+MERGE (rth_1:Arena {name: "Meeting Hall", description: "Main meeting hall in the Town Hall", uuid: "uuid-rth_1"})
+MERGE (rth_2:Arena {name: "Office", description: "Office in the Town Hall", uuid: "uuid-rth_2"})
+MERGE (rth_3:Arena {name: "Records Room", description: "Records Room in the Town Hall", uuid: "uuid-rth_3"})
+MERGE (th)-[:HAS_ARENA]->(rth_1)
+MERGE (th)-[:HAS_ARENA]->(rth_2)
+MERGE (th)-[:HAS_ARENA]->(rth_3)
 
-// // Connect Roads to Sectors
-// MERGE (road1)-[:CONNECTS_TO]->(hA1_1)
-// MERGE (road1)-[:CONNECTS_TO]->(hA1_2)
-// MERGE (road1)-[:CONNECTS_TO]->(hA2_1)
-// MERGE (road1)-[:CONNECTS_TO]->(hA2_2)
-// MERGE (road2)-[:CONNECTS_TO]->(hB1_1)
-// MERGE (road2)-[:CONNECTS_TO]->(hB1_2)
-// MERGE (road2)-[:CONNECTS_TO]->(hC1_1)
-// MERGE (road2)-[:CONNECTS_TO]->(hC1_2)
-// MERGE (road3)-[:CONNECTS_TO]->(hC2_1)
-// MERGE (road3)-[:CONNECTS_TO]->(hC2_2)
-// MERGE (road3)-[:CONNECTS_TO]->(hD1_1)
-// MERGE (road3)-[:CONNECTS_TO]->(hD1_2)
-// MERGE (road3)-[:CONNECTS_TO]->(hD2_1)
-// MERGE (road3)-[:CONNECTS_TO]->(hD2_2)
-// MERGE (road4)-[:CONNECTS_TO]->(hE1_1)
-// MERGE (road4)-[:CONNECTS_TO]->(hE1_2)
-// MERGE (road5)-[:CONNECTS_TO]->(hE2_1)
-// MERGE (road5)-[:CONNECTS_TO]->(hE2_2)
+MERGE (rgb_1:Arena {name: "Barracks", description: "Sleeping quarters for the guards", uuid: "uuid-rgb_1"})
+MERGE (rgb_2:Arena {name: "Training Ground", description: "Training ground for the guards", uuid: "uuid-rgb_2"})
+MERGE (rgb_3:Arena {name: "Armory", description: "Armory in the Guard Barracks", uuid: "uuid-rgb_3"})
+MERGE (gb)-[:HAS_ARENA]->(rgb_1)
+MERGE (gb)-[:HAS_ARENA]->(rgb_2)
+MERGE (gb)-[:HAS_ARENA]->(rgb_3)
 
-// // Connect Sectors to Each Other
-// MERGE (hA1_1)-[:CONNECTS_TO]->(hA1_2)
-// MERGE (hA2_1)-[:CONNECTS_TO]->(hA2_2)
-// MERGE (hB1_1)-[:CONNECTS_TO]->(hB1_2)
-// MERGE (hC1_1)-[:CONNECTS_TO]->(hC1_2)
-// MERGE (hC2_1)-[:CONNECTS_TO]->(hC2_2)
-// MERGE (hD1_1)-[:CONNECTS_TO]->(hD1_2)
-// MERGE (hD2_1)-[:CONNECTS_TO]->(hD2_2)
-// MERGE (hE1_1)-[:CONNECTS_TO]->(hE1_2)
-// MERGE (hE2_1)-[:CONNECTS_TO]->(hE2_2)
-// MERGE (hA1_1)-[:CONNECTS_TO]->(hB1_1)
-// MERGE (hB1_1)-[:CONNECTS_TO]->(hC1_1)
-// MERGE (hC1_1)-[:CONNECTS_TO]->(hD1_1)
-// MERGE (hD1_1)-[:CONNECTS_TO]->(hE1_1)
+MERGE (rwt1_1:Arena {name: "Observation Deck", description: "Observation Deck of the North Watchtower", uuid: "uuid-rwt1_1"})
+MERGE (rwt1_2:Arena {name: "Guard Room", description: "Guard Room of the North Watchtower", uuid: "uuid-rwt1_2"})
+MERGE (wt1)-[:HAS_ARENA]->(rwt1_1)
+MERGE (wt1)-[:HAS_ARENA]->(rwt1_2)
+
+MERGE (rwt2_1:Arena {name: "Observation Deck", description: "Observation Deck of the South Watchtower", uuid: "uuid-rwt2_1"})
+MERGE (rwt2_2:Arena {name: "Guard Room", description: "Guard Room of the South Watchtower", uuid: "uuid-rwt2_2"})
+MERGE (wt2)-[:HAS_ARENA]->(rwt2_1)
+MERGE (wt2)-[:HAS_ARENA]->(rwt2_2)
+
+MERGE (rmp_1:Arena {name: "Stalls", description: "Stalls in the Marketplace", uuid: "uuid-rmp_1"})
+MERGE (rmp_2:Arena {name: "Central Plaza", description: "Central Plaza of the Marketplace", uuid: "uuid-rmp_2"})
+MERGE (mp)-[:HAS_ARENA]->(rmp_1)
+MERGE (mp)-[:HAS_ARENA]->(rmp_2)
+
+MERGE (rwh_1:Arena {name: "Storage Room", description: "Storage Room in the Warehouse", uuid: "uuid-rwh_1"})
+MERGE (rwh_2:Arena {name: "Loading Dock", description: "Loading Dock in the Warehouse", uuid: "uuid-rwh_2"})
+MERGE (wh)-[:HAS_ARENA]->(rwh_1)
+MERGE (wh)-[:HAS_ARENA]->(rwh_2)
+
+MERGE (rbf_1:Arena {name: "Forge Room", description: "Forge Room in the Blacksmith Forge", uuid: "uuid-rbf_1"})
+MERGE (rbf_2:Arena {name: "Storage Room", description: "Storage Room in the Blacksmith Forge", uuid: "uuid-rbf_2"})
+MERGE (rbf_3:Arena {name: "Workshop", description: "Workshop in the Blacksmith Forge", uuid: "uuid-rbf_3"})
+MERGE (bf)-[:HAS_ARENA]->(rbf_1)
+MERGE (bf)-[:HAS_ARENA]->(rbf_2)
+MERGE (bf)-[:HAS_ARENA]->(rbf_3)
+
+MERGE (rtv_1:Arena {name: "Common Room", description: "Common Room in the Tavern", uuid: "uuid-rtv_1"})
+MERGE (rtv_2:Arena {name: "Dining Area", description: "Dining Area in the Tavern", uuid: "uuid-rtv_2"})
+MERGE (rtv_3:Arena {name: "Kitchen", description: "Kitchen in the Tavern", uuid: "uuid-rtv_3"})
+MERGE (rtv_4:Arena {name: "Guest Rooms", description: "Guest Rooms in the Tavern", uuid: "uuid-rtv_4"})
+MERGE (tv)-[:HAS_ARENA]->(rtv_1)
+MERGE (tv)-[:HAS_ARENA]->(rtv_2)
+MERGE (tv)-[:HAS_ARENA]->(rtv_3)
+MERGE (tv)-[:HAS_ARENA]->(rtv_4)
+
+MERGE (rch_1:Arena {name: "Nave", description: "Nave in the Church", uuid: "uuid-rch_1"})
+MERGE (rch_2:Arena {name: "Altar", description: "Altar in the Church", uuid: "uuid-rch_2"})
+MERGE (rch_3:Arena {name: "Bell Tower", description: "Bell Tower in the Church", uuid: "uuid-rch_3"})
+MERGE (ch)-[:HAS_ARENA]->(rch_1)
+MERGE (ch)-[:HAS_ARENA]->(rch_2)
+MERGE (ch)-[:HAS_ARENA]->(rch_3)
+
+MERGE (rsh_1:Arena {name: "Classroom", description: "Classroom in the Schoolhouse", uuid: "uuid-rsh_1"})
+MERGE (rsh_2:Arena {name: "Library", description: "Library in the Schoolhouse", uuid: "uuid-rsh_2"})
+MERGE (rsh_3:Arena {name: "Playground", description: "Playground in the Schoolhouse", uuid: "uuid-rsh_3"})
+MERGE (sh)-[:HAS_ARENA]->(rsh_1)
+MERGE (sh)-[:HAS_ARENA]->(rsh_2)
+MERGE (sh)-[:HAS_ARENA]->(rsh_3)
+
+MERGE (rap_1:Arena {name: "Herb Room", description: "Herb Room in the Apothecary", uuid: "uuid-rap_1"})
+MERGE (rap_2:Arena {name: "Consultation Room", description: "Consultation Room in the Apothecary", uuid: "uuid-rap_2"})
+MERGE (rap_3:Arena {name: "Storage Room", description: "Storage Room in the Apothecary", uuid: "uuid-rap_3"})
+MERGE (ap)-[:HAS_ARENA]->(rap_1)
+MERGE (ap)-[:HAS_ARENA]->(rap_2)
+MERGE (ap)-[:HAS_ARENA]->(rap_3)
+
+MERGE (rbs_1:Arena {name: "Butchery", description: "Butchery in the Butcher Shop", uuid: "uuid-rbs_1"})
+MERGE (rbs_2:Arena {name: "Storage Room", description: "Storage Room in the Butcher Shop", uuid: "uuid-rbs_2"})
+MERGE (rbs_3:Arena {name: "Shop Floor", description: "Shop Floor in the Butcher Shop", uuid: "uuid-rbs_3"})
+MERGE (bs)-[:HAS_ARENA]->(rbs_1)
+MERGE (bs)-[:HAS_ARENA]->(rbs_2)
+MERGE (bs)-[:HAS_ARENA]->(rbs_3)
+
+MERGE (rml_1:Arena {name: "Mill Room", description: "Mill Room in the Mill", uuid: "uuid-rml_1"})
+MERGE (rml_2:Arena {name: "Storage Room", description: "Storage Room in the Mill", uuid: "uuid-rml_2"})
+MERGE (rml_3:Arena {name: "Office", description: "Office in the Mill", uuid: "uuid-rml_3"})
+MERGE (ml)-[:HAS_ARENA]->(rml_1)
+MERGE (ml)-[:HAS_ARENA]->(rml_2)
+MERGE (ml)-[:HAS_ARENA]->(rml_3)
+
+MERGE (rsy_1:Arena {name: "Ship Building Area", description: "Ship Building Area in the Shipyard", uuid: "uuid-rsy_1"})
+MERGE (rsy_2:Arena {name: "Repair Dock", description: "Repair Dock in the Shipyard", uuid: "uuid-rsy_2"})
+MERGE (rsy_3:Arena {name: "Storage Room", description: "Storage Room in the Shipyard", uuid: "uuid-rsy_3"})
+MERGE (sy)-[:HAS_ARENA]->(rsy_1)
+MERGE (sy)-[:HAS_ARENA]->(rsy_2)
+MERGE (sy)-[:HAS_ARENA]->(rsy_3)
+
+MERGE (rfm_1:Arena {name: "Fish Stalls", description: "Fish Stalls in the Fish Market", uuid: "uuid-rfm_1"})
+MERGE (rfm_2:Arena {name: "Auction Area", description: "Auction Area in the Fish Market", uuid: "uuid-rfm_2"})
+MERGE (rfm_3:Arena {name: "Storage Room", description: "Storage Room in the Fish Market", uuid: "uuid-rfm_3"})
+MERGE (fm)-[:HAS_ARENA]->(rfm_1)
+MERGE (fm)-[:HAS_ARENA]->(rfm_2)
+MERGE (fm)-[:HAS_ARENA]->(rfm_3)
+
+MERGE (rhm_1:Arena {name: "Office", description: "Office of the Harbormaster", uuid: "uuid-rhm_1"})
+MERGE (rhm_2:Arena {name: "Storage Room", description: "Storage Room in the Harbormaster's Office", uuid: "uuid-rhm_2"})
+MERGE (rhm_3:Arena {name: "Meeting Room", description: "Meeting Room in the Harbormaster's Office", uuid: "uuid-rhm_3"})
+MERGE (hm)-[:HAS_ARENA]->(rhm_1)
+MERGE (hm)-[:HAS_ARENA]->(rhm_2)
+MERGE (hm)-[:HAS_ARENA]->(rhm_3)
+
 
 // Create Pathways to Connect Arenas within Buildings
 MERGE (pathA1_1:Pathway {name: "Pathway A1-1", description: "Pathway connecting rooms in Elder Elara's House", length_km: 0.05, location: point({x: 0, y: 0, z: 0})})
@@ -724,187 +805,6 @@ MERGE (rE1_2_3)-[:HAS_OBJECT]->(o_e1_2_5)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Create Essential Buildings as Sectors
-
-
-// Establish Relationships between World and Essential Buildings
-MERGE (w)-[:HAS_SECTOR]->(th)
-MERGE (w)-[:HAS_SECTOR]->(gb)
-MERGE (w)-[:HAS_SECTOR]->(wt1)
-MERGE (w)-[:HAS_SECTOR]->(wt2)
-MERGE (w)-[:HAS_SECTOR]->(mp)
-MERGE (w)-[:HAS_SECTOR]->(wh)
-MERGE (w)-[:HAS_SECTOR]->(bf)
-MERGE (w)-[:HAS_SECTOR]->(tv)
-MERGE (w)-[:HAS_SECTOR]->(ch)
-MERGE (w)-[:HAS_SECTOR]->(sh)
-MERGE (w)-[:HAS_SECTOR]->(ap)
-MERGE (w)-[:HAS_SECTOR]->(bs)
-MERGE (w)-[:HAS_SECTOR]->(ml)
-MERGE (w)-[:HAS_SECTOR]->(sy)
-MERGE (w)-[:HAS_SECTOR]->(fm)
-MERGE (w)-[:HAS_SECTOR]->(hm)
-
-// Create Arenas within Essential Buildings (Rooms or Functional Areas)
-MERGE (rth_1:Arena {name: "Meeting Hall", description: "Main meeting hall in the Town Hall", uuid: "uuid-rth_1"})
-MERGE (rth_2:Arena {name: "Office", description: "Office in the Town Hall", uuid: "uuid-rth_2"})
-MERGE (rth_3:Arena {name: "Records Room", description: "Records Room in the Town Hall", uuid: "uuid-rth_3"})
-MERGE (th)-[:HAS_ARENA]->(rth_1)
-MERGE (th)-[:HAS_ARENA]->(rth_2)
-MERGE (th)-[:HAS_ARENA]->(rth_3)
-
-MERGE (rgb_1:Arena {name: "Barracks", description: "Sleeping quarters for the guards", uuid: "uuid-rgb_1"})
-MERGE (rgb_2:Arena {name: "Training Ground", description: "Training ground for the guards", uuid: "uuid-rgb_2"})
-MERGE (rgb_3:Arena {name: "Armory", description: "Armory in the Guard Barracks", uuid: "uuid-rgb_3"})
-MERGE (gb)-[:HAS_ARENA]->(rgb_1)
-MERGE (gb)-[:HAS_ARENA]->(rgb_2)
-MERGE (gb)-[:HAS_ARENA]->(rgb_3)
-
-MERGE (rwt1_1:Arena {name: "Observation Deck", description: "Observation Deck of the North Watchtower", uuid: "uuid-rwt1_1"})
-MERGE (rwt1_2:Arena {name: "Guard Room", description: "Guard Room of the North Watchtower", uuid: "uuid-rwt1_2"})
-MERGE (wt1)-[:HAS_ARENA]->(rwt1_1)
-MERGE (wt1)-[:HAS_ARENA]->(rwt1_2)
-
-MERGE (rwt2_1:Arena {name: "Observation Deck", description: "Observation Deck of the South Watchtower", uuid: "uuid-rwt2_1"})
-MERGE (rwt2_2:Arena {name: "Guard Room", description: "Guard Room of the South Watchtower", uuid: "uuid-rwt2_2"})
-MERGE (wt2)-[:HAS_ARENA]->(rwt2_1)
-MERGE (wt2)-[:HAS_ARENA]->(rwt2_2)
-
-MERGE (rmp_1:Arena {name: "Stalls", description: "Stalls in the Marketplace", uuid: "uuid-rmp_1"})
-MERGE (rmp_2:Arena {name: "Central Plaza", description: "Central Plaza of the Marketplace", uuid: "uuid-rmp_2"})
-MERGE (mp)-[:HAS_ARENA]->(rmp_1)
-MERGE (mp)-[:HAS_ARENA]->(rmp_2)
-
-MERGE (rwh_1:Arena {name: "Storage Room", description: "Storage Room in the Warehouse", uuid: "uuid-rwh_1"})
-MERGE (rwh_2:Arena {name: "Loading Dock", description: "Loading Dock in the Warehouse", uuid: "uuid-rwh_2"})
-MERGE (wh)-[:HAS_ARENA]->(rwh_1)
-MERGE (wh)-[:HAS_ARENA]->(rwh_2)
-
-MERGE (rbf_1:Arena {name: "Forge Room", description: "Forge Room in the Blacksmith Forge", uuid: "uuid-rbf_1"})
-MERGE (rbf_2:Arena {name: "Storage Room", description: "Storage Room in the Blacksmith Forge", uuid: "uuid-rbf_2"})
-MERGE (rbf_3:Arena {name: "Workshop", description: "Workshop in the Blacksmith Forge", uuid: "uuid-rbf_3"})
-MERGE (bf)-[:HAS_ARENA]->(rbf_1)
-MERGE (bf)-[:HAS_ARENA]->(rbf_2)
-MERGE (bf)-[:HAS_ARENA]->(rbf_3)
-
-MERGE (rtv_1:Arena {name: "Common Room", description: "Common Room in the Tavern", uuid: "uuid-rtv_1"})
-MERGE (rtv_2:Arena {name: "Dining Area", description: "Dining Area in the Tavern", uuid: "uuid-rtv_2"})
-MERGE (rtv_3:Arena {name: "Kitchen", description: "Kitchen in the Tavern", uuid: "uuid-rtv_3"})
-MERGE (rtv_4:Arena {name: "Guest Rooms", description: "Guest Rooms in the Tavern", uuid: "uuid-rtv_4"})
-MERGE (tv)-[:HAS_ARENA]->(rtv_1)
-MERGE (tv)-[:HAS_ARENA]->(rtv_2)
-MERGE (tv)-[:HAS_ARENA]->(rtv_3)
-MERGE (tv)-[:HAS_ARENA]->(rtv_4)
-
-MERGE (rch_1:Arena {name: "Nave", description: "Nave in the Church", uuid: "uuid-rch_1"})
-MERGE (rch_2:Arena {name: "Altar", description: "Altar in the Church", uuid: "uuid-rch_2"})
-MERGE (rch_3:Arena {name: "Bell Tower", description: "Bell Tower in the Church", uuid: "uuid-rch_3"})
-MERGE (ch)-[:HAS_ARENA]->(rch_1)
-MERGE (ch)-[:HAS_ARENA]->(rch_2)
-MERGE (ch)-[:HAS_ARENA]->(rch_3)
-
-MERGE (rsh_1:Arena {name: "Classroom", description: "Classroom in the Schoolhouse", uuid: "uuid-rsh_1"})
-MERGE (rsh_2:Arena {name: "Library", description: "Library in the Schoolhouse", uuid: "uuid-rsh_2"})
-MERGE (rsh_3:Arena {name: "Playground", description: "Playground in the Schoolhouse", uuid: "uuid-rsh_3"})
-MERGE (sh)-[:HAS_ARENA]->(rsh_1)
-MERGE (sh)-[:HAS_ARENA]->(rsh_2)
-MERGE (sh)-[:HAS_ARENA]->(rsh_3)
-
-MERGE (rap_1:Arena {name: "Herb Room", description: "Herb Room in the Apothecary", uuid: "uuid-rap_1"})
-MERGE (rap_2:Arena {name: "Consultation Room", description: "Consultation Room in the Apothecary", uuid: "uuid-rap_2"})
-MERGE (rap_3:Arena {name: "Storage Room", description: "Storage Room in the Apothecary", uuid: "uuid-rap_3"})
-MERGE (ap)-[:HAS_ARENA]->(rap_1)
-MERGE (ap)-[:HAS_ARENA]->(rap_2)
-MERGE (ap)-[:HAS_ARENA]->(rap_3)
-
-MERGE (rbs_1:Arena {name: "Butchery", description: "Butchery in the Butcher Shop", uuid: "uuid-rbs_1"})
-MERGE (rbs_2:Arena {name: "Storage Room", description: "Storage Room in the Butcher Shop", uuid: "uuid-rbs_2"})
-MERGE (rbs_3:Arena {name: "Shop Floor", description: "Shop Floor in the Butcher Shop", uuid: "uuid-rbs_3"})
-MERGE (bs)-[:HAS_ARENA]->(rbs_1)
-MERGE (bs)-[:HAS_ARENA]->(rbs_2)
-MERGE (bs)-[:HAS_ARENA]->(rbs_3)
-
-MERGE (rml_1:Arena {name: "Mill Room", description: "Mill Room in the Mill", uuid: "uuid-rml_1"})
-MERGE (rml_2:Arena {name: "Storage Room", description: "Storage Room in the Mill", uuid: "uuid-rml_2"})
-MERGE (rml_3:Arena {name: "Office", description: "Office in the Mill", uuid: "uuid-rml_3"})
-MERGE (ml)-[:HAS_ARENA]->(rml_1)
-MERGE (ml)-[:HAS_ARENA]->(rml_2)
-MERGE (ml)-[:HAS_ARENA]->(rml_3)
-
-MERGE (rsy_1:Arena {name: "Ship Building Area", description: "Ship Building Area in the Shipyard", uuid: "uuid-rsy_1"})
-MERGE (rsy_2:Arena {name: "Repair Dock", description: "Repair Dock in the Shipyard", uuid: "uuid-rsy_2"})
-MERGE (rsy_3:Arena {name: "Storage Room", description: "Storage Room in the Shipyard", uuid: "uuid-rsy_3"})
-MERGE (sy)-[:HAS_ARENA]->(rsy_1)
-MERGE (sy)-[:HAS_ARENA]->(rsy_2)
-MERGE (sy)-[:HAS_ARENA]->(rsy_3)
-
-MERGE (rfm_1:Arena {name: "Fish Stalls", description: "Fish Stalls in the Fish Market", uuid: "uuid-rfm_1"})
-MERGE (rfm_2:Arena {name: "Auction Area", description: "Auction Area in the Fish Market", uuid: "uuid-rfm_2"})
-MERGE (rfm_3:Arena {name: "Storage Room", description: "Storage Room in the Fish Market", uuid: "uuid-rfm_3"})
-MERGE (fm)-[:HAS_ARENA]->(rfm_1)
-MERGE (fm)-[:HAS_ARENA]->(rfm_2)
-MERGE (fm)-[:HAS_ARENA]->(rfm_3)
-
-MERGE (rhm_1:Arena {name: "Office", description: "Office of the Harbormaster", uuid: "uuid-rhm_1"})
-MERGE (rhm_2:Arena {name: "Storage Room", description: "Storage Room in the Harbormaster's Office", uuid: "uuid-rhm_2"})
-MERGE (rhm_3:Arena {name: "Meeting Room", description: "Meeting Room in the Harbormaster's Office", uuid: "uuid-rhm_3"})
-MERGE (hm)-[:HAS_ARENA]->(rhm_1)
-MERGE (hm)-[:HAS_ARENA]->(rhm_2)
-MERGE (hm)-[:HAS_ARENA]->(rhm_3)
-
-
-// Create Roads to Connect Essential Buildings
-// MERGE (road1:Road {name: "Main Street", description: "The main road through Rivenwood", length_km: 1.2, location: point({x: 0, y: 0, z: 0})})
-// MERGE (road2:Road {name: "Market Street", description: "The road leading to the market area", length_km: 0.7, location: point({x: 0, y: 700, z: 0})})
-// MERGE (road3:Road {name: "Harbor Road", description: "The road leading to the harbor", length_km: 1.5, location: point({x: 0, y: 1400, z: 0})})
-// MERGE (road4:Road {name: "Admin Road", description: "Road connecting administrative buildings", length_km: 1.0, location: point({x: 300, y: 300, z: 0})})
-// MERGE (road5:Road {name: "Guard Road", description: "Road leading to the guard barracks and watchtowers", length_km: 0.8, location: point({x: -300, y: -300, z: 0})})
-// MERGE (road6:Road {name: "Market Road", description: "Road leading to the marketplace and related sectors", length_km: 1.1, location: point({x: 100, y: 800, z: 0})})
-// MERGE (road7:Road {name: "Harbor Road", description: "Road connecting to the harbor and related sectors", length_km: 1.4, location: point({x: 200, y: 1500, z: 0})})
-
-// // Connect Roads to Essential Buildings
-// MERGE (road4)-[:CONNECTS_TO]->(th)
-// MERGE (road4)-[:CONNECTS_TO]->(gb)
-// MERGE (road5)-[:CONNECTS_TO]->(wt1)
-// MERGE (road5)-[:CONNECTS_TO]->(wt2)
-// MERGE (road6)-[:CONNECTS_TO]->(mp)
-// MERGE (road6)-[:CONNECTS_TO]->(wh)
-// MERGE (road6)-[:CONNECTS_TO]->(bf)
-// MERGE (road6)-[:CONNECTS_TO]->(tv)
-// MERGE (road6)-[:CONNECTS_TO]->(ch)
-// MERGE (road6)-[:CONNECTS_TO]->(sh)
-// MERGE (road6)-[:CONNECTS_TO]->(ap)
-// MERGE (road6)-[:CONNECTS_TO]->(bs)
-// MERGE (road7)-[:CONNECTS_TO]->(ml)
-// MERGE (road7)-[:CONNECTS_TO]->(sy)
-// MERGE (road7)-[:CONNECTS_TO]->(fm)
-// MERGE (road7)-[:CONNECTS_TO]->(hm)
-
 // Create Pathways to Connect Arenas within Buildings
 MERGE (pathTH:Pathway {name: "Pathway TH", description: "Pathway connecting rooms in Town Hall", length_km: 0.02, location: point({x: 0, y: 0, z: 0})})
 MERGE (pathGB:Pathway {name: "Pathway GB", description: "Pathway connecting rooms in Guard Barracks", length_km: 0.03, location: point({x: 0, y: 100, z: 0})})
@@ -1090,8 +990,7 @@ MERGE (rhm_1)-[:HAS_OBJECT]->(o_hm_1)
 MERGE (rhm_1)-[:HAS_OBJECT]->(o_hm_2)
 
 
-// Create Roads
-// Create Roads to Connect Sectors
+// Roads
 MERGE (road1:Road {name: "Main Street", description: "The main road through Rivenwood", length_km: 1.2})
 MERGE (road2:Road {name: "Market Street", description: "The road leading to the market area", length_km: 0.7})
 MERGE (road3:Road {name: "Harbor Road", description: "The road leading to the harbor", length_km: 1.5})
@@ -1101,58 +1000,54 @@ MERGE (road6:Road {name: "Market Road", description: "Road leading to the market
 MERGE (road7:Road {name: "Harbor Road", description: "Road connecting to the harbor and related sectors", length_km: 1.4})
 
 // Connect Roads to Sectors
-MERGE (road1)-[:CONNECTS_TO]->(hA1_1)
-MERGE (road1)-[:CONNECTS_TO]->(hA1_2)
-MERGE (road2)-[:CONNECTS_TO]->(hA2_1)
-MERGE (road2)-[:CONNECTS_TO]->(hA2_2)
-MERGE (road3)-[:CONNECTS_TO]->(hB1_1)
-MERGE (road3)-[:CONNECTS_TO]->(hB1_2)
-MERGE (road4)-[:CONNECTS_TO]->(hC1_1)
-MERGE (road4)-[:CONNECTS_TO]->(hC1_2)
-MERGE (road5)-[:CONNECTS_TO]->(hC2_1)
-MERGE (road5)-[:CONNECTS_TO]->(hC2_2)
-MERGE (road6)-[:CONNECTS_TO]->(hD1_1)
-MERGE (road6)-[:CONNECTS_TO]->(hD1_2)
-MERGE (road7)-[:CONNECTS_TO]->(hD2_1)
-MERGE (road7)-[:CONNECTS_TO]->(hD2_2)
-MERGE (road1)-[:CONNECTS_TO]->(hE1_1)
-MERGE (road1)-[:CONNECTS_TO]->(hE1_2)
-
-// Connect Sectors to Each Other via Roads
-MERGE (road1)-[:CONNECTS_TO]->(road2)
-MERGE (road2)-[:CONNECTS_TO]->(road3)
-MERGE (road3)-[:CONNECTS_TO]->(road4)
-MERGE (road4)-[:CONNECTS_TO]->(road5)
-MERGE (road5)-[:CONNECTS_TO]->(road6)
-MERGE (road6)-[:CONNECTS_TO]->(road7)
-
-// Ensure Connectivity for all Sectors
-MERGE (hA1_1)-[:CONNECTS_TO]->(hA1_2)
-MERGE (hA2_1)-[:CONNECTS_TO]->(hA2_2)
-MERGE (hB1_1)-[:CONNECTS_TO]->(hB1_2)
-MERGE (hC1_1)-[:CONNECTS_TO]->(hC1_2)
-MERGE (hC2_1)-[:CONNECTS_TO]->(hC2_2)
-MERGE (hD1_1)-[:CONNECTS_TO]->(hD1_2)
-MERGE (hD2_1)-[:CONNECTS_TO]->(hD2_2)
-MERGE (hE1_1)-[:CONNECTS_TO]->(hE1_2)
-MERGE (hA1_1)-[:CONNECTS_TO]->(hB1_1)
-MERGE (hB1_1)-[:CONNECTS_TO]->(hC1_1)
-MERGE (hC1_1)-[:CONNECTS_TO]->(hD1_1)
-MERGE (hD1_1)-[:CONNECTS_TO]->(hE1_1)
-
-MERGE (th)-[:CONNECTS_TO]->(road4)
+MERGE (th)-[:CONNECTS_TO]->(road1)
+MERGE (mp)-[:CONNECTS_TO]->(road2)
+MERGE (wh)-[:CONNECTS_TO]->(road3)
+MERGE (bf)-[:CONNECTS_TO]->(road4)
 MERGE (gb)-[:CONNECTS_TO]->(road5)
-MERGE (wt1)-[:CONNECTS_TO]->(road5)
-MERGE (wt2)-[:CONNECTS_TO]->(road5)
-MERGE (mp)-[:CONNECTS_TO]->(road6)
-MERGE (wh)-[:CONNECTS_TO]->(road6)
-MERGE (bf)-[:CONNECTS_TO]->(road6)
 MERGE (tv)-[:CONNECTS_TO]->(road6)
+MERGE (sy)-[:CONNECTS_TO]->(road7)
+
+// Connect Roads to Houses
+// Area A - North East
+MERGE (hA1_1)-[:CONNECTS_TO]->(road1)
+MERGE (hA1_2)-[:CONNECTS_TO]->(road1)
+MERGE (hA2_1)-[:CONNECTS_TO]->(road1)
+MERGE (hA2_2)-[:CONNECTS_TO]->(road1)
+
+// Area B - North West
+MERGE (hB1_1)-[:CONNECTS_TO]->(road2)
+MERGE (hB1_2)-[:CONNECTS_TO]->(road2)
+MERGE (hC1_1)-[:CONNECTS_TO]->(road2)
+MERGE (hC1_2)-[:CONNECTS_TO]->(road2)
+
+// Area C - South East
+MERGE (hC2_1)-[:CONNECTS_TO]->(road3)
+MERGE (hC2_2)-[:CONNECTS_TO]->(road3)
+MERGE (hD1_1)-[:CONNECTS_TO]->(road3)
+MERGE (hD1_2)-[:CONNECTS_TO]->(road3)
+
+// Area D - South West
+MERGE (hD2_1)-[:CONNECTS_TO]->(road4)
+MERGE (hD2_2)-[:CONNECTS_TO]->(road4)
+MERGE (hE1_1)-[:CONNECTS_TO]->(road4)
+MERGE (hE1_2)-[:CONNECTS_TO]->(road4)
+
+// Connect Roads to Each Other
+MERGE (road1)-[:CONNECTED_TO]->(road2)
+MERGE (road2)-[:CONNECTED_TO]->(road3)
+MERGE (road3)-[:CONNECTED_TO]->(road4)
+MERGE (road4)-[:CONNECTED_TO]->(road5)
+MERGE (road5)-[:CONNECTED_TO]->(road6)
+MERGE (road6)-[:CONNECTED_TO]->(road7)
+
+// Additional Connectivity for Sectors
+MERGE (wt1)-[:CONNECTS_TO]->(road1)
+MERGE (wt2)-[:CONNECTS_TO]->(road5)
 MERGE (ch)-[:CONNECTS_TO]->(road6)
 MERGE (sh)-[:CONNECTS_TO]->(road6)
 MERGE (ap)-[:CONNECTS_TO]->(road6)
 MERGE (bs)-[:CONNECTS_TO]->(road6)
 MERGE (ml)-[:CONNECTS_TO]->(road7)
-MERGE (sy)-[:CONNECTS_TO]->(road7)
 MERGE (fm)-[:CONNECTS_TO]->(road7)
 MERGE (hm)-[:CONNECTS_TO]->(road7)
