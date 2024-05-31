@@ -1,0 +1,12 @@
+{
+  "fork_sim_code": "base_rivenwood_elara_brian_finn",
+  "start_date": "February 13, 1920",
+  "curr_time": "February 13, 1920, 00:00:00",
+  "sec_per_step": 10,
+  "maze_name": "Rivenwood",
+  "persona_names": [
+    "Elder Elara", 
+    "Blacksmith Barin"
+  ],
+  "step": 0
+}

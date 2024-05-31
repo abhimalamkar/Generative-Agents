@@ -1,0 +1,198 @@
+{
+    "Rivenwood": {
+        "Elder Elara's House": {
+            "Bedroom": [
+                "Bed"
+            ],
+            "Library": [
+                "Desk",
+                "Bookshelf"
+            ],
+            "Kitchen": [
+                "Larder",
+                "Cooking Utensils",
+                "Cooking Pot"
+            ],
+            "Study": [
+                "Quill and Parchment"
+            ],
+            "Chicken Coop": [
+                "Chicken Feed"
+            ],
+            "Well": [
+                "Bucket"
+            ],
+            "Barn": [
+                "Hay Bale",
+                "Firewood Stack"
+            ],
+            "Living Room": [
+                "Dining Table",
+                "Ornate Chair"
+            ],
+            "Storage Room": [
+                "Storage Chest"
+            ],
+            "Garden": [
+                "Garden Tools",
+                "Herb Rack"
+            ]
+        },
+        "Schoolhouse": {
+            "Library": [],
+            "Playground": [],
+            "Classroom": [
+                "Desk",
+                "Blackboard"
+            ]
+        },
+        "Marketplace": {
+            "Central Plaza": [
+                "Fountain"
+            ],
+            "Stalls": [
+                "Market Stall"
+            ]
+        },
+        "Church": {
+            "Nave": [
+                "Pew"
+            ],
+            "Altar": [
+                "Altar"
+            ],
+            "Bell Tower": []
+        },
+        "Watchtower South": {
+            "Guard Room": [],
+            "Observation Deck": [
+                "Signal Torch",
+                "Telescope"
+            ]
+        },
+        "Warehouse": {
+            "Storage Room": [
+                "Pallet",
+                "Crate"
+            ],
+            "Loading Dock": []
+        },
+        "Town Hall": {
+            "Office": [],
+            "Records Room": [
+                "Bookshelf"
+            ],
+            "Meeting Hall": [
+                "Chair",
+                "Table"
+            ]
+        },
+        "Shipyard": {
+            "Storage Room": [],
+            "Repair Dock": [],
+            "Ship Building Area": [
+                "Dry Dock",
+                "Crane"
+            ]
+        },
+        "Guard Barracks": {
+            "Barracks": [
+                "Bunk Bed"
+            ],
+            "Training Ground": [
+                "Training Dummy"
+            ],
+            "Armory": [
+                "Weapon Rack"
+            ]
+        },
+        "Fish Market": {
+            "Storage Room": [],
+            "Auction Area": [],
+            "Fish Stalls": [
+                "Ice Box",
+                "Fish Stall"
+            ]
+        },
+        "Apothecary": {
+            "Consultation Room": [],
+            "Storage Room": [],
+            "Herb Room": [
+                "Herb Cabinet",
+                "Mortar and Pestle"
+            ]
+        },
+        "Mill": {
+            "Office": [],
+            "Mill Room": [
+                "Sack of Grain",
+                "Millstone"
+            ],
+            "Storage Room": []
+        },
+        "Watchtower North": {
+            "Observation Deck": [
+                "Telescope",
+                "Signal Torch"
+            ],
+            "Guard Room": []
+        },
+        "Tavern": {
+            "Dining Area": [
+                "Table"
+            ],
+            "Kitchen": [],
+            "Common Room": [
+                "Bar Counter"
+            ],
+            "Guest Rooms": [
+                "Bed"
+            ]
+        },
+        "Blacksmith Forge": {
+            "Workshop": [],
+            "Forge Room": [
+                "Hammer",
+                "Anvil",
+                "Forge"
+            ],
+            "Storage Room": []
+        },
+        "Butcher Shop": {
+            "Shop Floor": [],
+            "Storage Room": [],
+            "Butchery": [
+                "Meat Hook",
+                "Butcher Block"
+            ]
+        },
+        "Blacksmith Barin's House": {
+            "Garden": [
+                "Herb Rack",
+                "Vegetable Patch"
+            ],
+            "Workshop": [
+                "Cooking Pot",
+                "Herb Rack",
+                "Dining Table"
+            ],
+            "Forge": [
+                "Tool Rack",
+                "Hammer",
+                "Forge",
+                "Anvil"
+            ],
+            "Storage Room": [
+                "Workbench",
+                "Firewood Stack"
+            ],
+            "Dining Area": [
+                "Garden Tools"
+            ],
+            "Living Quarters": [
+                "Storage Chest",
+                "Simple Bed"
+            ]
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "Blacksmith Barin": {
+    "maze": "Rivenwood",
+    "start_node": "Rivenwood:Blacksmith Barin's House:Living Quarters:Simple Bed",
+    "x": 72,
+    "y": 14
+  },
+  "Elder Elara": {
+    "maze": "Rivenwood",
+    "start_node": "Rivenwood:Elder Elara's House:Bedroom:Bed",
+    "x": 123,
+    "y": 57
+  }
+}
+
+
+
+
+
+
+
+
+
