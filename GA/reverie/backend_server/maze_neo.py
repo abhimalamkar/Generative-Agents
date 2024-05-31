@@ -6,7 +6,7 @@ from neo4j import GraphDatabase
 class Maze:
     def __init__(self, maze_name):
         self.maze_name = maze_name
-        neo4j_uri = "bolt://localhost:7687"
+        neo4j_uri = "bolt://database:7687"
         neo4j_user = "neo4j"
         neo4j_password = "password"
         self.driver = GraphDatabase.driver(neo4j_uri, auth=(
@@ -340,25 +340,25 @@ class Maze:
 # Example usage
 
 
-# maze_name = "Rivenwood"
+maze_name = "Rivenwood"
 
-# maze = Maze(maze_name)
+maze = Maze(maze_name)
 
-# pprint.pprint(maze.tree)
+pprint.pprint(maze.tree)
 
-# path = "Rivenwood:Elder Elara's House:Living Room"
-# print(maze.access_tile(path))
-# print(maze.get_section_or_arena_by_id(3867))
-# print(maze.get_tile_path(path, "sector"))
+path = "Rivenwood:Elder Elara's House:Living Room"
+print(maze.access_tile(path))
+print(maze.get_section_or_arena_by_id(3867))
+print(maze.get_tile_path(path, "sector"))
 
-# path = "Rivenwood:Blacksmith Barin's House:Living Quarters"
-# print(maze.get_nearby_tiles(path))
-# maze.add_event_from_tile(("Rivenwood:Blacksmith Barin's House:Living Quarters:Living Quarters", None, None, None), path)
-# print(maze.access_tile(path)["events"])
-# maze.add_event_from_tile(("Rivenwood:Blacksmith Barin's House:Living Quarters:Living Quarters", None, None, None), path)
-# print(maze.access_tile(path)["events"])
+path = "Rivenwood:Blacksmith Barin's House:Living Quarters"
+print(maze.get_nearby_tiles(path))
+maze.add_event_from_tile(("Rivenwood:Blacksmith Barin's House:Living Quarters:Living Quarters", None, None, None), path)
+print(maze.access_tile(path)["events"])
+maze.add_event_from_tile(("Rivenwood:Blacksmith Barin's House:Living Quarters:Living Quarters", None, None, None), path)
+print(maze.access_tile(path)["events"])
 
 # maze.save_tree_as_json("maze_tree.json")
 
 
-# maze.close()
+maze.close()
