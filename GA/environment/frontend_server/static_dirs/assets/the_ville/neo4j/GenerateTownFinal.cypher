@@ -33,7 +33,7 @@ MERGE (bs:Sector {name: "Butcher Shop", description: "Prepares and sells meat pr
 MERGE (ml:Sector {name: "Mill", description: "Grinds grain into flour, essential for food production", location: point({x: -50, y: 150, z: 0}), dimensions: point({x: 40, y: 40, z: 30}), uuid: "uuid-ml"})
 MERGE (sy:Sector {name: "Shipyard", description: "Facility for building and repairing ships", location: point({x: 200, y: -100, z: 0}), dimensions: point({x: 50, y: 50, z: 30}), uuid: "uuid-sy"})
 MERGE (fm:Sector {name: "Fish Market", description: "Sells fresh fish and seafood, crucial for the town's diet", location: point({x: 150, y: -150, z: 0}), dimensions: point({x: 40, y: 40, z: 20}), uuid: "uuid-fm"})
-MERGE (hm:Sector {name: "Harbormaster’s Office", description: "Manages dock operations and maritime activities", location: point({x: 200, y: -150, z: 0}), dimensions: point({x: 30, y: 30, z: 20}), uuid: "uuid-hm"})
+MERGE (hm:Sector {name: "Harbormaster's Office", description: "Manages dock operations and maritime activities", location: point({x: 200, y: -150, z: 0}), dimensions: point({x: 30, y: 30, z: 20}), uuid: "uuid-hm"})
 
 
 // Create People in the Town
@@ -209,54 +209,209 @@ MERGE (rA1_1_1:Arena {name: "Living Room", description: "Living Room of Elder El
 MERGE (rA1_1_2:Arena {name: "Bedroom", description: "Bedroom of Elder Elara's House", location: point({x: 85, y: 10, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rA1_1_2"})
 MERGE (rA1_1_3:Arena {name: "Kitchen", description: "Kitchen of Elder Elara's House", location: point({x: 70, y: 25, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rA1_1_3"})
 MERGE (rA1_1_4:Arena {name: "Library", description: "Library of Elder Elara's House", location: point({x: 85, y: 25, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rA1_1_4"})
+MERGE (rA1_1_5:Arena {name: "Study", description: "Study room for reading and writing", location: point({x: 100, y: 25, z: 0}), dimensions: point({x: 10, y: 10, z: 10}), uuid: "uuid-rA1_1_5"})
+MERGE (rA1_1_6:Arena {name: "Storage Room", description: "Room for storing various items", location: point({x: 70, y: 35, z: 0}), dimensions: point({x: 10, y: 10, z: 10}), uuid: "uuid-rA1_1_6"})
+MERGE (rA1_1_7:Arena {name: "Garden", description: "Small garden for growing herbs and vegetables", location: point({x: 85, y: 35, z: 0}), dimensions: point({x: 15, y: 15, z: 0}), uuid: "uuid-rA1_1_7"})
+MERGE (rA1_1_8:Arena {name: "Chicken Coop", description: "Area for keeping chickens for eggs and meat", location: point({x: 100, y: 35, z: 0}), dimensions: point({x: 10, y: 10, z: 0}), uuid: "uuid-rA1_1_8"})
+MERGE (rA1_1_9:Arena {name: "Well", description: "Source of water", location: point({x: 85, y: 45, z: 0}), dimensions: point({x: 5, y: 5, z: 0}), uuid: "uuid-rA1_1_9"})
+MERGE (rA1_1_10:Arena {name: "Barn", description: "Barn for housing livestock", location: point({x: 100, y: 45, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rA1_1_10"})
+
 MERGE (hA1_1)-[:HAS_ARENA]->(rA1_1_1)
 MERGE (hA1_1)-[:HAS_ARENA]->(rA1_1_2)
 MERGE (hA1_1)-[:HAS_ARENA]->(rA1_1_3)
 MERGE (hA1_1)-[:HAS_ARENA]->(rA1_1_4)
+MERGE (hA1_1)-[:HAS_ARENA]->(rA1_1_5)
+MERGE (hA1_1)-[:HAS_ARENA]->(rA1_1_6)
+MERGE (hA1_1)-[:HAS_ARENA]->(rA1_1_7)
+MERGE (hA1_1)-[:HAS_ARENA]->(rA1_1_8)
+MERGE (hA1_1)-[:HAS_ARENA]->(rA1_1_9)
+MERGE (hA1_1)-[:HAS_ARENA]->(rA1_1_10)
 
-// Blacksmith Barin's House Arenas
+// Objects in Elder Elara's House
+MERGE (o_a1_1_1:Object {name: "Ornate Chair", description: "Comfortable chair with intricate designs", uuid: "uuid-o_a1_1_1"})
+MERGE (o_a1_1_2:Object {name: "Desk", description: "Large wooden desk", uuid: "uuid-o_a1_1_2"})
+MERGE (o_a1_1_3:Object {name: "Bookshelf", description: "Filled with ancient books", uuid: "uuid-o_a1_1_3"})
+MERGE (o_a1_1_4:Object {name: "Bed", description: "King-sized bed with fine linens", uuid: "uuid-o_a1_1_4"})
+MERGE (o_a1_1_5:Object {name: "Carpet", description: "Luxurious carpet covering the floor", uuid: "uuid-o_a1_1_5"})
+MERGE (o_a1_1_6:Object {name: "Dining Table", description: "Large table for meals", uuid: "uuid-o_a1_1_6"})
+MERGE (o_a1_1_7:Object {name: "Cooking Pot", description: "Large pot for cooking", uuid: "uuid-o_a1_1_7"})
+MERGE (o_a1_1_8:Object {name: "Herb Rack", description: "Rack for drying herbs", uuid: "uuid-o_a1_1_8"})
+MERGE (o_a1_1_9:Object {name: "Quill and Parchment", description: "Writing materials", uuid: "uuid-o_a1_1_9"})
+MERGE (o_a1_1_10:Object {name: "Storage Chest", description: "Chest for storing items", uuid: "uuid-o_a1_1_10"})
+MERGE (o_a1_1_11:Object {name: "Garden Tools", description: "Tools for gardening", uuid: "uuid-o_a1_1_11"})
+MERGE (o_a1_1_12:Object {name: "Chicken Feed", description: "Feed for chickens", uuid: "uuid-o_a1_1_12"})
+MERGE (o_a1_1_13:Object {name: "Bucket", description: "Bucket for drawing water", uuid: "uuid-o_a1_1_13"})
+MERGE (o_a1_1_14:Object {name: "Hay Bale", description: "Hay for livestock", uuid: "uuid-o_a1_1_14"})
+MERGE (o_a1_1_15:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_a1_1_15"})
+MERGE (o_a1_1_16:Object {name: "Cooking Utensils", description: "Various utensils for cooking", uuid: "uuid-o_a1_1_16"})
+MERGE (o_a1_1_17:Object {name: "Larder", description: "Storage for preserved food", uuid: "uuid-o_a1_1_17"})
+
+MERGE (rA1_1_1)-[:HAS_OBJECT]->(o_a1_1_1)
+MERGE (rA1_1_1)-[:HAS_OBJECT]->(o_a1_1_6)
+MERGE (rA1_1_2)-[:HAS_OBJECT]->(o_a1_1_4)
+MERGE (rA1_1_3)-[:HAS_OBJECT]->(o_a1_1_7)
+MERGE (rA1_1_3)-[:HAS_OBJECT]->(o_a1_1_16)
+MERGE (rA1_1_3)-[:HAS_OBJECT]->(o_a1_1_17)
+MERGE (rA1_1_4)-[:HAS_OBJECT]->(o_a1_1_3)
+MERGE (rA1_1_4)-[:HAS_OBJECT]->(o_a1_1_2)
+MERGE (rA1_1_5)-[:HAS_OBJECT]->(o_a1_1_9)
+MERGE (rA1_1_6)-[:HAS_OBJECT]->(o_a1_1_10)
+MERGE (rA1_1_7)-[:HAS_OBJECT]->(o_a1_1_8)
+MERGE (rA1_1_7)-[:HAS_OBJECT]->(o_a1_1_11)
+MERGE (rA1_1_8)-[:HAS_OBJECT]->(o_a1_1_12)
+MERGE (rA1_1_9)-[:HAS_OBJECT]->(o_a1_1_13)
+MERGE (rA1_1_10)-[:HAS_OBJECT]->(o_a1_1_14)
+MERGE (rA1_1_10)-[:HAS_OBJECT]->(o_a1_1_15)
+
+// Blacksmith Barin's Arenas
 MERGE (rA1_2_1:Arena {name: "Forge", description: "Blacksmith Barin's Forge", location: point({x: 90, y: 10, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rA1_2_1"})
 MERGE (rA1_2_2:Arena {name: "Living Quarters", description: "Living Quarters of Blacksmith Barin", location: point({x: 105, y: 10, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rA1_2_2"})
 MERGE (rA1_2_3:Arena {name: "Storage Room", description: "Storage Room of Blacksmith Barin", location: point({x: 90, y: 25, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rA1_2_3"})
 MERGE (rA1_2_4:Arena {name: "Workshop", description: "Workshop of Blacksmith Barin", location: point({x: 105, y: 25, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rA1_2_4"})
+MERGE (rA1_2_5:Arena {name: "Dining Area", description: "Dining area for meals", location: point({x: 90, y: 40, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rA1_2_5"})
+MERGE (rA1_2_6:Arena {name: "Garden", description: "Garden for growing vegetables and herbs", location: point({x: 105, y: 40, z: 0}), dimensions: point({x: 15, y: 15, z: 0}), uuid: "uuid-rA1_2_6"})
+
 MERGE (hA1_2)-[:HAS_ARENA]->(rA1_2_1)
 MERGE (hA1_2)-[:HAS_ARENA]->(rA1_2_2)
 MERGE (hA1_2)-[:HAS_ARENA]->(rA1_2_3)
 MERGE (hA1_2)-[:HAS_ARENA]->(rA1_2_4)
+MERGE (hA1_2)-[:HAS_ARENA]->(rA1_2_5)
+MERGE (hA1_2)-[:HAS_ARENA]->(rA1_2_6)
 
+// Objects in Blacksmith Barin's Arenas
+MERGE (o_a1_2_1:Object {name: "Anvil", description: "Sturdy anvil for forging", uuid: "uuid-o_a1_2_1"})
+MERGE (o_a1_2_2:Object {name: "Forge", description: "Large forge for heating metal", uuid: "uuid-o_a1_2_2"})
+MERGE (o_a1_2_3:Object {name: "Hammer", description: "Heavy hammer for blacksmithing", uuid: "uuid-o_a1_2_3"})
+MERGE (o_a1_2_4:Object {name: "Simple Bed", description: "Simple bed with basic linens", uuid: "uuid-o_a1_2_4"})
+MERGE (o_a1_2_5:Object {name: "Workbench", description: "Workbench for crafting items", uuid: "uuid-o_a1_2_5"})
+MERGE (o_a1_2_6:Object {name: "Dining Table", description: "Table for meals", uuid: "uuid-o_a1_2_6"})
+MERGE (o_a1_2_7:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_a1_2_7"})
+MERGE (o_a1_2_8:Object {name: "Storage Chest", description: "Chest for storing raw materials and tools", uuid: "uuid-o_a1_2_8"})
+MERGE (o_a1_2_9:Object {name: "Tool Rack", description: "Rack for organizing tools", uuid: "uuid-o_a1_2_9"})
+MERGE (o_a1_2_10:Object {name: "Garden Tools", description: "Tools for gardening", uuid: "uuid-o_a1_2_10"})
+MERGE (o_a1_2_11:Object {name: "Vegetable Patch", description: "Patch for growing vegetables", uuid: "uuid-o_a1_2_11"})
+MERGE (o_a1_2_12:Object {name: "Herb Rack", description: "Rack for drying herbs", uuid: "uuid-o_a1_2_12"})
+MERGE (o_a1_2_13:Object {name: "Firewood Stack", description: "Stack of firewood for heating and cooking", uuid: "uuid-o_a1_2_13"})
+
+MERGE (rA1_2_1)-[:HAS_OBJECT]->(o_a1_2_1)
+MERGE (rA1_2_1)-[:HAS_OBJECT]->(o_a1_2_2)
+MERGE (rA1_2_1)-[:HAS_OBJECT]->(o_a1_2_3)
+MERGE (rA1_2_1)-[:HAS_OBJECT]->(o_a1_2_9)
+MERGE (rA1_2_2)-[:HAS_OBJECT]->(o_a1_2_4)
+MERGE (rA1_2_2)-[:HAS_OBJECT]->(o_a1_2_8)
+MERGE (rA1_2_3)-[:HAS_OBJECT]->(o_a1_2_5)
+MERGE (rA1_2_3)-[:HAS_OBJECT]->(o_a1_2_13)
+MERGE (rA1_2_4)-[:HAS_OBJECT]->(o_a1_2_6)
+MERGE (rA1_2_4)-[:HAS_OBJECT]->(o_a1_2_7)
+MERGE (rA1_2_4)-[:HAS_OBJECT]->(o_a1_2_12)
+MERGE (rA1_2_5)-[:HAS_OBJECT]->(o_a1_2_10)
+MERGE (rA1_2_6)-[:HAS_OBJECT]->(o_a1_2_11)
+MERGE (rA1_2_6)-[:HAS_OBJECT]->(o_a1_2_12)
+
+
+// Farmer Finn's House Arenas
 // Farmer Finn's House Arenas
 MERGE (rA2_1_1:Arena {name: "Living Room", description: "Living Room of Farmer Finn's House", location: point({x: 100, y: 30, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rA2_1_1"})
 MERGE (rA2_1_2:Arena {name: "Barn", description: "Barn of Farmer Finn's House", location: point({x: 115, y: 30, z: 0}), dimensions: point({x: 20, y: 15, z: 10}), uuid: "uuid-rA2_1_2"})
 MERGE (rA2_1_3:Arena {name: "Kitchen", description: "Kitchen of Farmer Finn's House", location: point({x: 100, y: 45, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rA2_1_3"})
 MERGE (rA2_1_4:Arena {name: "Bedroom", description: "Bedroom of Farmer Finn's House", location: point({x: 115, y: 45, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rA2_1_4"})
+MERGE (rA2_1_5:Arena {name: "Storage Room", description: "Storage Room of Farmer Finn's House", location: point({x: 130, y: 30, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rA2_1_5"})
+MERGE (rA2_1_6:Arena {name: "Garden", description: "Garden of Farmer Finn's House", location: point({x: 130, y: 45, z: 0}), dimensions: point({x: 15, y: 15, z: 0}), uuid: "uuid-rA2_1_6"})
+
 MERGE (hA2_1)-[:HAS_ARENA]->(rA2_1_1)
 MERGE (hA2_1)-[:HAS_ARENA]->(rA2_1_2)
 MERGE (hA2_1)-[:HAS_ARENA]->(rA2_1_3)
 MERGE (hA2_1)-[:HAS_ARENA]->(rA2_1_4)
+MERGE (hA2_1)-[:HAS_ARENA]->(rA2_1_5)
+MERGE (hA2_1)-[:HAS_ARENA]->(rA2_1_6)
 
+// Farmer Finn's House Objects
+MERGE (o_a2_1_1:Object {name: "Wooden Table", description: "Sturdy wooden table", uuid: "uuid-o_a2_1_1"})
+MERGE (o_a2_1_2:Object {name: "Chairs", description: "Simple wooden chairs", uuid: "uuid-o_a2_1_2"})
+MERGE (o_a2_1_3:Object {name: "Bed", description: "Modest bed with simple linens", uuid: "uuid-o_a2_1_3"})
+MERGE (o_a2_1_4:Object {name: "Barn Tools", description: "Tools for farming", uuid: "uuid-o_a2_1_4"})
+MERGE (o_a2_1_5:Object {name: "Grain Sack", description: "Sacks of grain for storage", uuid: "uuid-o_a2_1_5"})
+MERGE (o_a2_1_6:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_a2_1_6"})
+MERGE (o_a2_1_7:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_a2_1_7"})
+MERGE (o_a2_1_8:Object {name: "Garden Tools", description: "Tools for gardening", uuid: "uuid-o_a2_1_8"})
+MERGE (o_a2_1_9:Object {name: "Vegetable Patch", description: "Patch for growing vegetables", uuid: "uuid-o_a2_1_9"})
+
+MERGE (rA2_1_1)-[:HAS_OBJECT]->(o_a2_1_1)
+MERGE (rA2_1_1)-[:HAS_OBJECT]->(o_a2_1_2)
+MERGE (rA2_1_2)-[:HAS_OBJECT]->(o_a2_1_4)
+MERGE (rA2_1_3)-[:HAS_OBJECT]->(o_a2_1_3)
+MERGE (rA2_1_3)-[:HAS_OBJECT]->(o_a2_1_6)
+MERGE (rA2_1_3)-[:HAS_OBJECT]->(o_a2_1_7)
+MERGE (rA2_1_4)-[:HAS_OBJECT]->(o_a2_1_5)
+MERGE (rA2_1_6)-[:HAS_OBJECT]->(o_a2_1_8)
+MERGE (rA2_1_6)-[:HAS_OBJECT]->(o_a2_1_9)
+
+
+// Healer Hera's House Arenas
 // Healer Hera's House Arenas
 MERGE (rA2_2_1:Arena {name: "Herbal Room", description: "Herbal Room of Healer Hera", location: point({x: 120, y: 30, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rA2_2_1"})
 MERGE (rA2_2_2:Arena {name: "Living Quarters", description: "Living Quarters of Healer Hera", location: point({x: 135, y: 30, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rA2_2_2"})
 MERGE (rA2_2_3:Arena {name: "Kitchen", description: "Kitchen of Healer Hera", location: point({x: 120, y: 45, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rA2_2_3"})
 MERGE (rA2_2_4:Arena {name: "Storage Room", description: "Storage Room of Healer Hera", location: point({x: 135, y: 45, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rA2_2_4"})
-MERGE (rA2_2_5:Arena {name: "Garden", description: "Garden of Healer Hera", location: point({x: 120, y: 60, z: 0}), dimensions: point({x: 20, y: 15, z: 10}), uuid: "uuid-rA2_2_5"})
+MERGE (rA2_2_5:Arena {name: "Garden", description: "Garden of Healer Hera", location: point({x: 120, y: 60, z: 0}), dimensions: point({x: 20, y: 15, z: 0}), uuid: "uuid-rA2_2_5"})
+
 MERGE (hA2_2)-[:HAS_ARENA]->(rA2_2_1)
 MERGE (hA2_2)-[:HAS_ARENA]->(rA2_2_2)
 MERGE (hA2_2)-[:HAS_ARENA]->(rA2_2_3)
 MERGE (hA2_2)-[:HAS_ARENA]->(rA2_2_4)
 MERGE (hA2_2)-[:HAS_ARENA]->(rA2_2_5)
 
+// Healer Hera's House Objects
+MERGE (o_a2_2_1:Object {name: "Herb Shelf", description: "Shelf filled with various herbs", uuid: "uuid-o_a2_2_1"})
+MERGE (o_a2_2_2:Object {name: "Mortar and Pestle", description: "Used for grinding herbs", uuid: "uuid-o_a2_2_2"})
+MERGE (o_a2_2_3:Object {name: "Bed", description: "Comfortable bed with soft linens", uuid: "uuid-o_a2_2_3"})
+MERGE (o_a2_2_4:Object {name: "Wooden Chair", description: "Simple wooden chair", uuid: "uuid-o_a2_2_4"})
+MERGE (o_a2_2_5:Object {name: "Garden Tools", description: "Tools for gardening", uuid: "uuid-o_a2_2_5"})
+MERGE (o_a2_2_6:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_a2_2_6"})
+MERGE (o_a2_2_7:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_a2_2_7"})
+MERGE (o_a2_2_8:Object {name: "Herb Rack", description: "Rack for drying herbs", uuid: "uuid-o_a2_2_8"})
+
+MERGE (rA2_2_1)-[:HAS_OBJECT]->(o_a2_2_1)
+MERGE (rA2_2_1)-[:HAS_OBJECT]->(o_a2_2_2)
+MERGE (rA2_2_2)-[:HAS_OBJECT]->(o_a2_2_3)
+MERGE (rA2_2_2)-[:HAS_OBJECT]->(o_a2_2_4)
+MERGE (rA2_2_3)-[:HAS_OBJECT]->(o_a2_2_6)
+MERGE (rA2_2_3)-[:HAS_OBJECT]->(o_a2_2_7)
+MERGE (rA2_2_5)-[:HAS_OBJECT]->(o_a2_2_5)
+MERGE (rA2_2_5)-[:HAS_OBJECT]->(o_a2_2_8)
+
+
+// Merchant Morgan's House Arenas
 // Merchant Morgan's House Arenas
 MERGE (rB1_1_1:Arena {name: "Trading Room", description: "Trading Room of Merchant Morgan", location: point({x: -100, y: 30, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rB1_1_1"})
 MERGE (rB1_1_2:Arena {name: "Living Quarters", description: "Living Quarters of Merchant Morgan", location: point({x: -85, y: 30, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rB1_1_2"})
 MERGE (rB1_1_3:Arena {name: "Kitchen", description: "Kitchen of Merchant Morgan", location: point({x: -100, y: 45, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rB1_1_3"})
 MERGE (rB1_1_4:Arena {name: "Office", description: "Office of Merchant Morgan", location: point({x: -85, y: 45, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rB1_1_4"})
 MERGE (rB1_1_5:Arena {name: "Storage Room", description: "Storage Room of Merchant Morgan", location: point({x: -70, y: 45, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rB1_1_5"})
+
 MERGE (hB1_1)-[:HAS_ARENA]->(rB1_1_1)
 MERGE (hB1_1)-[:HAS_ARENA]->(rB1_1_2)
 MERGE (hB1_1)-[:HAS_ARENA]->(rB1_1_3)
 MERGE (hB1_1)-[:HAS_ARENA]->(rB1_1_4)
 MERGE (hB1_1)-[:HAS_ARENA]->(rB1_1_5)
+
+// Merchant Morgan's House Objects
+MERGE (o_b1_1_1:Object {name: "Trading Ledger", description: "Ledger for keeping trade records", uuid: "uuid-o_b1_1_1"})
+MERGE (o_b1_1_2:Object {name: "Chest", description: "Chest for storing valuable items", uuid: "uuid-o_b1_1_2"})
+MERGE (o_b1_1_3:Object {name: "Bed", description: "Luxurious bed with fine linens", uuid: "uuid-o_b1_1_3"})
+MERGE (o_b1_1_4:Object {name: "Dining Table", description: "Large dining table", uuid: "uuid-o_b1_1_4"})
+MERGE (o_b1_1_5:Object {name: "Bookshelf", description: "Bookshelf filled with trade books", uuid: "uuid-o_b1_1_5"})
+MERGE (o_b1_1_6:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_b1_1_6"})
+MERGE (o_b1_1_7:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_b1_1_7"})
+
+MERGE (rB1_1_1)-[:HAS_OBJECT]->(o_b1_1_1)
+MERGE (rB1_1_2)-[:HAS_OBJECT]->(o_b1_1_3)
+MERGE (rB1_1_3)-[:HAS_OBJECT]->(o_b1_1_4)
+MERGE (rB1_1_3)-[:HAS_OBJECT]->(o_b1_1_6)
+MERGE (rB1_1_3)-[:HAS_OBJECT]->(o_b1_1_7)
+MERGE (rB1_1_4)-[:HAS_OBJECT]->(o_b1_1_5)
+MERGE (rB1_1_5)-[:HAS_OBJECT]->(o_b1_1_2)
+
 
 // Guard Captain Garen's House Arenas
 MERGE (rB1_2_1:Arena {name: "Office", description: "Office of Guard Captain Garen", location: point({x: -120, y: 30, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rB1_2_1"})
@@ -264,11 +419,32 @@ MERGE (rB1_2_2:Arena {name: "Living Quarters", description: "Living Quarters of 
 MERGE (rB1_2_3:Arena {name: "Armory", description: "Armory of Guard Captain Garen", location: point({x: -120, y: 45, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rB1_2_3"})
 MERGE (rB1_2_4:Arena {name: "Training Room", description: "Training Room of Guard Captain Garen", location: point({x: -135, y: 45, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rB1_2_4"})
 MERGE (rB1_2_5:Arena {name: "Kitchen", description: "Kitchen of Guard Captain Garen", location: point({x: -150, y: 45, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rB1_2_5"})
+MERGE (rB1_2_6:Arena {name: "Dining Room", description: "Dining Room of Guard Captain Garen", location: point({x: -150, y: 30, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rB1_2_6"})
+
 MERGE (hB1_2)-[:HAS_ARENA]->(rB1_2_1)
 MERGE (hB1_2)-[:HAS_ARENA]->(rB1_2_2)
 MERGE (hB1_2)-[:HAS_ARENA]->(rB1_2_3)
 MERGE (hB1_2)-[:HAS_ARENA]->(rB1_2_4)
 MERGE (hB1_2)-[:HAS_ARENA]->(rB1_2_5)
+MERGE (hB1_2)-[:HAS_ARENA]->(rB1_2_6)
+
+// Guard Captain Garen's House Objects
+MERGE (o_b1_2_1:Object {name: "Armor Stand", description: "Stand for displaying armor", uuid: "uuid-o_b1_2_1"})
+MERGE (o_b1_2_2:Object {name: "Weapon Rack", description: "Rack for storing weapons", uuid: "uuid-o_b1_2_2"})
+MERGE (o_b1_2_3:Object {name: "Bed", description: "Sturdy bed with military-style linens", uuid: "uuid-o_b1_2_3"})
+MERGE (o_b1_2_4:Object {name: "Training Dummy", description: "Dummy for training exercises", uuid: "uuid-o_b1_2_4"})
+MERGE (o_b1_2_5:Object {name: "Dining Table", description: "Simple dining table", uuid: "uuid-o_b1_2_5"})
+MERGE (o_b1_2_6:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_b1_2_6"})
+MERGE (o_b1_2_7:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_b1_2_7"})
+
+MERGE (rB1_2_1)-[:HAS_OBJECT]->(o_b1_2_1)
+MERGE (rB1_2_1)-[:HAS_OBJECT]->(o_b1_2_2)
+MERGE (rB1_2_2)-[:HAS_OBJECT]->(o_b1_2_3)
+MERGE (rB1_2_3)-[:HAS_OBJECT]->(o_b1_2_4)
+MERGE (rB1_2_5)-[:HAS_OBJECT]->(o_b1_2_6)
+MERGE (rB1_2_5)-[:HAS_OBJECT]->(o_b1_2_7)
+MERGE (rB1_2_6)-[:HAS_OBJECT]->(o_b1_2_5)
+
 
 // Carpenter Colin's House Arenas
 MERGE (rC1_1_1:Arena {name: "Workshop", description: "Workshop of Carpenter Colin", location: point({x: -70, y: 50, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rC1_1_1"})
@@ -276,11 +452,30 @@ MERGE (rC1_1_2:Arena {name: "Living Quarters", description: "Living Quarters of 
 MERGE (rC1_1_3:Arena {name: "Storage Room", description: "Storage Room of Carpenter Colin", location: point({x: -70, y: 65, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC1_1_3"})
 MERGE (rC1_1_4:Arena {name: "Kitchen", description: "Kitchen of Carpenter Colin", location: point({x: -55, y: 65, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC1_1_4"})
 MERGE (rC1_1_5:Arena {name: "Showroom", description: "Showroom of Carpenter Colin", location: point({x: -40, y: 65, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rC1_1_5"})
+
 MERGE (hC1_1)-[:HAS_ARENA]->(rC1_1_1)
 MERGE (hC1_1)-[:HAS_ARENA]->(rC1_1_2)
 MERGE (hC1_1)-[:HAS_ARENA]->(rC1_1_3)
 MERGE (hC1_1)-[:HAS_ARENA]->(rC1_1_4)
 MERGE (hC1_1)-[:HAS_ARENA]->(rC1_1_5)
+
+// Carpenter Colin's House Objects
+MERGE (o_c1_1_1:Object {name: "Workbench", description: "Workbench for carpentry", uuid: "uuid-o_c1_1_1"})
+MERGE (o_c1_1_2:Object {name: "Toolbox", description: "Box containing carpentry tools", uuid: "uuid-o_c1_1_2"})
+MERGE (o_c1_1_3:Object {name: "Bed", description: "Simple bed with basic linens", uuid: "uuid-o_c1_1_3"})
+MERGE (o_c1_1_4:Object {name: "Wooden Chair", description: "Handcrafted wooden chair", uuid: "uuid-o_c1_1_4"})
+MERGE (o_c1_1_5:Object {name: "Wooden Table", description: "Handcrafted wooden table", uuid: "uuid-o_c1_1_5"})
+MERGE (o_c1_1_6:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_c1_1_6"})
+MERGE (o_c1_1_7:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_c1_1_7"})
+
+MERGE (rC1_1_1)-[:HAS_OBJECT]->(o_c1_1_1)
+MERGE (rC1_1_1)-[:HAS_OBJECT]->(o_c1_1_2)
+MERGE (rC1_1_2)-[:HAS_OBJECT]->(o_c1_1_3)
+MERGE (rC1_1_3)-[:HAS_OBJECT]->(o_c1_1_4)
+MERGE (rC1_1_4)-[:HAS_OBJECT]->(o_c1_1_5)
+MERGE (rC1_1_4)-[:HAS_OBJECT]->(o_c1_1_7)
+MERGE (rC1_1_4)-[:HAS_OBJECT]->(o_c1_1_6)
+
 
 // Tailor Talia's House Arenas
 MERGE (rC1_2_1:Arena {name: "Tailoring Room", description: "Tailoring Room of Tailor Talia", location: point({x: -90, y: 50, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC1_2_1"})
@@ -288,11 +483,30 @@ MERGE (rC1_2_2:Arena {name: "Living Quarters", description: "Living Quarters of 
 MERGE (rC1_2_3:Arena {name: "Storage Room", description: "Storage Room of Tailor Talia", location: point({x: -90, y: 65, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC1_2_3"})
 MERGE (rC1_2_4:Arena {name: "Kitchen", description: "Kitchen of Tailor Talia", location: point({x: -75, y: 65, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC1_2_4"})
 MERGE (rC1_2_5:Arena {name: "Showroom", description: "Showroom of Tailor Talia", location: point({x: -60, y: 65, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rC1_2_5"})
+
 MERGE (hC1_2)-[:HAS_ARENA]->(rC1_2_1)
 MERGE (hC1_2)-[:HAS_ARENA]->(rC1_2_2)
 MERGE (hC1_2)-[:HAS_ARENA]->(rC1_2_3)
 MERGE (hC1_2)-[:HAS_ARENA]->(rC1_2_4)
 MERGE (hC1_2)-[:HAS_ARENA]->(rC1_2_5)
+
+// Tailor Talia's House Objects
+MERGE (o_c1_2_1:Object {name: "Sewing Machine", description: "Sewing machine for tailoring", uuid: "uuid-o_c1_2_1"})
+MERGE (o_c1_2_2:Object {name: "Fabric Roll", description: "Rolls of fabric for making clothes", uuid: "uuid-o_c1_2_2"})
+MERGE (o_c1_2_3:Object {name: "Mannequin", description: "Mannequin for displaying clothes", uuid: "uuid-o_c1_2_3"})
+MERGE (o_c1_2_4:Object {name: "Bed", description: "Comfortable bed with soft linens", uuid: "uuid-o_c1_2_4"})
+MERGE (o_c1_2_5:Object {name: "Ironing Board", description: "Board for ironing clothes", uuid: "uuid-o_c1_2_5"})
+MERGE (o_c1_2_6:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_c1_2_6"})
+MERGE (o_c1_2_7:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_c1_2_7"})
+
+MERGE (rC1_2_1)-[:HAS_OBJECT]->(o_c1_2_1)
+MERGE (rC1_2_1)-[:HAS_OBJECT]->(o_c1_2_2)
+MERGE (rC1_2_2)-[:HAS_OBJECT]->(o_c1_2_3)
+MERGE (rC1_2_2)-[:HAS_OBJECT]->(o_c1_2_4)
+MERGE (rC1_2_3)-[:HAS_OBJECT]->(o_c1_2_5)
+MERGE (rC1_2_4)-[:HAS_OBJECT]->(o_c1_2_6)
+MERGE (rC1_2_4)-[:HAS_OBJECT]->(o_c1_2_7)
+
 
 // Baker Bella's House Arenas
 MERGE (rC2_1_1:Arena {name: "Bakery", description: "Bakery of Baker Bella", location: point({x: 70, y: -50, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC2_1_1"})
@@ -300,11 +514,30 @@ MERGE (rC2_1_2:Arena {name: "Living Quarters", description: "Living Quarters of 
 MERGE (rC2_1_3:Arena {name: "Storage Room", description: "Storage Room of Baker Bella", location: point({x: 70, y: -65, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC2_1_3"})
 MERGE (rC2_1_4:Arena {name: "Kitchen", description: "Kitchen of Baker Bella", location: point({x: 85, y: -65, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC2_1_4"})
 MERGE (rC2_1_5:Arena {name: "Dining Room", description: "Dining Room of Baker Bella", location: point({x: 100, y: -65, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC2_1_5"})
+
 MERGE (hC2_1)-[:HAS_ARENA]->(rC2_1_1)
 MERGE (hC2_1)-[:HAS_ARENA]->(rC2_1_2)
 MERGE (hC2_1)-[:HAS_ARENA]->(rC2_1_3)
 MERGE (hC2_1)-[:HAS_ARENA]->(rC2_1_4)
 MERGE (hC2_1)-[:HAS_ARENA]->(rC2_1_5)
+
+// Baker Bella's House Objects
+MERGE (o_c2_1_1:Object {name: "Oven", description: "Large oven for baking", uuid: "uuid-o_c2_1_1"})
+MERGE (o_c2_1_2:Object {name: "Mixing Bowl", description: "Bowl for mixing ingredients", uuid: "uuid-o_c2_1_2"})
+MERGE (o_c2_1_3:Object {name: "Bread Rack", description: "Rack for cooling bread", uuid: "uuid-o_c2_1_3"})
+MERGE (o_c2_1_4:Object {name: "Bed", description: "Comfortable bed with warm blankets", uuid: "uuid-o_c2_1_4"})
+MERGE (o_c2_1_5:Object {name: "Dining Table", description: "Simple dining table", uuid: "uuid-o_c2_1_5"})
+MERGE (o_c2_1_6:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_c2_1_6"})
+MERGE (o_c2_1_7:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_c2_1_7"})
+
+MERGE (rC2_1_1)-[:HAS_OBJECT]->(o_c2_1_1)
+MERGE (rC2_1_1)-[:HAS_OBJECT]->(o_c2_1_2)
+MERGE (rC2_1_1)-[:HAS_OBJECT]->(o_c2_1_3)
+MERGE (rC2_1_2)-[:HAS_OBJECT]->(o_c2_1_4)
+MERGE (rC2_1_3)-[:HAS_OBJECT]->(o_c2_1_5)
+MERGE (rC2_1_4)-[:HAS_OBJECT]->(o_c2_1_6)
+MERGE (rC2_1_4)-[:HAS_OBJECT]->(o_c2_1_7)
+
 
 // Fisherman Finn's House Arenas
 MERGE (rC2_2_1:Arena {name: "Fishing Gear Room", description: "Fishing Gear Room of Fisherman Finn", location: point({x: 90, y: -50, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC2_2_1"})
@@ -312,11 +545,30 @@ MERGE (rC2_2_2:Arena {name: "Living Quarters", description: "Living Quarters of 
 MERGE (rC2_2_3:Arena {name: "Storage Room", description: "Storage Room of Fisherman Finn", location: point({x: 90, y: -65, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC2_2_3"})
 MERGE (rC2_2_4:Arena {name: "Kitchen", description: "Kitchen of Fisherman Finn", location: point({x: 105, y: -65, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC2_2_4"})
 MERGE (rC2_2_5:Arena {name: "Dining Room", description: "Dining Room of Fisherman Finn", location: point({x: 120, y: -65, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rC2_2_5"})
+
 MERGE (hC2_2)-[:HAS_ARENA]->(rC2_2_1)
 MERGE (hC2_2)-[:HAS_ARENA]->(rC2_2_2)
 MERGE (hC2_2)-[:HAS_ARENA]->(rC2_2_3)
 MERGE (hC2_2)-[:HAS_ARENA]->(rC2_2_4)
 MERGE (hC2_2)-[:HAS_ARENA]->(rC2_2_5)
+
+// Fisherman Finn's House Objects
+MERGE (o_c2_2_1:Object {name: "Fishing Net", description: "Net for catching fish", uuid: "uuid-o_c2_2_1"})
+MERGE (o_c2_2_2:Object {name: "Fishing Rod", description: "Rod for fishing", uuid: "uuid-o_c2_2_2"})
+MERGE (o_c2_2_3:Object {name: "Boat", description: "Small fishing boat", uuid: "uuid-o_c2_2_3"})
+MERGE (o_c2_2_4:Object {name: "Bed", description: "Simple bed with basic linens", uuid: "uuid-o_c2_2_4"})
+MERGE (o_c2_2_5:Object {name: "Dining Table", description: "Sturdy wooden table", uuid: "uuid-o_c2_2_5"})
+MERGE (o_c2_2_6:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_c2_2_6"})
+MERGE (o_c2_2_7:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_c2_2_7"})
+
+MERGE (rC2_2_1)-[:HAS_OBJECT]->(o_c2_2_1)
+MERGE (rC2_2_1)-[:HAS_OBJECT]->(o_c2_2_2)
+MERGE (rC2_2_1)-[:HAS_OBJECT]->(o_c2_2_3)
+MERGE (rC2_2_2)-[:HAS_OBJECT]->(o_c2_2_4)
+MERGE (rC2_2_3)-[:HAS_OBJECT]->(o_c2_2_5)
+MERGE (rC2_2_4)-[:HAS_OBJECT]->(o_c2_2_6)
+MERGE (rC2_2_4)-[:HAS_OBJECT]->(o_c2_2_7)
+
 
 // Shopkeeper Sara's Shop Arenas
 MERGE (rD1_1_1:Arena {name: "Shop Floor", description: "Shop Floor of Shopkeeper Sara", location: point({x: 100, y: -70, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD1_1_1"})
@@ -324,11 +576,30 @@ MERGE (rD1_1_2:Arena {name: "Storage Room", description: "Storage Room of Shopke
 MERGE (rD1_1_3:Arena {name: "Living Quarters", description: "Living Quarters of Shopkeeper Sara", location: point({x: 100, y: -85, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD1_1_3"})
 MERGE (rD1_1_4:Arena {name: "Kitchen", description: "Kitchen of Shopkeeper Sara", location: point({x: 115, y: -85, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD1_1_4"})
 MERGE (rD1_1_5:Arena {name: "Office", description: "Office of Shopkeeper Sara", location: point({x: 130, y: -85, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD1_1_5"})
+
 MERGE (hD1_1)-[:HAS_ARENA]->(rD1_1_1)
 MERGE (hD1_1)-[:HAS_ARENA]->(rD1_1_2)
 MERGE (hD1_1)-[:HAS_ARENA]->(rD1_1_3)
 MERGE (hD1_1)-[:HAS_ARENA]->(rD1_1_4)
 MERGE (hD1_1)-[:HAS_ARENA]->(rD1_1_5)
+
+// Shopkeeper Sara's Shop Objects
+MERGE (o_d1_1_1:Object {name: "Counter", description: "Counter for serving customers", uuid: "uuid-o_d1_1_1"})
+MERGE (o_d1_1_2:Object {name: "Shelves", description: "Shelves for displaying goods", uuid: "uuid-o_d1_1_2"})
+MERGE (o_d1_1_3:Object {name: "Storage Boxes", description: "Boxes for storing stock", uuid: "uuid-o_d1_1_3"})
+MERGE (o_d1_1_4:Object {name: "Bed", description: "Simple bed with basic linens", uuid: "uuid-o_d1_1_4"})
+MERGE (o_d1_1_5:Object {name: "Cash Register", description: "Register for handling transactions", uuid: "uuid-o_d1_1_5"})
+MERGE (o_d1_1_6:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_d1_1_6"})
+MERGE (o_d1_1_7:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_d1_1_7"})
+
+MERGE (rD1_1_1)-[:HAS_OBJECT]->(o_d1_1_1)
+MERGE (rD1_1_1)-[:HAS_OBJECT]->(o_d1_1_2)
+MERGE (rD1_1_2)-[:HAS_OBJECT]->(o_d1_1_3)
+MERGE (rD1_1_3)-[:HAS_OBJECT]->(o_d1_1_4)
+MERGE (rD1_1_4)-[:HAS_OBJECT]->(o_d1_1_6)
+MERGE (rD1_1_4)-[:HAS_OBJECT]->(o_d1_1_7)
+MERGE (rD1_1_5)-[:HAS_OBJECT]->(o_d1_1_5)
+
 
 // Innkeeper Ian's Inn Arenas
 MERGE (rD1_2_1:Arena {name: "Common Room", description: "Common Room of Innkeeper Ian", location: point({x: 120, y: -70, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rD1_2_1"})
@@ -336,11 +607,28 @@ MERGE (rD1_2_2:Arena {name: "Guest Rooms", description: "Guest Rooms of Innkeepe
 MERGE (rD1_2_3:Arena {name: "Dining Room", description: "Dining Room of Innkeeper Ian", location: point({x: 120, y: -85, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD1_2_3"})
 MERGE (rD1_2_4:Arena {name: "Kitchen", description: "Kitchen of Innkeeper Ian", location: point({x: 135, y: -85, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD1_2_4"})
 MERGE (rD1_2_5:Arena {name: "Storage Room", description: "Storage Room of Innkeeper Ian", location: point({x: 150, y: -85, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD1_2_5"})
+
 MERGE (hD1_2)-[:HAS_ARENA]->(rD1_2_1)
 MERGE (hD1_2)-[:HAS_ARENA]->(rD1_2_2)
 MERGE (hD1_2)-[:HAS_ARENA]->(rD1_2_3)
 MERGE (hD1_2)-[:HAS_ARENA]->(rD1_2_4)
 MERGE (hD1_2)-[:HAS_ARENA]->(rD1_2_5)
+
+// Innkeeper Ian's Inn Objects
+MERGE (o_d1_2_1:Object {name: "Bar Counter", description: "Counter for serving drinks", uuid: "uuid-o_d1_2_1"})
+MERGE (o_d1_2_2:Object {name: "Table", description: "Dining tables", uuid: "uuid-o_d1_2_2"})
+MERGE (o_d1_2_3:Object {name: "Bed", description: "Beds in guest rooms", uuid: "uuid-o_d1_2_3"})
+MERGE (o_d1_2_4:Object {name: "Fireplace", description: "Cozy fireplace in the common room", uuid: "uuid-o_d1_2_4"})
+MERGE (o_d1_2_5:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_d1_2_5"})
+MERGE (o_d1_2_6:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_d1_2_6"})
+
+MERGE (rD1_2_1)-[:HAS_OBJECT]->(o_d1_2_1)
+MERGE (rD1_2_1)-[:HAS_OBJECT]->(o_d1_2_4)
+MERGE (rD1_2_2)-[:HAS_OBJECT]->(o_d1_2_3)
+MERGE (rD1_2_3)-[:HAS_OBJECT]->(o_d1_2_2)
+MERGE (rD1_2_4)-[:HAS_OBJECT]->(o_d1_2_5)
+MERGE (rD1_2_4)-[:HAS_OBJECT]->(o_d1_2_6)
+
 
 // Craftsman Caleb's Workshop Arenas
 MERGE (rD2_1_1:Arena {name: "Workshop Floor", description: "Workshop Floor of Craftsman Caleb", location: point({x: -100, y: -70, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rD2_1_1"})
@@ -348,35 +636,98 @@ MERGE (rD2_1_2:Arena {name: "Living Quarters", description: "Living Quarters of 
 MERGE (rD2_1_3:Arena {name: "Storage Room", description: "Storage Room of Craftsman Caleb", location: point({x: -100, y: -85, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD2_1_3"})
 MERGE (rD2_1_4:Arena {name: "Kitchen", description: "Kitchen of Craftsman Caleb", location: point({x: -85, y: -85, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD2_1_4"})
 MERGE (rD2_1_5:Arena {name: "Showroom", description: "Showroom of Craftsman Caleb", location: point({x: -70, y: -85, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rD2_1_5"})
+
 MERGE (hD2_1)-[:HAS_ARENA]->(rD2_1_1)
 MERGE (hD2_1)-[:HAS_ARENA]->(rD2_1_2)
 MERGE (hD2_1)-[:HAS_ARENA]->(rD2_1_3)
 MERGE (hD2_1)-[:HAS_ARENA]->(rD2_1_4)
 MERGE (hD2_1)-[:HAS_ARENA]->(rD2_1_5)
 
+// Craftsman Caleb's Workshop Objects
+MERGE (o_d2_1_1:Object {name: "Workbench", description: "Workbench for crafting items", uuid: "uuid-o_d2_1_1"})
+MERGE (o_d2_1_2:Object {name: "Toolbox", description: "Box containing various tools", uuid: "uuid-o_d2_1_2"})
+MERGE (o_d2_1_3:Object {name: "Bed", description: "Simple bed with basic linens", uuid: "uuid-o_d2_1_3"})
+MERGE (o_d2_1_4:Object {name: "Wooden Chair", description: "Handcrafted wooden chair", uuid: "uuid-o_d2_1_4"})
+MERGE (o_d2_1_5:Object {name: "Wooden Table", description: "Handcrafted wooden table", uuid: "uuid-o_d2_1_5"})
+MERGE (o_d2_1_6:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_d2_1_6"})
+MERGE (o_d2_1_7:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_d2_1_7"})
+
+MERGE (rD2_1_1)-[:HAS_OBJECT]->(o_d2_1_1)
+MERGE (rD2_1_1)-[:HAS_OBJECT]->(o_d2_1_2)
+MERGE (rD2_1_2)-[:HAS_OBJECT]->(o_d2_1_3)
+MERGE (rD2_1_3)-[:HAS_OBJECT]->(o_d2_1_4)
+MERGE (rD2_1_4)-[:HAS_OBJECT]->(o_d2_1_5)
+MERGE (rD2_1_4)-[:HAS_OBJECT]->(o_d2_1_7)
+MERGE (rD2_1_4)-[:HAS_OBJECT]->(o_d2_1_6)
+
+
+// Alchemist Alana's Alchemy Shop Arenas
 // Alchemist Alana's Alchemy Shop Arenas
 MERGE (rD2_2_1:Arena {name: "Alchemy Lab", description: "Alchemy Lab of Alchemist Alana", location: point({x: -120, y: -70, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD2_2_1"})
 MERGE (rD2_2_2:Arena {name: "Storage Room", description: "Storage Room of Alchemist Alana", location: point({x: -105, y: -70, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD2_2_2"})
 MERGE (rD2_2_3:Arena {name: "Living Quarters", description: "Living Quarters of Alchemist Alana", location: point({x: -120, y: -85, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD2_2_3"})
 MERGE (rD2_2_4:Arena {name: "Kitchen", description: "Kitchen of Alchemist Alana", location: point({x: -105, y: -85, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rD2_2_4"})
-MERGE (rD2_2_5:Arena {name: "Garden", description: "Garden of Alchemist Alana", location: point({x: -90, y: -85, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rD2_2_5"})
+MERGE (rD2_2_5:Arena {name: "Garden", description: "Garden of Alchemist Alana", location: point({x: -90, y: -85, z: 0}), dimensions: point({x: 15, y: 15, z: 0}), uuid: "uuid-rD2_2_5"})
+
 MERGE (hD2_2)-[:HAS_ARENA]->(rD2_2_1)
 MERGE (hD2_2)-[:HAS_ARENA]->(rD2_2_2)
 MERGE (hD2_2)-[:HAS_ARENA]->(rD2_2_3)
 MERGE (hD2_2)-[:HAS_ARENA]->(rD2_2_4)
 MERGE (hD2_2)-[:HAS_ARENA]->(rD2_2_5)
 
+// Alchemist Alana's Alchemy Shop Objects
+MERGE (o_d2_2_1:Object {name: "Alchemy Table", description: "Table for mixing potions", uuid: "uuid-o_d2_2_1"})
+MERGE (o_d2_2_2:Object {name: "Herb Cabinet", description: "Cabinet for storing herbs", uuid: "uuid-o_d2_2_2"})
+MERGE (o_d2_2_3:Object {name: "Mortar and Pestle", description: "Used for grinding herbs", uuid: "uuid-o_d2_2_3"})
+MERGE (o_d2_2_4:Object {name: "Bed", description: "Comfortable bed with soft linens", uuid: "uuid-o_d2_2_4"})
+MERGE (o_d2_2_5:Object {name: "Bookshelf", description: "Shelf filled with alchemical texts", uuid: "uuid-o_d2_2_5"})
+MERGE (o_d2_2_6:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_d2_2_6"})
+MERGE (o_d2_2_7:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_d2_2_7"})
+MERGE (o_d2_2_8:Object {name: "Garden Tools", description: "Tools for gardening", uuid: "uuid-o_d2_2_8"})
+MERGE (o_d2_2_9:Object {name: "Herb Rack", description: "Rack for drying herbs", uuid: "uuid-o_d2_2_9"})
+
+MERGE (rD2_2_1)-[:HAS_OBJECT]->(o_d2_2_1)
+MERGE (rD2_2_1)-[:HAS_OBJECT]->(o_d2_2_2)
+MERGE (rD2_2_1)-[:HAS_OBJECT]->(o_d2_2_3)
+MERGE (rD2_2_2)-[:HAS_OBJECT]->(o_d2_2_5)
+MERGE (rD2_2_3)-[:HAS_OBJECT]->(o_d2_2_4)
+MERGE (rD2_2_4)-[:HAS_OBJECT]->(o_d2_2_7)
+MERGE (rD2_2_4)-[:HAS_OBJECT]->(o_d2_2_6)
+MERGE (rD2_2_5)-[:HAS_OBJECT]->(o_d2_2_8)
+MERGE (rD2_2_5)-[:HAS_OBJECT]->(o_d2_2_9)
+
+
+// Sailor Sam's House Arenas
 // Sailor Sam's House Arenas
 MERGE (rE1_1_1:Arena {name: "Living Room", description: "Living Room of Sailor Sam's House", location: point({x: -100, y: -90, z: 0}), dimensions: point({x: 15, y: 15, z: 10}), uuid: "uuid-rE1_1_1"})
 MERGE (rE1_1_2:Arena {name: "Bedroom", description: "Bedroom of Sailor Sam's House", location: point({x: -85, y: -90, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rE1_1_2"})
 MERGE (rE1_1_3:Arena {name: "Kitchen", description: "Kitchen of Sailor Sam's House", location: point({x: -100, y: -105, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rE1_1_3"})
 MERGE (rE1_1_4:Arena {name: "Storage Room", description: "Storage Room of Sailor Sam's House", location: point({x: -85, y: -105, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rE1_1_4"})
 MERGE (rE1_1_5:Arena {name: "Dining Room", description: "Dining Room of Sailor Sam's House", location: point({x: -70, y: -105, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rE1_1_5"})
+
 MERGE (hE1_1)-[:HAS_ARENA]->(rE1_1_1)
 MERGE (hE1_1)-[:HAS_ARENA]->(rE1_1_2)
 MERGE (hE1_1)-[:HAS_ARENA]->(rE1_1_3)
 MERGE (hE1_1)-[:HAS_ARENA]->(rE1_1_4)
 MERGE (hE1_1)-[:HAS_ARENA]->(rE1_1_5)
+
+// Sailor Sam's House Objects
+MERGE (o_e1_1_1:Object {name: "Fishing Net", description: "Net for catching fish", uuid: "uuid-o_e1_1_1"})
+MERGE (o_e1_1_2:Object {name: "Fishing Rod", description: "Rod for fishing", uuid: "uuid-o_e1_1_2"})
+MERGE (o_e1_1_3:Object {name: "Boat", description: "Small fishing boat", uuid: "uuid-o_e1_1_3"})
+MERGE (o_e1_1_4:Object {name: "Bed", description: "Simple bed with basic linens", uuid: "uuid-o_e1_1_4"})
+MERGE (o_e1_1_5:Object {name: "Dining Table", description: "Sturdy wooden table", uuid: "uuid-o_e1_1_5"})
+MERGE (o_e1_1_6:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_e1_1_6"})
+MERGE (o_e1_1_7:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_e1_1_7"})
+
+MERGE (rE1_1_1)-[:HAS_OBJECT]->(o_e1_1_1)
+MERGE (rE1_1_1)-[:HAS_OBJECT]->(o_e1_1_2)
+MERGE (rE1_1_1)-[:HAS_OBJECT]->(o_e1_1_3)
+MERGE (rE1_1_2)-[:HAS_OBJECT]->(o_e1_1_4)
+MERGE (rE1_1_3)-[:HAS_OBJECT]->(o_e1_1_5)
+MERGE (rE1_1_3)-[:HAS_OBJECT]->(o_e1_1_7)
+MERGE (rE1_1_3)-[:HAS_OBJECT]->(o_e1_1_6)
+
 
 // Harbormaster Hank's House Arenas
 MERGE (rE1_2_1:Arena {name: "Office", description: "Office of Harbormaster Hank", location: point({x: -120, y: -90, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rE1_2_1"})
@@ -384,11 +735,29 @@ MERGE (rE1_2_2:Arena {name: "Living Quarters", description: "Living Quarters of 
 MERGE (rE1_2_3:Arena {name: "Kitchen", description: "Kitchen of Harbormaster Hank", location: point({x: -120, y: -105, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rE1_2_3"})
 MERGE (rE1_2_4:Arena {name: "Storage Room", description: "Storage Room of Harbormaster Hank", location: point({x: -105, y: -105, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rE1_2_4"})
 MERGE (rE1_2_5:Arena {name: "Dining Room", description: "Dining Room of Harbormaster Hank", location: point({x: -90, y: -105, z: 0}), dimensions: point({x: 15, y: 10, z: 10}), uuid: "uuid-rE1_2_5"})
+
 MERGE (hE1_2)-[:HAS_ARENA]->(rE1_2_1)
 MERGE (hE1_2)-[:HAS_ARENA]->(rE1_2_2)
 MERGE (hE1_2)-[:HAS_ARENA]->(rE1_2_3)
 MERGE (hE1_2)-[:HAS_ARENA]->(rE1_2_4)
 MERGE (hE1_2)-[:HAS_ARENA]->(rE1_2_5)
+
+// Harbormaster Hank's House Objects
+MERGE (o_e1_2_1:Object {name: "Logbook", description: "Logbook for recording ship arrivals and departures", uuid: "uuid-o_e1_2_1"})
+MERGE (o_e1_2_2:Object {name: "Map", description: "Map of the harbor and surrounding waters", uuid: "uuid-o_e1_2_2"})
+MERGE (o_e1_2_3:Object {name: "Desk", description: "Large wooden desk", uuid: "uuid-o_e1_2_3"})
+MERGE (o_e1_2_4:Object {name: "Bed", description: "Comfortable bed with soft linens", uuid: "uuid-o_e1_2_4"})
+MERGE (o_e1_2_5:Object {name: "Dining Table", description: "Simple dining table", uuid: "uuid-o_e1_2_5"})
+MERGE (o_e1_2_6:Object {name: "Firewood Stack", description: "Stack of firewood for cooking and heating", uuid: "uuid-o_e1_2_6"})
+MERGE (o_e1_2_7:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_e1_2_7"})
+
+MERGE (rE1_2_1)-[:HAS_OBJECT]->(o_e1_2_1)
+MERGE (rE1_2_1)-[:HAS_OBJECT]->(o_e1_2_2)
+MERGE (rE1_2_1)-[:HAS_OBJECT]->(o_e1_2_3)
+MERGE (rE1_2_2)-[:HAS_OBJECT]->(o_e1_2_4)
+MERGE (rE1_2_3)-[:HAS_OBJECT]->(o_e1_2_5)
+MERGE (rE1_2_3)-[:HAS_OBJECT]->(o_e1_2_7)
+MERGE (rE1_2_3)-[:HAS_OBJECT]->(o_e1_2_6)
 
 
 MERGE (rth_1:Arena {name: "Meeting Hall", description: "Main meeting hall in the Town Hall", uuid: "uuid-rth_1"})
@@ -521,16 +890,28 @@ MERGE (pathA1_1)-[:CONNECTS_TO]->(rA1_1_1)
 MERGE (pathA1_1)-[:CONNECTS_TO]->(rA1_1_2)
 MERGE (pathA1_1)-[:CONNECTS_TO]->(rA1_1_3)
 MERGE (pathA1_1)-[:CONNECTS_TO]->(rA1_1_4)
+MERGE (pathA1_1)-[:CONNECTS_TO]->(rA1_1_5)
+MERGE (pathA1_1)-[:CONNECTS_TO]->(rA1_1_6)
+MERGE (pathA1_1)-[:CONNECTS_TO]->(rA1_1_7)
+MERGE (pathA1_1)-[:CONNECTS_TO]->(rA1_1_8)
+MERGE (pathA1_1)-[:CONNECTS_TO]->(rA1_1_9)
+MERGE (pathA1_1)-[:CONNECTS_TO]->(rA1_1_10)
 
 MERGE (pathA1_2)-[:CONNECTS_TO]->(rA1_2_1)
 MERGE (pathA1_2)-[:CONNECTS_TO]->(rA1_2_2)
 MERGE (pathA1_2)-[:CONNECTS_TO]->(rA1_2_3)
 MERGE (pathA1_2)-[:CONNECTS_TO]->(rA1_2_4)
+MERGE (pathA1_2)-[:CONNECTS_TO]->(rA1_2_5)
+MERGE (pathA1_2)-[:CONNECTS_TO]->(rA1_2_6)
+
 
 MERGE (pathA2_1)-[:CONNECTS_TO]->(rA2_1_1)
 MERGE (pathA2_1)-[:CONNECTS_TO]->(rA2_1_2)
 MERGE (pathA2_1)-[:CONNECTS_TO]->(rA2_1_3)
 MERGE (pathA2_1)-[:CONNECTS_TO]->(rA2_1_4)
+MERGE (pathA2_1)-[:CONNECTS_TO]->(rA2_1_5)
+MERGE (pathA2_1)-[:CONNECTS_TO]->(rA2_1_6)
+
 
 MERGE (pathA2_2)-[:CONNECTS_TO]->(rA2_2_1)
 MERGE (pathA2_2)-[:CONNECTS_TO]->(rA2_2_2)
@@ -549,6 +930,7 @@ MERGE (pathB1_2)-[:CONNECTS_TO]->(rB1_2_2)
 MERGE (pathB1_2)-[:CONNECTS_TO]->(rB1_2_3)
 MERGE (pathB1_2)-[:CONNECTS_TO]->(rB1_2_4)
 MERGE (pathB1_2)-[:CONNECTS_TO]->(rB1_2_5)
+MERGE (pathB1_2)-[:CONNECTS_TO]->(rB1_2_6)
 
 MERGE (pathC1_1)-[:CONNECTS_TO]->(rC1_1_1)
 MERGE (pathC1_1)-[:CONNECTS_TO]->(rC1_1_2)
@@ -612,196 +994,10 @@ MERGE (pathE1_2)-[:CONNECTS_TO]->(rE1_2_5)
 
 
 // Elder Elara's House Objects
-MERGE (o_a1_1_1:Object {name: "Ornate Chair", description: "Comfortable chair with intricate designs", uuid: "uuid-o_a1_1_1"})
-MERGE (o_a1_1_2:Object {name: "Desk", description: "Large wooden desk", uuid: "uuid-o_a1_1_2"})
-MERGE (o_a1_1_3:Object {name: "Bookshelf", description: "Filled with ancient books", uuid: "uuid-o_a1_1_3"})
-MERGE (o_a1_1_4:Object {name: "Bed", description: "King-sized bed with fine linens", uuid: "uuid-o_a1_1_4"})
-MERGE (o_a1_1_5:Object {name: "Carpet", description: "Luxurious carpet covering the floor", uuid: "uuid-o_a1_1_5"})
-MERGE (rA1_1_1)-[:HAS_OBJECT]->(o_a1_1_1)
-MERGE (rA1_1_2)-[:HAS_OBJECT]->(o_a1_1_4)
-MERGE (rA1_1_3)-[:HAS_OBJECT]->(o_a1_1_5)
-MERGE (rA1_1_4)-[:HAS_OBJECT]->(o_a1_1_3)
-MERGE (rA1_1_4)-[:HAS_OBJECT]->(o_a1_1_2)
+
 
 // Blacksmith Barin's House Objects
-MERGE (o_a1_2_1:Object {name: "Anvil", description: "Sturdy anvil for forging", uuid: "uuid-o_a1_2_1"})
-MERGE (o_a1_2_2:Object {name: "Forge", description: "Large forge for heating metal", uuid: "uuid-o_a1_2_2"})
-MERGE (o_a1_2_3:Object {name: "Hammer", description: "Heavy hammer for blacksmithing", uuid: "uuid-o_a1_2_3"})
-MERGE (o_a1_2_4:Object {name: "Simple Bed", description: "Simple bed with basic linens", uuid: "uuid-o_a1_2_4"})
-MERGE (o_a1_2_5:Object {name: "Workbench", description: "Workbench for crafting items", uuid: "uuid-o_a1_2_5"})
-MERGE (rA1_2_1)-[:HAS_OBJECT]->(o_a1_2_1)
-MERGE (rA1_2_1)-[:HAS_OBJECT]->(o_a1_2_2)
-MERGE (rA1_2_1)-[:HAS_OBJECT]->(o_a1_2_3)
-MERGE (rA1_2_2)-[:HAS_OBJECT]->(o_a1_2_4)
-MERGE (rA1_2_4)-[:HAS_OBJECT]->(o_a1_2_5)
 
-// Farmer Finn's House Objects
-MERGE (o_a2_1_1:Object {name: "Wooden Table", description: "Sturdy wooden table", uuid: "uuid-o_a2_1_1"})
-MERGE (o_a2_1_2:Object {name: "Chairs", description: "Simple wooden chairs", uuid: "uuid-o_a2_1_2"})
-MERGE (o_a2_1_3:Object {name: "Bed", description: "Modest bed with simple linens", uuid: "uuid-o_a2_1_3"})
-MERGE (o_a2_1_4:Object {name: "Barn Tools", description: "Tools for farming", uuid: "uuid-o_a2_1_4"})
-MERGE (o_a2_1_5:Object {name: "Grain Sack", description: "Sacks of grain for storage", uuid: "uuid-o_a2_1_5"})
-MERGE (rA2_1_1)-[:HAS_OBJECT]->(o_a2_1_1)
-MERGE (rA2_1_1)-[:HAS_OBJECT]->(o_a2_1_2)
-MERGE (rA2_1_2)-[:HAS_OBJECT]->(o_a2_1_4)
-MERGE (rA2_1_3)-[:HAS_OBJECT]->(o_a2_1_3)
-MERGE (rA2_1_4)-[:HAS_OBJECT]->(o_a2_1_5)
-
-// Healer Hera's House Objects
-MERGE (o_a2_2_1:Object {name: "Herb Shelf", description: "Shelf filled with various herbs", uuid: "uuid-o_a2_2_1"})
-MERGE (o_a2_2_2:Object {name: "Mortar and Pestle", description: "Used for grinding herbs", uuid: "uuid-o_a2_2_2"})
-MERGE (o_a2_2_3:Object {name: "Bed", description: "Comfortable bed with soft linens", uuid: "uuid-o_a2_2_3"})
-MERGE (o_a2_2_4:Object {name: "Wooden Chair", description: "Simple wooden chair", uuid: "uuid-o_a2_2_4"})
-MERGE (o_a2_2_5:Object {name: "Garden Tools", description: "Tools for gardening", uuid: "uuid-o_a2_2_5"})
-MERGE (rA2_2_1)-[:HAS_OBJECT]->(o_a2_2_1)
-MERGE (rA2_2_1)-[:HAS_OBJECT]->(o_a2_2_2)
-MERGE (rA2_2_2)-[:HAS_OBJECT]->(o_a2_2_3)
-MERGE (rA2_2_2)-[:HAS_OBJECT]->(o_a2_2_4)
-MERGE (rA2_2_5)-[:HAS_OBJECT]->(o_a2_2_5)
-
-// Merchant Morgan's House Objects
-MERGE (o_b1_1_1:Object {name: "Trading Ledger", description: "Ledger for keeping trade records", uuid: "uuid-o_b1_1_1"})
-MERGE (o_b1_1_2:Object {name: "Chest", description: "Chest for storing valuable items", uuid: "uuid-o_b1_1_2"})
-MERGE (o_b1_1_3:Object {name: "Bed", description: "Luxurious bed with fine linens", uuid: "uuid-o_b1_1_3"})
-MERGE (o_b1_1_4:Object {name: "Dining Table", description: "Large dining table", uuid: "uuid-o_b1_1_4"})
-MERGE (o_b1_1_5:Object {name: "Bookshelf", description: "Bookshelf filled with trade books", uuid: "uuid-o_b1_1_5"})
-MERGE (rB1_1_1)-[:HAS_OBJECT]->(o_b1_1_1)
-MERGE (rB1_1_2)-[:HAS_OBJECT]->(o_b1_1_3)
-MERGE (rB1_1_3)-[:HAS_OBJECT]->(o_b1_1_4)
-MERGE (rB1_1_4)-[:HAS_OBJECT]->(o_b1_1_5)
-MERGE (rB1_1_5)-[:HAS_OBJECT]->(o_b1_1_2)
-
-// Guard Captain Garen's House Objects
-MERGE (o_b1_2_1:Object {name: "Armor Stand", description: "Stand for displaying armor", uuid: "uuid-o_b1_2_1"})
-MERGE (o_b1_2_2:Object {name: "Weapon Rack", description: "Rack for storing weapons", uuid: "uuid-o_b1_2_2"})
-MERGE (o_b1_2_3:Object {name: "Bed", description: "Sturdy bed with military-style linens", uuid: "uuid-o_b1_2_3"})
-MERGE (o_b1_2_4:Object {name: "Training Dummy", description: "Dummy for training exercises", uuid: "uuid-o_b1_2_4"})
-MERGE (o_b1_2_5:Object {name: "Dining Table", description: "Simple dining table", uuid: "uuid-o_b1_2_5"})
-MERGE (rB1_2_1)-[:HAS_OBJECT]->(o_b1_2_1)
-MERGE (rB1_2_1)-[:HAS_OBJECT]->(o_b1_2_2)
-MERGE (rB1_2_2)-[:HAS_OBJECT]->(o_b1_2_3)
-MERGE (rB1_2_3)-[:HAS_OBJECT]->(o_b1_2_4)
-MERGE (rB1_2_5)-[:HAS_OBJECT]->(o_b1_2_5)
-
-// Carpenter Colin's House Objects
-MERGE (o_c1_1_1:Object {name: "Workbench", description: "Workbench for carpentry", uuid: "uuid-o_c1_1_1"})
-MERGE (o_c1_1_2:Object {name: "Toolbox", description: "Box containing carpentry tools", uuid: "uuid-o_c1_1_2"})
-MERGE (o_c1_1_3:Object {name: "Bed", description: "Simple bed with basic linens", uuid: "uuid-o_c1_1_3"})
-MERGE (o_c1_1_4:Object {name: "Wooden Chair", description: "Handcrafted wooden chair", uuid: "uuid-o_c1_1_4"})
-MERGE (o_c1_1_5:Object {name: "Wooden Table", description: "Handcrafted wooden table", uuid: "uuid-o_c1_1_5"})
-MERGE (rC1_1_1)-[:HAS_OBJECT]->(o_c1_1_1)
-MERGE (rC1_1_2)-[:HAS_OBJECT]->(o_c1_1_3)
-MERGE (rC1_1_3)-[:HAS_OBJECT]->(o_c1_1_4)
-MERGE (rC1_1_4)-[:HAS_OBJECT]->(o_c1_1_2)
-MERGE (rC1_1_5)-[:HAS_OBJECT]->(o_c1_1_5)
-
-// Tailor Talia's House Objects
-MERGE (o_c1_2_1:Object {name: "Sewing Machine", description: "Sewing machine for tailoring", uuid: "uuid-o_c1_2_1"})
-MERGE (o_c1_2_2:Object {name: "Fabric Roll", description: "Rolls of fabric for making clothes", uuid: "uuid-o_c1_2_2"})
-MERGE (o_c1_2_3:Object {name: "Mannequin", description: "Mannequin for displaying clothes", uuid: "uuid-o_c1_2_3"})
-MERGE (o_c1_2_4:Object {name: "Bed", description: "Comfortable bed with soft linens", uuid: "uuid-o_c1_2_4"})
-MERGE (o_c1_2_5:Object {name: "Ironing Board", description: "Board for ironing clothes", uuid: "uuid-o_c1_2_5"})
-MERGE (rC1_2_1)-[:HAS_OBJECT]->(o_c1_2_1)
-MERGE (rC1_2_1)-[:HAS_OBJECT]->(o_c1_2_2)
-MERGE (rC1_2_2)-[:HAS_OBJECT]->(o_c1_2_3)
-MERGE (rC1_2_2)-[:HAS_OBJECT]->(o_c1_2_4)
-MERGE (rC1_2_3)-[:HAS_OBJECT]->(o_c1_2_5)
-
-// Baker Bella's House Objects
-MERGE (o_c2_1_1:Object {name: "Oven", description: "Large oven for baking", uuid: "uuid-o_c2_1_1"})
-MERGE (o_c2_1_2:Object {name: "Mixing Bowl", description: "Bowl for mixing ingredients", uuid: "uuid-o_c2_1_2"})
-MERGE (o_c2_1_3:Object {name: "Bread Rack", description: "Rack for cooling bread", uuid: "uuid-o_c2_1_3"})
-MERGE (o_c2_1_4:Object {name: "Bed", description: "Comfortable bed with warm blankets", uuid: "uuid-o_c2_1_4"})
-MERGE (o_c2_1_5:Object {name: "Dining Table", description: "Simple dining table", uuid: "uuid-o_c2_1_5"})
-MERGE (rC2_1_1)-[:HAS_OBJECT]->(o_c2_1_1)
-MERGE (rC2_1_1)-[:HAS_OBJECT]->(o_c2_1_2)
-MERGE (rC2_1_1)-[:HAS_OBJECT]->(o_c2_1_3)
-MERGE (rC2_1_2)-[:HAS_OBJECT]->(o_c2_1_4)
-MERGE (rC2_1_3)-[:HAS_OBJECT]->(o_c2_1_5)
-
-// Fisherman Finn's House Objects
-MERGE (o_c2_2_1:Object {name: "Fishing Net", description: "Net for catching fish", uuid: "uuid-o_c2_2_1"})
-MERGE (o_c2_2_2:Object {name: "Fishing Rod", description: "Rod for fishing", uuid: "uuid-o_c2_2_2"})
-MERGE (o_c2_2_3:Object {name: "Boat", description: "Small fishing boat", uuid: "uuid-o_c2_2_3"})
-MERGE (o_c2_2_4:Object {name: "Bed", description: "Simple bed with basic linens", uuid: "uuid-o_c2_2_4"})
-MERGE (o_c2_2_5:Object {name: "Dining Table", description: "Sturdy wooden table", uuid: "uuid-o_c2_2_5"})
-MERGE (rC2_2_1)-[:HAS_OBJECT]->(o_c2_2_1)
-MERGE (rC2_2_1)-[:HAS_OBJECT]->(o_c2_2_2)
-MERGE (rC2_2_1)-[:HAS_OBJECT]->(o_c2_2_3)
-MERGE (rC2_2_2)-[:HAS_OBJECT]->(o_c2_2_4)
-MERGE (rC2_2_3)-[:HAS_OBJECT]->(o_c2_2_5)
-
-// Shopkeeper Sara's Shop Objects
-MERGE (o_d1_1_1:Object {name: "Counter", description: "Counter for serving customers", uuid: "uuid-o_d1_1_1"})
-MERGE (o_d1_1_2:Object {name: "Shelves", description: "Shelves for displaying goods", uuid: "uuid-o_d1_1_2"})
-MERGE (o_d1_1_3:Object {name: "Storage Boxes", description: "Boxes for storing stock", uuid: "uuid-o_d1_1_3"})
-MERGE (o_d1_1_4:Object {name: "Bed", description: "Simple bed with basic linens", uuid: "uuid-o_d1_1_4"})
-MERGE (o_d1_1_5:Object {name: "Cash Register", description: "Register for handling transactions", uuid: "uuid-o_d1_1_5"})
-MERGE (rD1_1_1)-[:HAS_OBJECT]->(o_d1_1_1)
-MERGE (rD1_1_1)-[:HAS_OBJECT]->(o_d1_1_2)
-MERGE (rD1_1_2)-[:HAS_OBJECT]->(o_d1_1_3)
-MERGE (rD1_1_3)-[:HAS_OBJECT]->(o_d1_1_4)
-MERGE (rD1_1_5)-[:HAS_OBJECT]->(o_d1_1_5)
-
-// Innkeeper Ian's Inn Objects
-MERGE (o_d1_2_1:Object {name: "Bar Counter", description: "Counter for serving drinks", uuid: "uuid-o_d1_2_1"})
-MERGE (o_d1_2_2:Object {name: "Table", description: "Dining tables", uuid: "uuid-o_d1_2_2"})
-MERGE (o_d1_2_3:Object {name: "Bed", description: "Beds in guest rooms", uuid: "uuid-o_d1_2_3"})
-MERGE (o_d1_2_4:Object {name: "Fireplace", description: "Cozy fireplace in the common room", uuid: "uuid-o_d1_2_4"})
-MERGE (o_d1_2_5:Object {name: "Cooking Pot", description: "Pot for cooking meals", uuid: "uuid-o_d1_2_5"})
-MERGE (rD1_2_1)-[:HAS_OBJECT]->(o_d1_2_1)
-MERGE (rD1_2_2)-[:HAS_OBJECT]->(o_d1_2_2)
-MERGE (rD1_2_2)-[:HAS_OBJECT]->(o_d1_2_3)
-MERGE (rD1_2_1)-[:HAS_OBJECT]->(o_d1_2_4)
-MERGE (rD1_2_3)-[:HAS_OBJECT]->(o_d1_2_5)
-
-// Craftsman Caleb's Workshop Objects
-MERGE (o_d2_1_1:Object {name: "Workbench", description: "Workbench for crafting items", uuid: "uuid-o_d2_1_1"})
-MERGE (o_d2_1_2:Object {name: "Toolbox", description: "Box containing various tools", uuid: "uuid-o_d2_1_2"})
-MERGE (o_d2_1_3:Object {name: "Bed", description: "Simple bed with basic linens", uuid: "uuid-o_d2_1_3"})
-MERGE (o_d2_1_4:Object {name: "Wooden Chair", description: "Handcrafted wooden chair", uuid: "uuid-o_d2_1_4"})
-MERGE (o_d2_1_5:Object {name: "Wooden Table", description: "Handcrafted wooden table", uuid: "uuid-o_d2_1_5"})
-MERGE (rD2_1_1)-[:HAS_OBJECT]->(o_d2_1_1)
-MERGE (rD2_1_1)-[:HAS_OBJECT]->(o_d2_1_2)
-MERGE (rD2_1_2)-[:HAS_OBJECT]->(o_d2_1_3)
-MERGE (rD2_1_3)-[:HAS_OBJECT]->(o_d2_1_4)
-MERGE (rD2_1_4)-[:HAS_OBJECT]->(o_d2_1_5)
-
-// Alchemist Alana's Alchemy Shop Objects
-MERGE (o_d2_2_1:Object {name: "Alchemy Table", description: "Table for mixing potions", uuid: "uuid-o_d2_2_1"})
-MERGE (o_d2_2_2:Object {name: "Herb Cabinet", description: "Cabinet for storing herbs", uuid: "uuid-o_d2_2_2"})
-MERGE (o_d2_2_3:Object {name: "Mortar and Pestle", description: "Used for grinding herbs", uuid: "uuid-o_d2_2_3"})
-MERGE (o_d2_2_4:Object {name: "Bed", description: "Comfortable bed with soft linens", uuid: "uuid-o_d2_2_4"})
-MERGE (o_d2_2_5:Object {name: "Bookshelf", description: "Shelf filled with alchemical texts", uuid: "uuid-o_d2_2_5"})
-MERGE (rD2_2_1)-[:HAS_OBJECT]->(o_d2_2_1)
-MERGE (rD2_2_1)-[:HAS_OBJECT]->(o_d2_2_2)
-MERGE (rD2_2_1)-[:HAS_OBJECT]->(o_d2_2_3)
-MERGE (rD2_2_2)-[:HAS_OBJECT]->(o_d2_2_4)
-MERGE (rD2_2_2)-[:HAS_OBJECT]->(o_d2_2_5)
-
-// Sailor Sam's House Objects
-MERGE (o_e1_1_1:Object {name: "Fishing Net", description: "Net for catching fish", uuid: "uuid-o_e1_1_1"})
-MERGE (o_e1_1_2:Object {name: "Fishing Rod", description: "Rod for fishing", uuid: "uuid-o_e1_1_2"})
-MERGE (o_e1_1_3:Object {name: "Boat", description: "Small fishing boat", uuid: "uuid-o_e1_1_3"})
-MERGE (o_e1_1_4:Object {name: "Bed", description: "Simple bed with basic linens", uuid: "uuid-o_e1_1_4"})
-MERGE (o_e1_1_5:Object {name: "Dining Table", description: "Sturdy wooden table", uuid: "uuid-o_e1_1_5"})
-MERGE (rE1_1_1)-[:HAS_OBJECT]->(o_e1_1_1)
-MERGE (rE1_1_1)-[:HAS_OBJECT]->(o_e1_1_2)
-MERGE (rE1_1_1)-[:HAS_OBJECT]->(o_e1_1_3)
-MERGE (rE1_1_2)-[:HAS_OBJECT]->(o_e1_1_4)
-MERGE (rE1_1_3)-[:HAS_OBJECT]->(o_e1_1_5)
-
-// Harbormaster Hank's House Objects
-MERGE (o_e1_2_1:Object {name: "Logbook", description: "Logbook for recording ship arrivals and departures", uuid: "uuid-o_e1_2_1"})
-MERGE (o_e1_2_2:Object {name: "Map", description: "Map of the harbor and surrounding waters", uuid: "uuid-o_e1_2_2"})
-MERGE (o_e1_2_3:Object {name: "Desk", description: "Large wooden desk", uuid: "uuid-o_e1_2_3"})
-MERGE (o_e1_2_4:Object {name: "Bed", description: "Comfortable bed with soft linens", uuid: "uuid-o_e1_2_4"})
-MERGE (o_e1_2_5:Object {name: "Dining Table", description: "Simple dining table", uuid: "uuid-o_e1_2_5"})
-MERGE (rE1_2_1)-[:HAS_OBJECT]->(o_e1_2_1)
-MERGE (rE1_2_1)-[:HAS_OBJECT]->(o_e1_2_2)
-MERGE (rE1_2_1)-[:HAS_OBJECT]->(o_e1_2_3)
-MERGE (rE1_2_2)-[:HAS_OBJECT]->(o_e1_2_4)
-MERGE (rE1_2_3)-[:HAS_OBJECT]->(o_e1_2_5)
 
 
 
@@ -821,7 +1017,7 @@ MERGE (pathBS:Pathway {name: "Pathway BS", description: "Pathway connecting area
 MERGE (pathML:Pathway {name: "Pathway ML", description: "Pathway connecting areas in Mill", length_km: 0.02, location: point({x: 0, y: 1200, z: 0})})
 MERGE (pathSY:Pathway {name: "Pathway SY", description: "Pathway connecting areas in Shipyard", length_km: 0.03, location: point({x: 0, y: 1300, z: 0})})
 MERGE (pathFM:Pathway {name: "Pathway FM", description: "Pathway connecting areas in Fish Market", length_km: 0.02, location: point({x: 0, y: 1400, z: 0})})
-MERGE (pathHM:Pathway {name: "Pathway HM", description: "Pathway connecting areas in Harbormaster’s Office", length_km: 0.01, location: point({x: 0, y: 1500, z: 0})})
+MERGE (pathHM:Pathway {name: "Pathway HM", description: "Pathway connecting areas in Harbormaster's Office", length_km: 0.01, location: point({x: 0, y: 1500, z: 0})})
 
 // Connect Pathways to Arenas within Buildings
 MERGE (pathTH)-[:CONNECTS_TO]->(rth_1)
@@ -983,7 +1179,7 @@ MERGE (o_fm_2:Object {name: "Ice Box", description: "Boxes for keeping fish fres
 MERGE (rfm_1)-[:HAS_OBJECT]->(o_fm_1)
 MERGE (rfm_1)-[:HAS_OBJECT]->(o_fm_2)
 
-// Harbormaster’s Office
+// Harbormaster's Office
 MERGE (o_hm_1:Object {name: "Logbook", description: "Logbook for recording ship arrivals and departures", uuid: "uuid-o_hm_1"})
 MERGE (o_hm_2:Object {name: "Map", description: "Map of the harbor and surrounding waters", uuid: "uuid-o_hm_2"})
 MERGE (rhm_1)-[:HAS_OBJECT]->(o_hm_1)
