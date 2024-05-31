@@ -1,6 +1,7 @@
 import re
 from typing import List
 from langchain_core.pydantic_v1 import BaseModel, Field, validator
+import datetime
 
 class Plan(BaseModel):
     activity: str = Field(description='The activity that the character wants to do at the specified time. It should be a string.') 
@@ -10,15 +11,25 @@ class Plan(BaseModel):
     # validate the time format
     @validator("start")
     def validate_start_time(cls, field):
-        if not re.match(r"^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$", field):
+        # if not re.match(r"^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$", field):
+        #     raise ValueError("Invalid time format")
+        # return field
+        try: 
+            start_time = datetime.datetime.strptime(field, '%I:%M %p')
+            return field
+        except:
             raise ValueError("Invalid time format")
-        return field
     
     @validator("end")
     def validate_end_time(cls, field):
-        if not re.match(r"^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$", field):
+        # if not re.match(r"^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$", field):
+        #     raise ValueError("Invalid time format")
+        # return field
+        try: 
+            start_time = datetime.datetime.strptime(field, '%I:%M %p')
+            return field
+        except:
             raise ValueError("Invalid time format")
-        return field
 
 class Plans(BaseModel):
     plans: List[Plan]   

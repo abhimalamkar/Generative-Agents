@@ -90,7 +90,6 @@ def generate_hourly_schedule(daily_plan, wake_up_hour, curr_time):
     for activity_json in daily_plan:
         activity = activity_json["activity"]
         # TODO: remove this line
-        activity_json["end"] = activity_json["end"].replace("Next day", "").strip()
         start_time = datetime.datetime.strptime(activity_json["start"], '%I:%M %p')
         end_time = datetime.datetime.strptime(activity_json["end"], '%I:%M %p')
         daily_req.append(f"{activity} from {activity_json['start']} to {activity_json['end']}")

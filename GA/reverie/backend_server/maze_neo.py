@@ -8,9 +8,9 @@ class Maze:
         self.maze_name = maze_name
         neo4j_uri = "bolt://localhost:7687"
         neo4j_user = "neo4j"
-        neo4j_password = "ABhijeet55"
+        neo4j_password = "password"
         self.driver = GraphDatabase.driver(neo4j_uri, auth=(
-            neo4j_user, neo4j_password), database="world")
+            neo4j_user, neo4j_password))
 
         # Fetch and construct the tree
         self.tree = self.construct_tree()

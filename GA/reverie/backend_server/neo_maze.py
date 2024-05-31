@@ -27,7 +27,7 @@ import os
 class Maze:
     def __init__(self, maze_name, uri, user, password):
         self.maze_name = maze_name
-        self.driver = GraphDatabase.driver(uri, auth=(user, password), database="world")
+        self.driver = GraphDatabase.driver(uri, auth=(user, password))
 
         # READING IN THE BASIC META INFORMATION ABOUT THE MAP
         meta_info = json.load(open(f"{env_matrix}/maze_meta_info.json"))
@@ -217,6 +217,6 @@ class Maze:
 
 
 # Initialize the maze and transfer to Unreal
-maze = Maze("example_maze", "bolt://localhost:7687", "neo4j", "ABhijeet55")
+maze = Maze("example_maze", "bolt://localhost:7687", "neo4j", "password")
 # Ensure to close the driver after use
 maze.close()
