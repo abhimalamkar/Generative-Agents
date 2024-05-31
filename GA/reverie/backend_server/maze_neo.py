@@ -101,7 +101,22 @@ class Maze:
 
 
         return tree
+    
+    def generate_json_structure(self):
+        json_structure = {}
 
+        for world, world_data in self.tree.items():
+            json_structure[world] = {}
+            for sector_id, sector_data in world_data["sectors"].items():
+                sector_name = sector_data["name"]
+                json_structure[world][sector_name] = {}
+                for arena_id, arena_data in sector_data["arenas"].items():
+                    arena_name = arena_data["name"]
+                    objects = [obj["name"] for obj in arena_data["objects"]]
+                    json_structure[world][sector_name][arena_name] = objects
+
+        return json_structure
+    
     def access_tile(self, path):
         """
         Returns the details dictionary for a given path.

@@ -13,6 +13,8 @@ import sys
 import ast
 
 from langchain_core.output_parsers import JsonOutputParser, PydanticOutputParser
+from langchain.output_parsers.enum import EnumOutputParser
+from enum import Enum
 
 sys.path.append('../../')
 
@@ -38,6 +40,17 @@ def get_random_alphanumeric(i=6, j=6):
     x = ''.join(random.choices(string.ascii_letters + string.digits, k=k))
     return x
 
+def list_to_dict(string_list):
+    """
+    Convert a list of strings to a dictionary with the same keys and values.
+
+    Args:
+    string_list (list of str): List of strings.
+
+    Returns:
+    dict: Dictionary with strings as both keys and values.
+    """
+    return {item: item for item in string_list}
 
 
 def adjust_durations(tasks, total_allowed):
@@ -365,11 +378,24 @@ def run_gpt_prompt_next_day_plan(persona,
     prompt = generate_prompt(prompt_input, prompt_template)
     fail_safe = get_fail_safe()
 
-    output = ChatGPT_safe_generate_response_OLD(prompt, 3, fail_safe, __func_validate, __func_clean_up)
+    # output = ChatGPT_safe_generate_response_OLD(prompt, 3, fail_safe, __func_validate, __func_clean_up)
     # output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
     #                                 __func_validate, __func_clean_up)
     # output = ([f"wake up and complete the morning routine at {wake_up_hour}:00 am"]
     #           + output)
+
+    parser = JsonOutputParser(pydantic_object=Plans)
+
+    langchain_prompt = PromptTemplate(
+        template="{format_instructions}\n\n{query}\n",
+        input_variables=["query"],
+        partial_variables={"format_instructions": parser.get_format_instructions()},
+    )
+
+    chain = langchain_prompt | model_to_run | parser
+    print(parser.get_format_instructions())
+    output = chain.invoke({"query": prompt})
+    output = output['plans']
 
     if debug or verbose:
         print_run_prompts(prompt_template, persona, gpt_param,
@@ -738,6 +764,22 @@ def run_gpt_prompt_action_game_object(action_description,
                                     __func_validate, __func_clean_up)
 
     x = [i.strip() for i in persona.s_mem.get_str_accessible_arena_game_objects(temp_address).split(",")]
+    
+    # Objects = Enum('Objects', list_to_dict(x))
+
+    # parser = EnumOutputParser(enum=Objects)
+
+    # langchain_prompt = PromptTemplate(
+    #     template="{format_instructions}\n\n{query}\n",
+    #     input_variables=["query"],
+    #     partial_variables={"format_instructions": parser.get_format_instructions()},
+    # )
+
+    # chain = langchain_prompt | model_to_run | parser
+    # print(parser.get_format_instructions())
+    # out = chain.invoke({"query": prompt})
+    
+
     if output not in x:
         output = random.choice(x)
 
