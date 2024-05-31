@@ -89,6 +89,8 @@ def generate_hourly_schedule(daily_plan, wake_up_hour, curr_time):
 
     for activity_json in daily_plan:
         activity = activity_json["activity"]
+        # TODO: remove this line
+        activity_json["end"] = activity_json["end"].replace("Next day", "").strip()
         start_time = datetime.datetime.strptime(activity_json["start"], '%I:%M %p')
         end_time = datetime.datetime.strptime(activity_json["end"], '%I:%M %p')
         daily_req.append(f"{activity} from {activity_json['start']} to {activity_json['end']}")
@@ -1010,13 +1012,15 @@ def _chat_react(maze, persona, focused_event, reaction_mode, personas):
 
     for role, p in [("init", init_persona), ("target", target_persona)]:
         if role == "init":
-            act_address = f"<persona> {target_persona.name}"
+            # act_address = f"<persona> {target_persona.name}"
+            act_address = target_persona.scratch.act_address
             act_event = (p.name, "chat with", target_persona.name)
             chatting_with = target_persona.name
             chatting_with_buffer = {}
             chatting_with_buffer[target_persona.name] = 800
         elif role == "target":
-            act_address = f"<persona> {init_persona.name}"
+            # act_address = f"<persona> {init_persona.name}"
+            act_address = init_persona.scratch.act_address
             act_event = (p.name, "chat with", init_persona.name)
             chatting_with = init_persona.name
             chatting_with_buffer = {}

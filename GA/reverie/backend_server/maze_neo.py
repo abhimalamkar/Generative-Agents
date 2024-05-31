@@ -214,6 +214,16 @@ class Maze:
             result = [self.get_section_or_arena_by_id(arena)["path"] for arena in connected_arenas]
             result.extend(objects)
             return result
+        elif len(levels) == 4:  # It's an object
+        # No further connections for objects, return an empty list
+            path = self.get_tile_path(path, "arena")
+            tile = self.access_tile(path)
+            connected_arenas = tile.get("connected_arenas", [])
+            print(self.get_section_or_arena_by_id(connected_arenas[0]))
+            objects = [obj["path"] for obj in tile.get("objects", [])]
+            result = [self.get_section_or_arena_by_id(arena)["path"] for arena in connected_arenas]
+            result.extend(objects)
+            return result
         else:
             return []
 
@@ -245,6 +255,8 @@ class Maze:
         OUTPUT: 
           None
         """
+        if not curr_event[0] or curr_event[0] == "<random>":
+            return
         node = self.access_tile(path)
         if node is not None:
             if "events" not in node:
@@ -264,6 +276,7 @@ class Maze:
         node = self.access_tile(path)
         if node is not None and "events" in node:
             node["events"].discard(curr_event)
+            print(node["events"])
 
     def turn_event_from_tile_idle(self, curr_event, path):
         """
@@ -331,7 +344,7 @@ class Maze:
 
 # maze = Maze(maze_name)
 
-# # pprint.pprint(maze.tree)
+# pprint.pprint(maze.tree)
 
 # path = "Rivenwood:Elder Elara's House:Living Room"
 # print(maze.access_tile(path))
@@ -340,6 +353,10 @@ class Maze:
 
 # path = "Rivenwood:Blacksmith Barin's House:Living Quarters"
 # print(maze.get_nearby_tiles(path))
+# maze.add_event_from_tile(("Rivenwood:Blacksmith Barin's House:Living Quarters:Living Quarters", None, None, None), path)
+# print(maze.access_tile(path)["events"])
+# maze.add_event_from_tile(("Rivenwood:Blacksmith Barin's House:Living Quarters:Living Quarters", None, None, None), path)
+# print(maze.access_tile(path)["events"])
 
 # maze.save_tree_as_json("maze_tree.json")
 

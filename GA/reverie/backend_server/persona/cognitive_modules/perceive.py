@@ -73,25 +73,25 @@ async def perceive(persona, maze):
         for event in i['events']:
             perceived_events += [event]
 
-    # PERCEIVE EVENTS.
-    # We will perceive events that take place in the same arena as the
-    # persona's current arena.
-    curr_arena_path = maze.get_tile_path(persona.scratch.curr_tile, "arena")
-    # We do not perceive the same event twice (this can happen if an object is
-    # extended across multiple tiles).
-    percept_events_set = set()
-    # We will order our percept based on the distance, with the closest ones
-    # getting priorities.
-    percept_events_list = []
-    # First, we put all events that are occurring in the nearby tiles into the
-    # percept_events_list
-    for tile in nearby_tiles:
-        tile_details = maze.access_tile(tile)
-        if tile_details["events"]:
-            if maze.get_tile_path(tile, "arena") == curr_arena_path:
-                for event in tile_details["events"]:
-                    if event not in percept_events_set:
-                        percept_events_set.add(event)
+    # # PERCEIVE EVENTS.
+    # # We will perceive events that take place in the same arena as the
+    # # persona's current arena.
+    # curr_arena_path = maze.get_tile_path(persona.scratch.curr_tile, "arena")
+    # # We do not perceive the same event twice (this can happen if an object is
+    # # extended across multiple tiles).
+    # percept_events_set = set()
+    # # We will order our percept based on the distance, with the closest ones
+    # # getting priorities.
+    # percept_events_list = []
+    # # First, we put all events that are occurring in the nearby tiles into the
+    # # percept_events_list
+    # for tile in nearby_tiles:
+    #     tile_details = maze.access_tile(tile)
+    #     if tile_details["events"]:
+    #         if maze.get_tile_path(tile, "arena") == curr_arena_path:
+    #             for event in tile_details["events"]:
+    #                 if event not in percept_events_set:
+    #                     percept_events_set.add(event)
 
     # # We sort, and perceive only persona.scratch.att_bandwidth of the closest
     # # events. If the bandwidth is larger, then it means the persona can perceive
@@ -107,6 +107,8 @@ async def perceive(persona, maze):
     ret_events = []
     for p_event in perceived_events:
         s, p, o, desc = p_event
+        if not s:
+            continue
         if not p:
             # If the object is not present, then we default the event to "idle".
             p = "is"

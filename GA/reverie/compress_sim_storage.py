@@ -62,7 +62,7 @@ def compress(sim_code):
 
 if __name__ == '__main__':
   print("new")
-  compress("offline_2000")
+  compress("offline")
 
 
 

@@ -180,7 +180,7 @@ def run_gpt_prompt_daily_plan(persona,
     fail_safe = get_fail_safe()
 
     # output = ChatGPT_safe_generate_response_OLD(prompt, 3, fail_safe, __func_validate, __func_clean_up)
-    parser = JsonOutputParser(pydantic_object=Plans)
+    parser = PydanticOutputParser(pydantic_object=Plans)
 
     langchain_prompt = PromptTemplate(
         template="{format_instructions}\n\n{query}\n",
@@ -189,9 +189,9 @@ def run_gpt_prompt_daily_plan(persona,
     )
 
     chain = langchain_prompt | model_to_run | parser
-    print(parser.get_format_instructions())
+    print(parser.get_format_instructions(), langchain_prompt.pretty_print(), "asdasd")
     output = chain.invoke({"query": prompt})
-    output = output['plans']
+    output = [{"activity": i.activity, "end": i.end, "start": i.start} for i in output.plans]
     # output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
     #                                 __func_validate, __func_clean_up)
     # output = ([f"wake up and complete the morning routine at {wake_up_hour}:00 am"]
@@ -232,7 +232,7 @@ def run_gpt_prompt_generate_hourly_schedule(persona,
     # output = ChatGPT_safe_generate_response_OLD(prompt, 3, fail_safe, __func_validate, __func_clean_up)
     # output = safe_generate_response(prompt, gpt_param, 5, fail_safe,
     #                                 __func_validate, __func_clean_up)
-    parser = JsonOutputParser(pydantic_object=Plans)
+    parser = PydanticOutputParser(pydantic_object=Plans)
 
     langchain_prompt = PromptTemplate(
         template="{format_instructions}\n\n{query}\n",
@@ -241,9 +241,9 @@ def run_gpt_prompt_generate_hourly_schedule(persona,
     )
 
     chain = langchain_prompt | model_to_run | parser
-    print(parser.get_format_instructions())
+    print(parser.get_format_instructions(), langchain_prompt.pretty_print(), "asdasd")
     output = chain.invoke({"query": prompt})
-    output = output['plans']
+    output = [{"activity": i.activity, "end": i.end, "start": i.start} for i in output.plans]
 
     if debug or verbose:
         print_run_prompts(prompt_template, persona, gpt_param,
