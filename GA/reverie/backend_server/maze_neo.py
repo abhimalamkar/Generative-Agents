@@ -16,6 +16,21 @@ class Maze:
         self.tree = self.construct_tree()
         # self.tree = self.load_tree_from_json("maze_tree.json")
 
+    def create_maze(self):
+        with self.driver.session() as session:
+            session.execute_write(self._create_mazey)
+
+    def _create_mazey(self, tx):
+        tx.run("MATCH (n) DETACH DELETE n")  # Clear the database for fresh start
+        
+        with open("../../environment/frontend_server/static_dirs/assets/the_ville/neo4j/GenerateTownFinal.cypher", 'r') as tree:
+            cypher_query = tree.read()  # Read the content of the file as a string
+    
+        # print(cypher_query)  # Optionally print the content to verify
+
+        # Run the Cypher query from the file content
+        tx.run(cypher_query)
+
     def construct_tree(self):
         query = """
         MATCH (w:World {name: $maze_name})-[:HAS_SECTOR]->(s:Sector)
@@ -340,25 +355,27 @@ class Maze:
 # Example usage
 
 
-maze_name = "Rivenwood"
+# maze_name = "Rivenwood"
 
-maze = Maze(maze_name)
+# maze = Maze(maze_name)
 
-pprint.pprint(maze.tree)
+# maze.create_maze() # run this to create the maze in the database
 
-path = "Rivenwood:Elder Elara's House:Living Room"
-print(maze.access_tile(path))
-print(maze.get_section_or_arena_by_id(3867))
-print(maze.get_tile_path(path, "sector"))
+# pprint.pprint(maze.tree)
 
-path = "Rivenwood:Blacksmith Barin's House:Living Quarters"
-print(maze.get_nearby_tiles(path))
-maze.add_event_from_tile(("Rivenwood:Blacksmith Barin's House:Living Quarters:Living Quarters", None, None, None), path)
-print(maze.access_tile(path)["events"])
-maze.add_event_from_tile(("Rivenwood:Blacksmith Barin's House:Living Quarters:Living Quarters", None, None, None), path)
-print(maze.access_tile(path)["events"])
+# path = "Rivenwood:Elder Elara's House:Living Room"
+# print(maze.access_tile(path))
+# print(maze.get_section_or_arena_by_id(3867))
+# print(maze.get_tile_path(path, "sector"))
 
-# maze.save_tree_as_json("maze_tree.json")
+# path = "Rivenwood:Blacksmith Barin's House:Living Quarters"
+# print(maze.get_nearby_tiles(path))
+# maze.add_event_from_tile(("Rivenwood:Blacksmith Barin's House:Living Quarters:Living Quarters", None, None, None), path)
+# print(maze.access_tile(path)["events"])
+# maze.add_event_from_tile(("Rivenwood:Blacksmith Barin's House:Living Quarters:Living Quarters", None, None, None), path)
+# print(maze.access_tile(path)["events"])
+
+# # maze.save_tree_as_json("maze_tree.json")
 
 
-maze.close()
+# maze.close()
