@@ -4,9 +4,9 @@ from langchain_core.pydantic_v1 import BaseModel, Field, validator
 import datetime
 
 class Plan(BaseModel):
-    activity: str = Field(description='The activity that the character wants to do at the specified time. It should be a string.') 
-    start: str = Field(description="The start time of the activity in the 'hh:mm AM/PM' format. It must strictly follow this 12-hour time format.")
-    end: str = Field(description="The end time of the activity in the 'hh:mm AM/PM' format. It must strictly follow this 12-hour time format.")
+    activity: str = Field(description='The activity that the character wants to do at the specified time.') 
+    start: str = Field(description="Provide the start time of the activity in the 'hh AM/PM' format. Ensure it strictly adheres to this 12-hour time format.")
+    end: str = Field(description="Provide the end time of the activity in the 'hh AM/PM' format. Ensure it strictly adheres to this 12-hour time format.")
 
     # validate the time format
     @validator("start")
@@ -36,7 +36,7 @@ class Plans(BaseModel):
 
 
 class SubPlan(BaseModel):
-    activity: str = Field(description='The activity that the character wants to do at the specified time. It should be a string.') 
+    activity: str = Field(description='The activity that the character wants to do at the specified time.') 
     duration: int = Field(description="time in minutes that the character wants to spend on the activity")
 
 class SubPlans(BaseModel):
